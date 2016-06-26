@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.List;
+
 
 import de.tum.in.dbpra.model.bean.AreaBean;
 import de.tum.in.dbpra.model.bean.AreaListBean;
