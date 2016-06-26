@@ -11,22 +11,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import de.tum.in.dbpra.model.bean.CustomerBean;
-import de.tum.in.dbpra.model.bean.OrderListBean;
-import de.tum.in.dbpra.model.dao.CustomerDAO;
-import de.tum.in.dbpra.model.dao.OrderDAO;
+import de.tum.in.dbpra.model.bean.AreaListBean;
+import de.tum.in.dbpra.model.dao.AreaDAO;
 
 /**
  * Servlet implementation class CustomerServlet
  */
-@WebServlet("/orders")
-public class OrderServlet extends HttpServlet {
+@WebServlet("/area")
+public class AreaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public OrderServlet() {
+    public AreaServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -36,19 +34,15 @@ public class OrderServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
-        	OrderDAO daoNo = new OrderDAO();
-        	OrderDAO daoOk = new OrderDAO();
-        	OrderListBean orderNo = new OrderListBean();
-        	OrderListBean orderOk = new OrderListBean();
-        	daoNo.getOrderstatus(orderNo, "no");
-        	daoOk.getOrderstatus(orderOk, "ok");
-        	request.setAttribute("orderNo", orderNo);
-        	request.setAttribute("orderOk", orderOk);
+			AreaDAO ad = new AreaDAO();
+			AreaListBean alb = new AreaListBean();
+			ad.getAreas(alb);
+			
     	} catch (Throwable e) {
     		e.printStackTrace();
     		request.setAttribute("error", e.toString() + e.getMessage());
     	}
-		RequestDispatcher dispatcher = request.getRequestDispatcher("exercise72.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher(".jsp"); //fill in jsp
 		dispatcher.forward(request, response);
 }
 
