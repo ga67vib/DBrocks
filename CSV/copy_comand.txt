@@ -1,0 +1,1 @@
+Copy area from '/Users/eric-luyken/desktop/Area.csv' Delimiter ';' CSV;
