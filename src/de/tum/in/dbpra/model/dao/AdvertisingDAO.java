@@ -13,10 +13,10 @@ public class AdvertisingDAO extends DAO{
 	public void getAdvertising(AdvertisingListBean adv) throws AdvertisingNotFoundException, SQLException, ClassNotFoundException {
 		
 		if(adv.getList().isEmpty()) {
-			throw new AdvertisingNotFoundException("There are no areas found!");
+			throw new AdvertisingNotFoundException("There are no advertises found!");
 		}
 		
-		String query = "SELECT * FROM area;";
+		String query = "SELECT * FROM advertising;";
 		
 		Connection con = getConnection();
 		

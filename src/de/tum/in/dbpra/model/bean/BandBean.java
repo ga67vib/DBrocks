@@ -1,12 +1,15 @@
 package de.tum.in.dbpra.model.bean;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class BandBean {
 	private int bandID;
 	private String bandName;
 	private String instruction;
 	private int registersAt;
 	private double salary;
-	private String[] songlist;
+	private ArrayList<String> songlist;
 	
 	public BandBean() {}
 
@@ -83,15 +86,16 @@ public class BandBean {
 	/**
 	 * @return the songlist
 	 */
-	public String[] getSonglist() {
+	public ArrayList<String> getSonglist() {
 		return songlist;
 	}
 
 	/**
 	 * @param songlist the songlist to set
 	 */
-	public void setSonglist(String[] songlist) {
-		this.songlist = songlist;
+	public void setSonglist(String songlist) {
+		ArrayList<String> list = new ArrayList<String>(Arrays.asList(songlist.split(", ")));
+		this.songlist = list;
 	}
 
 }
