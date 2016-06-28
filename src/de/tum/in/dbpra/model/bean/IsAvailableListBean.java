@@ -3,7 +3,7 @@ package de.tum.in.dbpra.model.bean;
 import java.util.ArrayList;
 
 
-public class isAvailableListBean {
+public class IsAvailableListBean {
 
     private ArrayList<IsAvailableBean> list = new ArrayList<IsAvailableBean>();
 
