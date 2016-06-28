@@ -6,17 +6,17 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 
-import de.tum.in.dbpra.model.bean.AreaBean;
-import de.tum.in.dbpra.model.bean.AreaListBean;
+import de.tum.in.dbpra.model.bean.NoteBean;
+import de.tum.in.dbpra.model.bean.NoteListBean;
 
-public class AreaDAO extends DAO{
-	public void getAreas(AreaListBean listObject) throws AreaNotFoundException, SQLException, ClassNotFoundException {
+public class NoteDAO extends DAO{
+	public void getAreas(NoteListBean listObject) throws AreaNotFoundException, SQLException, ClassNotFoundException {
 		
 		if(listObject.getList().isEmpty()) {
-			throw new AreaNotFoundException("There are no Areas found!");
+			throw new AreaNotFoundException("There are no Notes found!");
 		}
 		
-		String query = "SELECT * FROM Area;";
+		String query = "SELECT * FROM Note;";
 		
 		Connection con = getConnection();
 		
@@ -27,10 +27,11 @@ public class AreaDAO extends DAO{
 		ResultSet rs = pstmt.executeQuery();
 		
 		for(int i = 0;rs.next();i++){
-			AreaBean object = new AreaBean();
-			object.setAreaID(rs.getInt("area_id"));
-			object.setSize(rs.getInt("size"));
-			object.setLocation(rs.getInt("location"));
+			NoteBean object = new NoteBean();
+			object.setNoteID(rs.getInt("note_id"));
+			object.setCreationTime(rs.getDate("creation_time"));
+			object.setDone(rs.getBoolean("done"));
+			object.setContent(rs.getString("content"));
 			listObject.setChild(object, i);
 			i++;
 		} 

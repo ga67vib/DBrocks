@@ -6,17 +6,17 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 
-import de.tum.in.dbpra.model.bean.AdvertisingBean;
-import de.tum.in.dbpra.model.bean.AdvertisingListBean;
+import de.tum.in.dbpra.model.bean.LocatedBean;
+import de.tum.in.dbpra.model.bean.LocatedListBean;
 
-public class AdvertisingDAO extends DAO{
-	public void getAdvertising(AdvertisingListBean listObject) throws AdvertisingNotFoundException, SQLException, ClassNotFoundException {
+public class LocatedDAO extends DAO{
+	public void getLocateds(LocatedListBean listObject) throws LocatedNotFoundException, SQLException, ClassNotFoundException {
 		
 		if(listObject.getList().isEmpty()) {
-			throw new AdvertisingNotFoundException("There are no Advertises found!");
+			throw new LocatedNotFoundException("There are no Located-Instances found!");
 		}
 		
-		String query = "SELECT * FROM advertising;";
+		String query = "SELECT * FROM located;";
 		
 		Connection con = getConnection();
 		
@@ -27,10 +27,9 @@ public class AdvertisingDAO extends DAO{
 		ResultSet rs = pstmt.executeQuery();
 		
 		for(int i = 0;rs.next();i++){
-			AdvertisingBean object = new AdvertisingBean();
+			LocatedBean object = new LocatedBean();
+			object.setShiftID(rs.getInt("shift_id"));
 			object.setAreaID(rs.getInt("area_id"));
-			object.setSponsorID(rs.getInt("sponsor_id"));
-			object.setType(rs.getString("type"));
 			listObject.setChild(object, i);
 			i++;
 		} 
@@ -42,14 +41,13 @@ public class AdvertisingDAO extends DAO{
 		
 	}
 	
-	
-	public static class AdvertisingNotFoundException extends Throwable {
+	public static class LocatedNotFoundException extends Throwable {
 		/**
 		 * 
 		 */
 		private static final long serialVersionUID = 1L;
 
-		AdvertisingNotFoundException(String message){
+		LocatedNotFoundException(String message){
 			super(message);
 		}
 	}
