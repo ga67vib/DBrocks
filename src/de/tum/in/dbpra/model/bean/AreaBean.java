@@ -4,7 +4,7 @@ public class AreaBean {
 	private int areaID;
 	private int size;
 	private int location;
-	private SponsorListBean advertising;
+	private SponsorListBean sponsor;
 	private ShiftListBean shifts;
 	
 	public ShiftListBean getShiftsBean() {
@@ -17,13 +17,13 @@ public class AreaBean {
 	}
 
 
-	public SponsorListBean getAdvertisingBean() {
-		return advertising;
+	public SponsorListBean getSponsorBean() {
+		return sponsor;
 	}
 
 
-	public void setAdvertisingBean(SponsorListBean advertising) {
-		this.advertising = advertising;}
+	public void setSponsorBean(SponsorListBean sponsor) {
+		this.sponsor = sponsor;}
 
 
 	public AreaBean() {}

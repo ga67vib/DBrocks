@@ -12,29 +12,31 @@ import de.tum.in.dbpra.model.dao.AreaDAO.AreaNotFoundException;
 
 public class SponsorDAO extends DAO{
 
-	public void getSponsorbyID(SponsorBean sponsor, int SponsorID) throws AreaNotFoundException, SQLException, ClassNotFoundException {
+	public void getSponsorbyID(SponsorBean sponsorbean, int SponsorID) throws AreaNotFoundException, SQLException, ClassNotFoundException {
 		
-		if(listObject.getList().isEmpty()) {
-			throw new AreaNotFoundException("There are no Areas found!");
-		}
 		
-		String query = "SELECT * FROM Area;";
+		
+		String query = "SELECT * FROM Sponsors Where sponsor_id=?";
 		
 		Connection con = getConnection();
 		
 		con.setAutoCommit(false);
 		
 		PreparedStatement pstmt = con.prepareStatement(query);
+		pstmt.setInt(1, SponsorID);
 		
 		ResultSet rs = pstmt.executeQuery();
 		
-		for(int i = 0;rs.next();i++){
-			AreaBean object = new AreaBean();
-			object.setAreaID(rs.getInt("area_id"));
-			object.setSize(rs.getInt("size"));
-			object.setLocation(rs.getInt("location"));
-			listObject.setChild(object, i);
-			i++;
+		if(DAO.getRowCount(rs)==0) {
+			throw new AreaNotFoundException("There are no Areas found!");
+		}
+		
+		while(rs.next()){
+			sponsorbean.setSponsorID(rs.getInt("sponsor_id"));
+			sponsorbean.setAddress(rs.getString("adress"));
+			sponsorbean.setPayment(rs.getInt("payment"));
+			sponsorbean.setNumReqBooths(rs.getInt("num_req_booths"));
+			sponsorbean.setNumAssBooths(rs.getInt("num_ass_booths"));
 		} 
 		con.commit();
 		

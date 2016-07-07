@@ -4,8 +4,8 @@ public class SponsorBean {
 	private int sponsorID;
 	private String address;
 	private double payment;
-	private int numReqBooth;
-	private int numAssBooth;
+	private int numReqBooths;
+	private int numAssBooths;
 	
 	public SponsorBean() {}
 
@@ -54,29 +54,29 @@ public class SponsorBean {
 	/**
 	 * @return the numReqBooth
 	 */
-	public int getNumReqBooth() {
-		return numReqBooth;
+	public int getNumReqBooths() {
+		return numReqBooths;
 	}
 
 	/**
 	 * @param numReqBooth the numReqBooth to set
 	 */
-	public void setNumReqBooth(int numReqBooth) {
-		this.numReqBooth = numReqBooth;
+	public void setNumReqBooths(int numReqBooth) {
+		this.numReqBooths = numReqBooth;
 	}
 
 	/**
 	 * @return the numAssBooth
 	 */
-	public int getNumAssBooth() {
-		return numAssBooth;
+	public int getNumAssBooths() {
+		return numAssBooths;
 	}
 
 	/**
 	 * @param numAssBooth the numAssBooth to set
 	 */
-	public void setNumAssBooth(int numAssBooth) {
-		this.numAssBooth = numAssBooth;
+	public void setNumAssBooths(int numAssBooth) {
+		this.numAssBooths = numAssBooth;
 	}
 	
 }

@@ -34,6 +34,7 @@ public class AreaDAO extends DAO{
 			areabean.setAreaID(rs.getInt("area_id"));
 			areabean.setSize(rs.getInt("size"));
 			areabean.setLocation(rs.getInt("location"));
+			//areabean.setSponsorBean(new SponsorBean(),rs.getInt(columnLabel))
 			listObject.setChild(areabean);
 		} 
 		con.commit();

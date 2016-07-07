@@ -7,8 +7,8 @@ public class BandListBean {
 
     private ArrayList<BandBean> list = new ArrayList<BandBean>();
 
-    public void setChild(BandBean object, int i) {
-        list.add(i, object);
+    public void setChild(BandBean object) {
+        list.add(object);
     }
     
     public BandBean getChild(int i) {

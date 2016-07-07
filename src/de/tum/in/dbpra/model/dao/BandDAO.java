@@ -12,11 +12,9 @@ import de.tum.in.dbpra.model.bean.BandListBean;
 public class BandDAO extends DAO{
 	public void getAreas(BandListBean listobjekt) throws BandToNotFoundException, SQLException, ClassNotFoundException {
 		
-		if(listobjekt.getList().isEmpty()) {
-			throw new BandToNotFoundException("There are no bands found!");
-		}
 		
-		String query = "SELECT * FROM area;";
+		
+		String query = "SELECT * FROM Band;";
 		
 		Connection con = getConnection();
 		
@@ -26,7 +24,12 @@ public class BandDAO extends DAO{
 		
 		ResultSet rs = pstmt.executeQuery();
 		
-		for(int i = 0;rs.next();i++){
+		if(DAO.getRowCount(rs)==0) {
+			throw new BandToNotFoundException("There are no bands found!");
+		}
+		
+		while(rs.next())
+				{
 			BandBean object = new BandBean();
 			object.setBandID(rs.getInt("band_id"));
 			object.setRegistersAt(rs.getInt("registers_at"));
@@ -34,8 +37,7 @@ public class BandDAO extends DAO{
 			object.setInstruction(rs.getString("instruction"));
 			object.setSonglist(rs.getString("songlist"));
 			object.setSalary(rs.getDouble("salary"));
-			listobjekt.setChild(object, i);
-			i++;
+			listobjekt.setChild(object);
 		} 
 		con.commit();
 		
