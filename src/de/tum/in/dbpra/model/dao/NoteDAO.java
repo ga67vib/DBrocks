@@ -5,20 +5,21 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-
+import de.tum.in.dbpra.model.bean.AreaBean;
 import de.tum.in.dbpra.model.bean.NoteBean;
 import de.tum.in.dbpra.model.bean.NoteListBean;
+import de.tum.in.dbpra.model.bean.PersonListBean;
+import de.tum.in.dbpra.model.dao.AreaDAO.AreaNotFoundException;
 
 public class NoteDAO extends DAO{
-	public void getAreas(NoteListBean listObject) throws AreaNotFoundException, SQLException, ClassNotFoundException {
+	
+	public void getNotes(NoteListBean listObject) throws AreaNotFoundException, SQLException, ClassNotFoundException {
 		
-		if(listObject.getList().isEmpty()) {
-			throw new AreaNotFoundException("There are no Notes found!");
-		}
+		
 		
 		String query = "SELECT * FROM Note;";
 		
-		Connection con = getConnection();
+Connection con = getConnection();
 		
 		con.setAutoCommit(false);
 		
@@ -26,21 +27,25 @@ public class NoteDAO extends DAO{
 		
 		ResultSet rs = pstmt.executeQuery();
 		
-		for(int i = 0;rs.next();i++){
-			NoteBean object = new NoteBean();
-			object.setNoteID(rs.getInt("note_id"));
-			object.setCreationTime(rs.getDate("creation_time"));
-			object.setDone(rs.getBoolean("done"));
-			object.setContent(rs.getString("content"));
-			listObject.setChild(object, i);
-			i++;
+		if(DAO.getRowCount(rs)==0) {
+			throw new AreaNotFoundException("There are no Areas found!");
+		}
+		
+		while(rs.next())
+		{
+			NoteBean notebean = new NoteBean();
+			notebean.setNoteID(rs.getInt("note_id"));
+			notebean.setContent(rs.getString("content"));
+			notebean.setCreationTime(rs.getDate("creation_time"));
+			notebean.setDone(rs.getBoolean("done"));
+			
+			listObject.setChild(notebean);
 		} 
 		con.commit();
 		
 		rs.close();
 		pstmt.close();
 		con.close();
-		
 	}
 	
 	public static class AreaNotFoundException extends Throwable {

@@ -7,8 +7,8 @@ public class NoteListBean {
 
     private ArrayList<NoteBean> list = new ArrayList<NoteBean>();
 
-    public void setChild(NoteBean object, int i) {
-        list.add(i, object);
+    public void setChild(NoteBean object) {
+        list.add(object);
     }
     
     public NoteBean getChild(int i) {
