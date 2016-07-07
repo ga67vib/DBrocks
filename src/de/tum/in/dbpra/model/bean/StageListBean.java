@@ -7,8 +7,8 @@ public class StageListBean {
 
     private ArrayList<StageBean> list = new ArrayList<StageBean>();
 
-    public void setChild(StageBean object, int i) {
-        list.add(i, object);
+    public void setChild(StageBean object) {
+        list.add(object);
     }
     
     public StageBean getChild(int i) {

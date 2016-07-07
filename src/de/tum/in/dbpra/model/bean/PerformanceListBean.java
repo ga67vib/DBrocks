@@ -7,8 +7,8 @@ public class PerformanceListBean {
 
     private ArrayList<PerformanceBean> list = new ArrayList<PerformanceBean>();
 
-    public void setChild(PerformanceBean object, int i) {
-        list.add(i, object);
+    public void setChild(PerformanceBean object) {
+        list.add(object);
     }
     
     public PerformanceBean getChild(int i) {

@@ -8,6 +8,7 @@ import java.sql.SQLException;
 
 import de.tum.in.dbpra.model.bean.AreaBean;
 import de.tum.in.dbpra.model.bean.AreaListBean;
+import de.tum.in.dbpra.model.bean.SponsorBean;
 
 public class AreaDAO extends DAO{
 	public void getAreas(AreaListBean listObject) throws AreaNotFoundException, SQLException, ClassNotFoundException {
@@ -55,4 +56,37 @@ public class AreaDAO extends DAO{
 			super(message);
 		}
 	}
+	
+public void getAreabyID(AreaBean areabean, int AreaID) throws AreaNotFoundException, SQLException, ClassNotFoundException {
+		
+		
+		
+		String query = "SELECT * FROM Area Where area_id=?";
+		
+		Connection con = getConnection();
+		
+		con.setAutoCommit(false);
+		
+		PreparedStatement pstmt = con.prepareStatement(query);
+		pstmt.setInt(1, AreaID);
+		
+		ResultSet rs = pstmt.executeQuery();
+		
+		if(DAO.getRowCount(rs)==0) {
+			throw new AreaNotFoundException("There are no Areas found!");
+		}
+		
+		while(rs.next()){
+			areabean.setAreaID(rs.getInt("area_id"));
+			areabean.setSize(rs.getInt("Size"));
+			areabean.setLocation(rs.getInt("location"));
+		} 
+		con.commit();
+		
+		rs.close();
+		pstmt.close();
+		con.close();
+		
+	}
+	
 }
