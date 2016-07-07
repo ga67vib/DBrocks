@@ -14,9 +14,9 @@ import de.tum.in.dbpra.model.bean.AreaListBean;
 import de.tum.in.dbpra.model.dao.AreaDAO;
 
 /**
- * Servlet implementation class CustomerServlet
+ * Servlet implementation class
  */
-@HttpServlet("/area")
+@WebServlet("location/area")
 public class AreaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
