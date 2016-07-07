@@ -7,8 +7,8 @@ public class StaffListBean {
 
     private ArrayList<StaffBean> list = new ArrayList<StaffBean>();
 
-    public void setChild(StaffBean object, int i) {
-        list.add(i, object);
+    public void setChild(StaffBean object) {
+        list.add(object);
     }
     
     public StaffBean getChild(int i) {

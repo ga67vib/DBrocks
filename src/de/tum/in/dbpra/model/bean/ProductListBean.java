@@ -7,8 +7,8 @@ public class ProductListBean {
 
     private ArrayList<ProductBean> list = new ArrayList<ProductBean>();
 
-    public void setChild(ProductBean object, int i) {
-        list.add(i, object);
+    public void setChild(ProductBean object) {
+        list.add(object);
     }
     
     public ProductBean getChild(int i) {
