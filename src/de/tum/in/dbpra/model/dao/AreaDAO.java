@@ -35,7 +35,6 @@ public class AreaDAO extends DAO{
 			areabean.setAreaID(rs.getInt("area_id"));
 			areabean.setSize(rs.getInt("size"));
 			areabean.setLocation(rs.getInt("location"));
-			//areabean.setSponsorBean(new SponsorBean(),rs.getInt(columnLabel))
 			listObject.setChild(areabean);
 		} 
 		con.commit();
@@ -47,9 +46,7 @@ public class AreaDAO extends DAO{
 	}
 	
 	public static class AreaNotFoundException extends Throwable {
-		/**
-		 * 
-		 */
+
 		private static final long serialVersionUID = 1L;
 
 		AreaNotFoundException(String message){
@@ -57,8 +54,7 @@ public class AreaDAO extends DAO{
 		}
 	}
 	
-public void getAreabyID(AreaBean areabean, int AreaID) throws AreaNotFoundException, SQLException, ClassNotFoundException {
-		
+	public void getAreabyID(AreaBean areabean, int AreaID) throws AreaNotFoundException, SQLException, ClassNotFoundException {
 		
 		
 		String query = "SELECT * FROM Area Where area_id=?";
