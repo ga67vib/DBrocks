@@ -7,8 +7,8 @@ public class PersonListBean {
 
     private ArrayList<PersonBean> list = new ArrayList<PersonBean>();
 
-    public void setChild(PersonBean object, int i) {
-        list.add(i, object);
+    public void setChild(PersonBean object) {
+        list.add(object);
     }
     
     public PersonBean getChild(int i) {
