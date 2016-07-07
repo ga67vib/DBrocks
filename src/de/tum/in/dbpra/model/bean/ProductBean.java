@@ -5,8 +5,19 @@ public class ProductBean {
 	private double price;
 	private String name;
 	private String addInfo;
+	private BoothListBean soledin;
 	
 	
+	public BoothListBean getSoledin() {
+		return soledin;
+	}
+
+
+	public void setSoledin(BoothListBean soledin) {
+		this.soledin = soledin;
+	}
+
+
 	public ProductBean() {}
 
 

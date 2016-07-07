@@ -4,12 +4,22 @@ import java.util.Date;
 
 public class PerformanceBean {
 	private int performanceID;
-	private int isAt;
+	private StageBean isAt;
 	private Date startBuildUp;
 	private Date startTime;
 	private Date endTime;
 	private Date endRemoval;
 	private BandListBean gerockt;
+	private VisitorListBean visitors;
+	
+	public VisitorListBean getVisitors() {
+		return visitors;
+	}
+
+	public void setVisitors(VisitorListBean visitors) {
+		this.visitors = visitors;
+	}
+
 	public BandListBean getGerockt() {
 		return gerockt;
 	}
@@ -35,14 +45,14 @@ public class PerformanceBean {
 	/**
 	 * @return the isAt
 	 */
-	public int getIsAt() {
+	public StageBean getIsAt() {
 		return isAt;
 	}
 
 	/**
 	 * @param isAt the isAt to set
 	 */
-	public void setIsAt(int isAt) {
+	public void setIsAt(StageBean isAt) {
 		this.isAt = isAt;
 	}
 

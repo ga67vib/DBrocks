@@ -6,8 +6,19 @@ public class ShiftBean {
 	private int shiftID;
 	private Date startTime;
 	private Date endTime;
+	private StaffBean workers;
 	
 	
+	public StaffBean getWorkers() {
+		return workers;
+	}
+
+
+	public void setWorkers(StaffBean workers) {
+		this.workers = workers;
+	}
+
+
 	public ShiftBean() {}
 
 

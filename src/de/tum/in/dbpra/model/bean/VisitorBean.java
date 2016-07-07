@@ -3,8 +3,19 @@ package de.tum.in.dbpra.model.bean;
 public class VisitorBean {
 	private int personID;
 	private String preferredGenre;
+	private PerformanceListBean timetable;
 	
 	
+	public PerformanceListBean getTimetable() {
+		return timetable;
+	}
+
+
+	public void setTimetable(PerformanceListBean timetable) {
+		this.timetable = timetable;
+	}
+
+
 	public VisitorBean() {}
 
 

@@ -8,7 +8,16 @@ public class BoothBean {
 	private int size;
 	private String name;
 	private String type;
+	private ProductListBean products;
 	
+	public ProductListBean getProducts() {
+		return products;
+	}
+
+	public void setProducts(ProductListBean products) {
+		this.products = products;
+	}
+
 	public BoothBean() {}
 
 	/**

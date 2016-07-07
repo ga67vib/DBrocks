@@ -5,14 +5,18 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-
 import de.tum.in.dbpra.model.bean.AreaBean;
 import de.tum.in.dbpra.model.bean.AreaListBean;
+import de.tum.in.dbpra.model.bean.SponsorBean;
+import de.tum.in.dbpra.model.dao.AreaDAO.AreaNotFoundException;
 
-public class AreaDAO extends DAO{
-	public void getAreas(AreaListBean listObject) throws AreaNotFoundException, SQLException, ClassNotFoundException {
+public class SponsorDAO extends DAO{
+
+	public void getSponsorbyID(SponsorBean sponsor, int SponsorID) throws AreaNotFoundException, SQLException, ClassNotFoundException {
 		
-		
+		if(listObject.getList().isEmpty()) {
+			throw new AreaNotFoundException("There are no Areas found!");
+		}
 		
 		String query = "SELECT * FROM Area;";
 		
@@ -24,18 +28,13 @@ public class AreaDAO extends DAO{
 		
 		ResultSet rs = pstmt.executeQuery();
 		
-		if(DAO.getRowCount(rs)==0) {
-			throw new AreaNotFoundException("There are no Areas found!");
-		}
-		
-		while(rs.next())
-		{
+		for(int i = 0;rs.next();i++){
 			AreaBean object = new AreaBean();
 			object.setAreaID(rs.getInt("area_id"));
 			object.setSize(rs.getInt("size"));
 			object.setLocation(rs.getInt("location"));
-			object.se
-			listObject.setChild(object);
+			listObject.setChild(object, i);
+			i++;
 		} 
 		con.commit();
 		
@@ -44,15 +43,5 @@ public class AreaDAO extends DAO{
 		con.close();
 		
 	}
-	
-	public static class AreaNotFoundException extends Throwable {
-		/**
-		 * 
-		 */
-		private static final long serialVersionUID = 1L;
 
-		AreaNotFoundException(String message){
-			super(message);
-		}
-	}
 }

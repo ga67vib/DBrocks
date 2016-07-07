@@ -4,8 +4,19 @@ public class StaffBean {
 	private int personID;
 	private String profession;
 	private double salary;
+	private ShiftBean works;
 	
 	
+	public ShiftBean getWorks() {
+		return works;
+	}
+
+
+	public void setWorks(ShiftBean works) {
+		this.works = works;
+	}
+
+
 	public StaffBean() {}
 
 

@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class RFID_TicketBean {
 	private int ticketID;
-	private int ownedBy;
+	private PersonBean ownedBy;
 	private double acctBal;
 	private boolean isCamper;
 	private boolean isVIP;
@@ -31,14 +31,14 @@ public class RFID_TicketBean {
 	/**
 	 * @return the ownedBy
 	 */
-	public int getOwnedBy() {
+	public PersonBean getOwnedBy() {
 		return ownedBy;
 	}
 
 	/**
 	 * @param ownedBy the ownedBy to set
 	 */
-	public void setOwnedBy(int ownedBy) {
+	public void setOwnedBy(PersonBean ownedBy) {
 		this.ownedBy = ownedBy;
 	}
 

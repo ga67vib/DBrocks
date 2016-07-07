@@ -7,8 +7,8 @@ public class AreaListBean {
 
     private ArrayList<AreaBean> list = new ArrayList<AreaBean>();
 
-    public void setChild(AreaBean object, int i) {
-        list.add(i, object);
+    public void setChild(AreaBean object) {
+        list.add(object);
     }
     
     public AreaBean getChild(int i) {
