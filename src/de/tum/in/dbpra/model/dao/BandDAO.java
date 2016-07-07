@@ -10,7 +10,6 @@ import de.tum.in.dbpra.model.bean.BandListBean;
 import de.tum.in.dbpra.model.bean.PerformanceBean;
 import de.tum.in.dbpra.model.bean.PerformanceListBean;
 import de.tum.in.dbpra.model.bean.StageBean;
-import de.tum.in.dbpra.model.dao.AreaDAO.AreaNotFoundException;
 
 public class BandDAO extends DAO{
 	
@@ -23,32 +22,31 @@ public class BandDAO extends DAO{
 			con = getConnection();
 		
 		
-		con.setAutoCommit(false);
-		
-		PreparedStatement pstmt = con.prepareStatement(query);
-		
-		ResultSet rs = pstmt.executeQuery();
-		
-		while(rs.next())
-				{
-			BandBean object = new BandBean();
-			object.setBandID(rs.getInt("band_id"));
-			object.setRegistersAt(rs.getInt("registers_at"));
-			object.setBandName(rs.getString("band_name"));
-			object.setInstruction(rs.getString("instruction"));
-			object.setSonglist(rs.getString("songlist"));
-			object.setSalary(rs.getDouble("salary"));
-			PerformanceListBean rocks = new PerformanceListBean();
-			getPerformancesbyBandID(rocks, rs.getInt("band_id"));
-			object.setRocks(rocks);
-			listobjekt.setChild(object);
-		} 
-		
-		con.commit();
-		
-		rs.close();
-		pstmt.close();
-		con.close();
+			con.setAutoCommit(false);
+			
+			PreparedStatement pstmt = con.prepareStatement(query);
+			
+			ResultSet rs = pstmt.executeQuery();
+			
+			while(rs.next()){
+				BandBean object = new BandBean();
+				object.setBandID(rs.getInt("band_id"));
+				object.setRegistersAt(rs.getInt("registers_at"));
+				object.setBandName(rs.getString("band_name"));
+				object.setInstruction(rs.getString("instruction"));
+				object.setSonglist(rs.getString("songlist"));
+				object.setSalary(rs.getDouble("salary"));
+				PerformanceListBean rocks = new PerformanceListBean();
+				getPerformancesbyBandID(rocks, rs.getInt("band_id"));
+				object.setRocks(rocks);
+				listobjekt.setChild(object);
+			} 
+			
+			con.commit();
+			
+			rs.close();
+			pstmt.close();
+			con.close();
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -104,10 +102,7 @@ public class BandDAO extends DAO{
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} catch (AreaNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		} 
 		
 	}
 
