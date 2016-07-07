@@ -1,0 +1,3 @@
+-- Copy area from '/Users/eric-luyken/desktop/Area.csv' Delimiter ';' CSV;
+
+COPY AREA FROM <path> DELIMITER ';' CSV;

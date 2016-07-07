@@ -3,3 +3,5 @@ COPY BAND FROM '<path>Band.csv' DELIMITER ';' CSV;
 COPY ConcertArea FROM '<path>ConcertArea.csv' DELIMITER ';' CSV;
 COPY Performance FROM '<path>Performance.csv' DELIMITER ';' CSV;
 COPY Stage FROM '<path>Stage.csv' DELIMITER ';' CSV;
+
+/home/gaba/eeworkspace/DBrocks/CSV/

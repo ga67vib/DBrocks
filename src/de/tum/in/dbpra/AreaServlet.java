@@ -16,7 +16,7 @@ import de.tum.in.dbpra.model.dao.AreaDAO;
 /**
  * Servlet implementation class CustomerServlet
  */
-@WebServlet("/area")
+@WebServlet("location/area")
 public class AreaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

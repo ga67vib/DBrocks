@@ -1,0 +1,6 @@
+COPY AREA FROM '/home/gaba/eeworkspace/DBrocks/CSV/Area.csv' DELIMITER ';' CSV;
+COPY BAND FROM '/home/gaba/eeworkspace/DBrocks/CSV/Band.csv' DELIMITER ';' CSV;
+COPY ConcertArea FROM '/home/gaba/eeworkspace/DBrocks/CSV/ConcertArea.csv' DELIMITER ';' CSV;
+COPY Performance FROM '/home/gaba/eeworkspace/DBrocks/CSV/Performance.csv' DELIMITER ';' CSV;
+COPY Stage FROM '/home/gaba/eeworkspace/DBrocks/CSV/Stage.csv' DELIMITER ';' CSV;
+
