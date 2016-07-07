@@ -30,12 +30,11 @@ public class AreaDAO extends DAO{
 		
 		while(rs.next())
 		{
-			AreaBean object = new AreaBean();
-			object.setAreaID(rs.getInt("area_id"));
-			object.setSize(rs.getInt("size"));
-			object.setLocation(rs.getInt("location"));
-			object.se
-			listObject.setChild(object);
+			AreaBean areabean = new AreaBean();
+			areabean.setAreaID(rs.getInt("area_id"));
+			areabean.setSize(rs.getInt("size"));
+			areabean.setLocation(rs.getInt("location"));
+			listObject.setChild(areabean);
 		} 
 		con.commit();
 		
