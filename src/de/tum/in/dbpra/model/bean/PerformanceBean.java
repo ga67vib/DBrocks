@@ -9,7 +9,15 @@ public class PerformanceBean {
 	private Date startTime;
 	private Date endTime;
 	private Date endRemoval;
-	
+	private BandListBean gerockt;
+	public BandListBean getGerockt() {
+		return gerockt;
+	}
+
+	public void setGerockt(BandListBean gerockt) {
+		this.gerockt = gerockt;
+	}
+
 	/**
 	 * @return the performanceID
 	 */

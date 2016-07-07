@@ -4,8 +4,28 @@ public class AreaBean {
 	private int areaID;
 	private int size;
 	private int location;
+	private SponsorListBean advertising;
+	private ShiftListBean shifts;
 	
-	
+	public ShiftListBean getShiftsBean() {
+		return shifts;
+	}
+
+
+	public void setShiftsBean(ShiftListBean shifts) {
+		this.shifts = shifts;
+	}
+
+
+	public SponsorListBean getAdvertisingBean() {
+		return advertising;
+	}
+
+
+	public void setAdvertisingBean(SponsorListBean advertising) {
+		this.advertising = advertising;}
+
+
 	public AreaBean() {}
 
 

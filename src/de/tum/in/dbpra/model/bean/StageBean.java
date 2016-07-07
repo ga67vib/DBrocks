@@ -2,7 +2,7 @@ package de.tum.in.dbpra.model.bean;
 
 public class StageBean {
 	private int stageID;
-	private int isin;
+	private AreaBean isin;
 	private String stageName;
 	private int auditSize;
 	private int stageSize;
@@ -30,7 +30,7 @@ public class StageBean {
 	/**
 	 * @return the isin
 	 */
-	public int getIsin() {
+	public AreaBean getIsin() {
 		return isin;
 	}
 
@@ -38,7 +38,7 @@ public class StageBean {
 	/**
 	 * @param isin the isin to set
 	 */
-	public void setIsin(int isin) {
+	public void setIsin(AreaBean isin) {
 		this.isin = isin;
 	}
 

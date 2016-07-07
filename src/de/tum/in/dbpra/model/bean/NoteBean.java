@@ -7,7 +7,16 @@ public class NoteBean {
 	private String content;
 	private Date creationTime;
 	private boolean done;
+	private PersonListBean attachedto;
 	
+	public PersonListBean getAttachedto() {
+		return attachedto;
+	}
+
+	public void setAttachedto(PersonListBean attachedto) {
+		this.attachedto = attachedto;
+	}
+
 	public NoteBean() {}
 
 	/**

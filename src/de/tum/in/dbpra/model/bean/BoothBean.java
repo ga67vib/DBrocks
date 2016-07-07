@@ -2,8 +2,8 @@ package de.tum.in.dbpra.model.bean;
 
 public class BoothBean {
 	private int boothID;
-	private int isin;
-	private int ownedBy;
+	private AreaBean isin;
+	private SponsorBean ownedBy;
 	private String specReq;
 	private int size;
 	private String name;
@@ -28,28 +28,28 @@ public class BoothBean {
 	/**
 	 * @return the isin
 	 */
-	public int getIsin() {
+	public AreaBean getIsin() {
 		return isin;
 	}
 
 	/**
 	 * @param isin the isin to set
 	 */
-	public void setIsin(int isin) {
+	public void setIsin(AreaBean isin) {
 		this.isin = isin;
 	}
 
 	/**
 	 * @return the ownedBy
 	 */
-	public int getOwnedBy() {
+	public SponsorBean getOwnedBy() {
 		return ownedBy;
 	}
 
 	/**
 	 * @param ownedBy the ownedBy to set
 	 */
-	public void setOwnedBy(int ownedBy) {
+	public void setOwnedBy(SponsorBean ownedBy) {
 		this.ownedBy = ownedBy;
 	}
 

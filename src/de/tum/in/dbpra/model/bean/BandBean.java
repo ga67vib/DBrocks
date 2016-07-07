@@ -10,7 +10,21 @@ public class BandBean {
 	private int registersAt;
 	private double salary;
 	private ArrayList<String> songlist;
+	private PerformanceListBean rocks;
 	
+	
+	public PerformanceListBean getRocks() {
+		return rocks;
+	}
+
+	public void setRocks(PerformanceListBean rocks) {
+		this.rocks = rocks;
+	}
+
+	public void setSonglist(ArrayList<String> songlist) {
+		this.songlist = songlist;
+	}
+
 	public BandBean() {}
 
 	/**

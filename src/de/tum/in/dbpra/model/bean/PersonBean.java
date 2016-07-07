@@ -12,8 +12,18 @@ public class PersonBean {
 	private String lastName;
 	private String phonenumber;
 	private boolean doNotify;
+	private NoteListBean notes;
 	
-	
+	public NoteListBean getNotes() {
+		return notes;
+	}
+
+
+	public void setNotes(NoteListBean notes) {
+		this.notes = notes;
+	}
+
+
 	public PersonBean() {}
 
 
