@@ -7,8 +7,8 @@ public class VisitorListBean {
 
     private ArrayList<VisitorBean> list = new ArrayList<VisitorBean>();
 
-    public void setChild(VisitorBean object, int i) {
-        list.add(i, object);
+    public void setChild(VisitorBean object) {
+        list.add(object);
     }
     
     public VisitorBean getChild(int i) {

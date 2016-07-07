@@ -5,28 +5,29 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-
 import de.tum.in.dbpra.model.bean.BandBean;
 import de.tum.in.dbpra.model.bean.BandListBean;
+import de.tum.in.dbpra.model.bean.PerformanceBean;
+import de.tum.in.dbpra.model.bean.PerformanceListBean;
+import de.tum.in.dbpra.model.bean.StageBean;
+import de.tum.in.dbpra.model.dao.AreaDAO.AreaNotFoundException;
 
 public class BandDAO extends DAO{
-	public void getAreas(BandListBean listobjekt) throws BandToNotFoundException, SQLException, ClassNotFoundException {
-		
-		
+	
+	public void getBands(BandListBean listobjekt){
 		
 		String query = "SELECT * FROM Band;";
 		
-		Connection con = getConnection();
+		Connection con;
+		try {
+			con = getConnection();
+		
 		
 		con.setAutoCommit(false);
 		
 		PreparedStatement pstmt = con.prepareStatement(query);
 		
 		ResultSet rs = pstmt.executeQuery();
-		
-		if(DAO.getRowCount(rs)==0) {
-			throw new BandToNotFoundException("There are no bands found!");
-		}
 		
 		while(rs.next())
 				{
@@ -37,16 +38,78 @@ public class BandDAO extends DAO{
 			object.setInstruction(rs.getString("instruction"));
 			object.setSonglist(rs.getString("songlist"));
 			object.setSalary(rs.getDouble("salary"));
+			PerformanceListBean rocks = new PerformanceListBean();
+			getPerformancesbyBandID(rocks, rs.getInt("band_id"));
+			object.setRocks(rocks);
 			listobjekt.setChild(object);
 		} 
+		
 		con.commit();
 		
 		rs.close();
 		pstmt.close();
 		con.close();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
+	public void getPerformancesbyBandID(PerformanceListBean performancelist, int BandID)
+	{
+		String query = "Select * From Performance Where BandID=?";
+
+		Connection con;
+		try {
+			con = getConnection();
+		
+		
+		con.setAutoCommit(false);
+		
+		PreparedStatement pstmt = con.prepareStatement(query);
+		pstmt.setInt(1, BandID);
+		
+		ResultSet rs = pstmt.executeQuery();
 	
+		while(rs.next())
+		{
+			PerformanceBean performancebean = new PerformanceBean();
+			performancebean.setPerformanceID(rs.getInt("performance_id"));
+			performancebean.setEndRemoval(rs.getDate("end_removal"));
+			performancebean.setEndTime(rs.getDate("end_time"));
+			performancebean.setStartTime(rs.getDate("start_time"));
+			performancebean.setStartBuildUp(rs.getDate("start_build_up"));
+			BandListBean bandstemp = new BandListBean();
+			performancebean.setGerockt(bandstemp);
+			StageBean temp = new StageBean();
+			StageDAO tempa = new StageDAO();
+			tempa.getStagebyID(temp, rs.getInt("is_at"));
+			
+			performancebean.setIsAt(temp);
+		
+			performancelist.setChild(performancebean);
+		} 
+		
+		con.commit();
+		
+		rs.close();
+		pstmt.close();
+		con.close();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (AreaNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
 
 	
 	public static class BandToNotFoundException extends Throwable {

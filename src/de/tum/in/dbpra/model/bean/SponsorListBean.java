@@ -7,8 +7,8 @@ public class SponsorListBean {
 
     private ArrayList<SponsorBean> list = new ArrayList<SponsorBean>();
 
-    public void setChild(SponsorBean object, int i) {
-        list.add(i, object);
+    public void setChild(SponsorBean object) {
+        list.add(object);
     }
     
     public SponsorBean getChild(int i) {

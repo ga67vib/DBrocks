@@ -11,7 +11,16 @@ public class RFID_TicketBean {
 	private Date purchaseDate;
 	private Date validFrom;
 	private Date validUntil;
+	private int price;
 	
+	public int getPrice() {
+		return price;
+	}
+
+	public void setPrice(int price) {
+		this.price = price;
+	}
+
 	public RFID_TicketBean() {}
 
 	/**
