@@ -18,7 +18,7 @@ import de.tum.in.dbpra.model.dao.NoteDAO;
 /**
  * Servlet implementation class
  */
-@WebServlet("location/area")
+@WebServlet("/note")
 public class NoteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

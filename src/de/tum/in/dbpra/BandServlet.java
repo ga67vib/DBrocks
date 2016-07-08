@@ -16,7 +16,8 @@ import de.tum.in.dbpra.model.dao.BandDAO;
 /**
  * Servlet implementation class
  */
-@WebServlet("l")
+
+@WebServlet("/band")
 public class BandServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
