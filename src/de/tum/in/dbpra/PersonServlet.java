@@ -18,7 +18,7 @@ import de.tum.in.dbpra.model.dao.PersonDAO;
 /**
  * Servlet implementation class
  */
-@WebServlet("location/area")
+@WebServlet("/person")
 public class PersonServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -43,7 +43,7 @@ public class PersonServlet extends HttpServlet {
     		e.printStackTrace();
     		request.setAttribute("error", e.toString() + e.getMessage());
     	}
-		RequestDispatcher dispatcher = request.getRequestDispatcher(".jsp"); //fill in jsp
+		RequestDispatcher dispatcher = request.getRequestDispatcher("allPersons.jsp"); //fill in jsp
 		dispatcher.forward(request, response);
 }
 

@@ -11,21 +11,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import de.tum.in.dbpra.model.bean.AreaListBean;
-import de.tum.in.dbpra.model.bean.ConcertAreaListBean;
 import de.tum.in.dbpra.model.dao.AreaDAO;
-import de.tum.in.dbpra.model.dao.ConcertAreaDAO;
 
 /**
  * Servlet implementation class
  */
-@WebServlet("/concertArea")
-public class ConcertAreaServlet extends HttpServlet {
+@WebServlet("location/area")
+public class TransactionServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ConcertAreaServlet() {
+    public TransactionServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,15 +33,15 @@ public class ConcertAreaServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
-			ConcertAreaDAO cad = new ConcertAreaDAO();
-			ConcertAreaListBean calb = new ConcertAreaListBean();
-			cad.getConcertArea(calb);
+			AreaDAO ad = new AreaDAO();
+			AreaListBean alb = new AreaListBean();
+			ad.getAreas(alb);
 			
     	} catch (Throwable e) {
     		e.printStackTrace();
     		request.setAttribute("error", e.toString() + e.getMessage());
     	}
-		RequestDispatcher dispatcher = request.getRequestDispatcher("ConcertArea.jsp"); //fill in jsp
+		RequestDispatcher dispatcher = request.getRequestDispatcher(".jsp"); //fill in jsp
 		dispatcher.forward(request, response);
 }
 
