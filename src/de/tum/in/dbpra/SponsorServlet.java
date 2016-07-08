@@ -10,21 +10,23 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import de.tum.in.dbpra.model.bean.BandListBean;
-import de.tum.in.dbpra.model.dao.BandDAO;
+import de.tum.in.dbpra.model.bean.AreaListBean;
+import de.tum.in.dbpra.model.bean.SponsorBean;
+import de.tum.in.dbpra.model.bean.SponsorListBean;
+import de.tum.in.dbpra.model.dao.AreaDAO;
+import de.tum.in.dbpra.model.dao.SponsorDAO;
 
 /**
  * Servlet implementation class
  */
-
-@WebServlet("/band")
-public class BandServlet extends HttpServlet {
+@WebServlet("location/area")
+public class SponsorServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public BandServlet() {
+    public SponsorServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,15 +36,15 @@ public class BandServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
-			BandDAO bd = new BandDAO();
-			BandListBean blb = new BandListBean();
-			bd.getBands(blb);
+			SponsorDAO sd = new SponsorDAO();
+			SponsorListBean slb = new SponsorListBean();
+			sd.getSponsors(slb);
 			
     	} catch (Throwable e) {
     		e.printStackTrace();
     		request.setAttribute("error", e.toString() + e.getMessage());
     	}
-		RequestDispatcher dispatcher = request.getRequestDispatcher("allBands.jsp"); //fill in jsp
+		RequestDispatcher dispatcher = request.getRequestDispatcher(".jsp"); //fill in jsp
 		dispatcher.forward(request, response);
 }
 

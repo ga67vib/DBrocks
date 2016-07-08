@@ -18,7 +18,7 @@ import de.tum.in.dbpra.model.dao.ProductDAO;
 /**
  * Servlet implementation class
  */
-@WebServlet("location/area")
+@WebServlet("/product")
 public class ProductServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

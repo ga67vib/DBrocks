@@ -16,7 +16,7 @@ import de.tum.in.dbpra.model.dao.AreaDAO;
 /**
  * Servlet implementation class
  */
-@WebServlet("location/area")
+@WebServlet("/location/area")
 public class AreaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -41,7 +41,7 @@ public class AreaServlet extends HttpServlet {
     		e.printStackTrace();
     		request.setAttribute("error", e.toString() + e.getMessage());
     	}
-		RequestDispatcher dispatcher = request.getRequestDispatcher(".jsp"); //fill in jsp
+		RequestDispatcher dispatcher = request.getRequestDispatcher("allArea.jsp"); //fill in jsp
 		dispatcher.forward(request, response);
 }
 

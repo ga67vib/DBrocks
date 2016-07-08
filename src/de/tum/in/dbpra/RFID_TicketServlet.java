@@ -10,21 +10,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import de.tum.in.dbpra.model.bean.BandListBean;
-import de.tum.in.dbpra.model.dao.BandDAO;
+import de.tum.in.dbpra.model.bean.AreaListBean;
+import de.tum.in.dbpra.model.bean.RFID_TicketListBean;
+import de.tum.in.dbpra.model.dao.AreaDAO;
+import de.tum.in.dbpra.model.dao.RFID_TicketDAO;
 
 /**
  * Servlet implementation class
  */
-
-@WebServlet("/band")
-public class BandServlet extends HttpServlet {
+@WebServlet("/RFID_Ticket")
+public class RFID_TicketServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public BandServlet() {
+    public RFID_TicketServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,15 +35,15 @@ public class BandServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
-			BandDAO bd = new BandDAO();
-			BandListBean blb = new BandListBean();
-			bd.getBands(blb);
+			RFID_TicketDAO rtd = new RFID_TicketDAO();
+			RFID_TicketListBean rtlb = new RFID_TicketListBean();
+			rtd.getAreas(rtlb);
 			
     	} catch (Throwable e) {
     		e.printStackTrace();
     		request.setAttribute("error", e.toString() + e.getMessage());
     	}
-		RequestDispatcher dispatcher = request.getRequestDispatcher("allBands.jsp"); //fill in jsp
+		RequestDispatcher dispatcher = request.getRequestDispatcher("allRFID_Tickets.jsp"); //fill in jsp
 		dispatcher.forward(request, response);
 }
 

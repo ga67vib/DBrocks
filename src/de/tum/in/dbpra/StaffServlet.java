@@ -10,21 +10,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import de.tum.in.dbpra.model.bean.BandListBean;
-import de.tum.in.dbpra.model.dao.BandDAO;
+import de.tum.in.dbpra.model.bean.AreaListBean;
+import de.tum.in.dbpra.model.bean.StaffListBean;
+import de.tum.in.dbpra.model.dao.AreaDAO;
+import de.tum.in.dbpra.model.dao.StaffDAO;
 
 /**
  * Servlet implementation class
  */
-
-@WebServlet("/band")
-public class BandServlet extends HttpServlet {
+@WebServlet("/staff")
+public class StaffServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public BandServlet() {
+    public StaffServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,15 +35,15 @@ public class BandServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
-			BandDAO bd = new BandDAO();
-			BandListBean blb = new BandListBean();
-			bd.getBands(blb);
+			StaffDAO sd = new StaffDAO();
+			StaffListBean slb = new StaffListBean();
+			sd.getStaff(slb);
 			
     	} catch (Throwable e) {
     		e.printStackTrace();
     		request.setAttribute("error", e.toString() + e.getMessage());
     	}
-		RequestDispatcher dispatcher = request.getRequestDispatcher("allBands.jsp"); //fill in jsp
+		RequestDispatcher dispatcher = request.getRequestDispatcher(".jsp"); //fill in jsp
 		dispatcher.forward(request, response);
 }
 
