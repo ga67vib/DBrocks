@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import de.tum.in.dbpra.model.bean.PersonBean;
-import de.tum.in.dbpra.model.bean.ProductBean;
 import de.tum.in.dbpra.model.bean.RFID_TicketBean;
 import de.tum.in.dbpra.model.bean.RFID_TicketListBean;
 import de.tum.in.dbpra.model.dao.AreaDAO.AreaNotFoundException;

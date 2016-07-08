@@ -8,7 +8,6 @@ import java.sql.SQLException;
 
 import de.tum.in.dbpra.model.bean.AreaBean;
 import de.tum.in.dbpra.model.bean.AreaListBean;
-import de.tum.in.dbpra.model.bean.SponsorBean;
 
 public class AreaDAO extends DAO{
 	
@@ -80,8 +79,7 @@ public class AreaDAO extends DAO{
 		
 		rs.close();
 		pstmt.close();
-		con.close();
-		
+		con.close();	
 	}
 	
 }

@@ -4,14 +4,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
-import de.tum.in.dbpra.model.bean.AreaBean;
 import de.tum.in.dbpra.model.bean.BandBean;
 import de.tum.in.dbpra.model.bean.BandListBean;
 import de.tum.in.dbpra.model.bean.PerformanceBean;
 import de.tum.in.dbpra.model.bean.StageBean;
 import de.tum.in.dbpra.model.bean.PerformanceListBean;
-import de.tum.in.dbpra.model.dao.AreaDAO.AreaNotFoundException;
 
 public class PerformanceDAO extends DAO {
 	

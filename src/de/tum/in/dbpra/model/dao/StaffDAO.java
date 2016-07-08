@@ -7,7 +7,6 @@ import java.sql.SQLException;
 
 import de.tum.in.dbpra.model.bean.StaffBean;
 import de.tum.in.dbpra.model.bean.StaffListBean;
-import de.tum.in.dbpra.model.bean.VisitorBean;
 
 public class StaffDAO extends DAO
 {

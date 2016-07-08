@@ -4,9 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
 import de.tum.in.dbpra.model.bean.SponsorBean;
-import de.tum.in.dbpra.model.bean.AreaListBean;
 import de.tum.in.dbpra.model.bean.SponsorListBean;
 import de.tum.in.dbpra.model.dao.AreaDAO.AreaNotFoundException;
 

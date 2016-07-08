@@ -4,11 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
-import de.tum.in.dbpra.model.bean.AreaBean;
 import de.tum.in.dbpra.model.bean.NoteBean;
 import de.tum.in.dbpra.model.bean.NoteListBean;
-import de.tum.in.dbpra.model.bean.PersonListBean;
 import de.tum.in.dbpra.model.dao.AreaDAO.AreaNotFoundException;
 
 public class NoteDAO extends DAO{
