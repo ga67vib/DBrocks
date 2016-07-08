@@ -13,7 +13,7 @@ import de.tum.in.dbpra.model.bean.PersonListBean;
 public class PersonDAO extends DAO{
 	
 	public void getPersons(PersonListBean personsBean) throws SQLException, ClassNotFoundException {
-		String query = "SELECT * FROM Area;";
+		String query = "SELECT * FROM Person;";
 		
 		Connection con = getConnection();
 		
@@ -37,7 +37,6 @@ public class PersonDAO extends DAO{
 			personBean.setPersonID(rs.getInt("PersonID"));
 			personBean.setPhonenumber(rs.getString("Phonenumber"));
 			personBean.setNotes(new NoteListBean());
-			//areabean.setSponsorBean(new SponsorBean(),rs.getInt(columnLabel))
 			personsBean.setChild(personBean);
 		} 
 		con.commit();
@@ -53,7 +52,7 @@ public class PersonDAO extends DAO{
 		
 		
 		
-		String query = "SELECT * FROM Person Where area_id=?";
+		String query = "SELECT * FROM Person Where person_id=?";
 		
 		Connection con = getConnection();
 		

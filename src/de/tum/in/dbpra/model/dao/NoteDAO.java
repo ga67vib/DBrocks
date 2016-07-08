@@ -47,15 +47,4 @@ Connection con = getConnection();
 		pstmt.close();
 		con.close();
 	}
-	
-	public static class AreaNotFoundException extends Throwable {
-		/**
-		 * 
-		 */
-		private static final long serialVersionUID = 1L;
-
-		AreaNotFoundException(String message){
-			super(message);
-		}
-	}
 }

@@ -11,9 +11,8 @@ import de.tum.in.dbpra.model.bean.AreaListBean;
 import de.tum.in.dbpra.model.bean.SponsorBean;
 
 public class AreaDAO extends DAO{
+	
 	public void getAreas(AreaListBean listObject) throws AreaNotFoundException, SQLException, ClassNotFoundException {
-		
-		
 		
 		String query = "SELECT * FROM Area;";
 		
