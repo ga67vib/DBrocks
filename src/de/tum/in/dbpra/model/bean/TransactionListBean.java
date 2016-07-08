@@ -7,8 +7,8 @@ public class TransactionListBean {
 
     private ArrayList<TransactionBean> list = new ArrayList<TransactionBean>();
 
-    public void setChild(TransactionBean object, int i) {
-        list.add(i, object);
+    public void setChild(TransactionBean object) {
+        list.add(object);
     }
     
     public TransactionBean getChild(int i) {

@@ -18,6 +18,7 @@ import de.tum.in.dbpra.model.dao.ConcertAreaDAO;
 /**
  * Servlet implementation class
  */
+
 @WebServlet("/location/concertarea")
 public class ConcertAreaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;

@@ -11,21 +11,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import de.tum.in.dbpra.model.bean.AreaListBean;
-import de.tum.in.dbpra.model.bean.PersonListBean;
+import de.tum.in.dbpra.model.bean.VisitorListBean;
 import de.tum.in.dbpra.model.dao.AreaDAO;
-import de.tum.in.dbpra.model.dao.PersonDAO;
+import de.tum.in.dbpra.model.dao.VisitorDAO;
 
 /**
  * Servlet implementation class
  */
-@WebServlet("/person")
-public class PersonServlet extends HttpServlet {
+@WebServlet("/visitor")
+public class VisitorServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public PersonServlet() {
+    public VisitorServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,15 +35,15 @@ public class PersonServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
-			PersonDAO pd = new PersonDAO();
-			PersonListBean plb = new PersonListBean();
-			pd.getPersons(plb);
+			VisitorDAO vd = new VisitorDAO();
+			VisitorListBean vlb = new VisitorListBean();
+			vd.getVisitors(vlb);
 			
     	} catch (Throwable e) {
     		e.printStackTrace();
     		request.setAttribute("error", e.toString() + e.getMessage());
     	}
-		RequestDispatcher dispatcher = request.getRequestDispatcher("allPersons.jsp"); //fill in jsp
+		RequestDispatcher dispatcher = request.getRequestDispatcher("allVisitors.jsp"); //fill in jsp
 		dispatcher.forward(request, response);
 }
 
