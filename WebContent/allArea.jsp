@@ -27,7 +27,7 @@
 			<span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span>
 			<span class="icon-bar"></span> <span class="icon-bar"></span>
 		</button>
-		<a class="navbar-brand" href="#">DBRocks</a>
+		<a class="navbar-brand" href="../">DBRocks</a>
 	</div>
 	<div id="navbar" class="navbar-collapse collapse">
 		<ul class="nav navbar-nav">
@@ -35,7 +35,7 @@
 				data-toggle="dropdown" role="button" aria-haspopup="true"
 				aria-expanded="false">Location <span class="caret"></span></a>
 				<ul class="dropdown-menu">
-					<li><a href="location/area">Areas</a></li>
+					<li><a href="#">Areas</a></li>
 					<li><a href="#">Stages</a></li>
 				</ul></li>
 			<li class="dropdown"><a href="#" class="dropdown-toggle"
@@ -75,6 +75,9 @@
 					<li><a href="#">Staff</a></li>
 					<li><a href="#">Notes</a></li>
 				</ul></li>
+		</ul>
+		<ul class="nav navbar-nav navbar-right">
+			<li><a href="#">Login / Register</a></li>
 		</ul>
 	</div>
 	<!--/.nav-collapse -->
