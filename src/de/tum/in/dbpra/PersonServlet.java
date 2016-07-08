@@ -18,7 +18,7 @@ import de.tum.in.dbpra.model.dao.PersonDAO;
 /**
  * Servlet implementation class
  */
-@WebServlet("location/area")
+@WebServlet("/person")
 public class PersonServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
