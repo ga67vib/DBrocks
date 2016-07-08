@@ -36,7 +36,7 @@ public class PersonDAO extends DAO{
 			personBean.setMail(rs.getString("Mail"));
 			personBean.setPersonID(rs.getInt("PersonID"));
 			personBean.setPhonenumber(rs.getString("Phonenumber"));
-			personBean.setNotes(new NoteListBean());
+			//personBean.setNotes(new NoteListBean());
 			personsBean.setChild(personBean);
 		} 
 		con.commit();
