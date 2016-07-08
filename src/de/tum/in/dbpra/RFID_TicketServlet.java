@@ -18,7 +18,7 @@ import de.tum.in.dbpra.model.dao.RFID_TicketDAO;
 /**
  * Servlet implementation class
  */
-@WebServlet("location/area")
+@WebServlet("/RFID_Ticket")
 public class RFID_TicketServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
