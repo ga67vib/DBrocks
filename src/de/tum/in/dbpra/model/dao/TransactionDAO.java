@@ -122,7 +122,6 @@ public class TransactionDAO extends DAO{
 					RFID_TicketDAO ticketDAO = new RFID_TicketDAO();
 					ticketDAO.getTicketbyID(ticketbean, rs.getInt("ticket_id"));
 					
-					
 					con.commit();
 					
 					rs.close();
