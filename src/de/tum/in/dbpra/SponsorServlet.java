@@ -19,7 +19,7 @@ import de.tum.in.dbpra.model.dao.SponsorDAO;
 /**
  * Servlet implementation class
  */
-@WebServlet("location/area")
+@WebServlet("/sponsor")
 public class SponsorServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

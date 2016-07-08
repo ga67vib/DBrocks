@@ -18,7 +18,7 @@ import de.tum.in.dbpra.model.dao.PerformanceDAO;
 /**
  * Servlet implementation class
  */
-@WebServlet("location/area")
+@WebServlet("/performance")
 public class PerformanceServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
