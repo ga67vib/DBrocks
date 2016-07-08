@@ -28,7 +28,7 @@ public class SponsorDAO extends DAO{
 		ResultSet rs = pstmt.executeQuery();
 		
 		if(DAO.getRowCount(rs)==0) {
-			throw new AreaNotFoundException("There are no Areas found!");
+			throw new AreaNotFoundException("There are no Sponsor found!");
 		}
 		
 		while(rs.next()){
@@ -45,7 +45,7 @@ public class SponsorDAO extends DAO{
 		con.close();
 		
 	}
-public void getSponsors(SponsorListBean sponsorlistbean, int SponsorID) throws AreaNotFoundException, SQLException, ClassNotFoundException {
+public void getSponsors(SponsorListBean sponsorlistbean) throws AreaNotFoundException, SQLException, ClassNotFoundException {
 		
 		
 		
@@ -56,7 +56,7 @@ public void getSponsors(SponsorListBean sponsorlistbean, int SponsorID) throws A
 		con.setAutoCommit(false);
 		
 		PreparedStatement pstmt = con.prepareStatement(query);
-		pstmt.setInt(1, SponsorID);
+		
 		
 		ResultSet rs = pstmt.executeQuery();
 		

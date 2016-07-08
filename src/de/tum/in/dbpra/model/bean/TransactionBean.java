@@ -5,8 +5,8 @@ import java.util.Date;
 public class TransactionBean {
 	private int transactionID;
 	private int boothID;
-	private int ticketID;
-	private int productID;
+	private RFID_TicketBean ticketID;
+	private ProductBean productID;
 	private Date transactionTime;
 	
 	public TransactionBean() {}
@@ -42,28 +42,28 @@ public class TransactionBean {
 	/**
 	 * @return the ticketID
 	 */
-	public int getTicketID() {
+	public RFID_TicketBean getTicketID() {
 		return ticketID;
 	}
 
 	/**
 	 * @param ticketID the ticketID to set
 	 */
-	public void setTicketID(int ticketID) {
+	public void setTicketID(RFID_TicketBean ticketID) {
 		this.ticketID = ticketID;
 	}
 
 	/**
 	 * @return the productID
 	 */
-	public int getProductID() {
+	public ProductBean getProductID() {
 		return productID;
 	}
 
 	/**
 	 * @param productID the productID to set
 	 */
-	public void setProductID(int productID) {
+	public void setProductID(ProductBean productID) {
 		this.productID = productID;
 	}
 
