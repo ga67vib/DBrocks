@@ -37,12 +37,13 @@ public class BandServlet extends HttpServlet {
 			BandDAO bd = new BandDAO();
 			BandListBean blb = new BandListBean();
 			bd.getBands(blb);
+			request.setAttribute("bean", blb);
 			
     	} catch (Throwable e) {
     		e.printStackTrace();
     		request.setAttribute("error", e.toString() + e.getMessage());
     	}
-		RequestDispatcher dispatcher = request.getRequestDispatcher("allBands.jsp"); //fill in jsp
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/allBand.jsp"); //fill in jsp
 		dispatcher.forward(request, response);
 }
 

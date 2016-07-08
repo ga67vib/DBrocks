@@ -31,7 +31,6 @@ public class BandDAO extends DAO{
 			while(rs.next()){
 				BandBean object = new BandBean();
 				object.setBandID(rs.getInt("band_id"));
-				object.setRegistersAt(rs.getInt("registers_at"));
 				object.setBandName(rs.getString("band_name"));
 				object.setInstruction(rs.getString("instruction"));
 				object.setSonglist(rs.getString("songlist"));
@@ -58,7 +57,7 @@ public class BandDAO extends DAO{
 	}
 	public void getPerformancesbyBandID(PerformanceListBean performancelist, int BandID)
 	{
-		String query = "Select * From Performance Where BandID=?";
+		String query = "Select * From Performance JOIN rocks ON Performance.performance_id=rocks.performance_id Where Band_ID=?";
 
 		Connection con;
 		try {
