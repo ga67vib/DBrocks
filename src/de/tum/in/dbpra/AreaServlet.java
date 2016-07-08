@@ -41,7 +41,7 @@ public class AreaServlet extends HttpServlet {
     		e.printStackTrace();
     		request.setAttribute("error", e.toString() + e.getMessage());
     	}
-		RequestDispatcher dispatcher = request.getRequestDispatcher(".jsp"); //fill in jsp
+		RequestDispatcher dispatcher = request.getRequestDispatcher("allArea.jsp"); //fill in jsp
 		dispatcher.forward(request, response);
 }
 
