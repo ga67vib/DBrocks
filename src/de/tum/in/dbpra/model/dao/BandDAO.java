@@ -36,7 +36,7 @@ public class BandDAO extends DAO{
 				object.setInstruction(rs.getString("instruction"));
 				object.setSonglist(rs.getString("songlist"));
 				object.setSalary(rs.getDouble("salary"));
-				PerformanceListBean rocks = new PerformanceListBean();
+				//PerformanceListBean rocks = new PerformanceListBean();
 				//getPerformancesbyBandID(rocks, rs.getInt("band_id"));
 				//object.setRocks(rocks);
 				listobjekt.setChild(object);

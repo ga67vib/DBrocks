@@ -7,7 +7,8 @@ import java.sql.SQLException;
 
 import de.tum.in.dbpra.model.bean.ShiftBean;
 import de.tum.in.dbpra.model.bean.ShiftListBean;
-import de.tum.in.dbpra.model.bean.TransactionBean;
+import de.tum.in.dbpra.model.bean.StaffBean;
+import de.tum.in.dbpra.model.bean.StaffListBean;
 import de.tum.in.dbpra.model.dao.AreaDAO.AreaNotFoundException;
 
 public class ShiftDAO extends DAO 
@@ -70,6 +71,48 @@ public void getShifts(ShiftListBean shiftlist){
 				shiftbean.setEndTime(rs.getDate("end_time"));
 				shiftbean.setStartTime(rs.getDate("start_time"));
 				shiftbean.setShiftID(rs.getInt("shift_id"));
+			}
+				con.commit();
+			
+			rs.close();
+			pstmt.close();
+			con.close();
+			
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (AreaNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	}
+
+	
+	public void getStaffbyShiftID(StaffListBean stafflist, Integer id)
+	{
+		String query = "SELECT s.person_id,s.profession,s.salary FROM Staff s, works w Where s.shift_id = ?;";
+			
+			Connection con;
+			try {
+				con = getConnection();
+			
+			con.setAutoCommit(false);
+		
+			PreparedStatement pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, id);
+			ResultSet rs = pstmt.executeQuery();
+			if(DAO.getRowCount(rs)==0)
+				throw new AreaNotFoundException("There are no Workers found!");
+			while(rs.next())
+			{
+				StaffBean staff = new StaffBean();
+				staff.setPersonID(rs.getInt("person_id"));
+				staff.setProfession(rs.getString("profession"));
+				staff.setSalary(rs.getDouble("salary"));
+				stafflist.setChild(staff);
 			}
 				con.commit();
 			
