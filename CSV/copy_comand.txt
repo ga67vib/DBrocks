@@ -1,5 +1,5 @@
-COPY AREA FROM '<path>Area.csv' DELIMITER ';' CSV;
-COPY BAND FROM '<path>Band.csv' DELIMITER ';' CSV;
-COPY ConcertArea FROM '<path>ConcertArea.csv' DELIMITER ';' CSV;
-COPY Performance FROM '<path>Performance.csv' DELIMITER ';' CSV;
-COPY Stage FROM '<path>Stage.csv' DELIMITER ';' CSV;
+COPY AREA FROM '/home/bernhard/DBrocks/CSV/Area.csv' DELIMITER ';' CSV;
+COPY BAND FROM '/home/bernhard/DBrocks/CSV/Band.csv' DELIMITER ';' CSV;
+COPY ConcertArea FROM '/home/bernhard/DBrocks/CSV/ConcertArea.csv' DELIMITER ';' CSV;
+COPY Stage FROM '/home/bernhard/DBrocks/CSV/Stage.csv' DELIMITER ';' CSV;
+COPY Performance FROM '/home/bernhard/DBrocks/CSV/Performance.csv' DELIMITER ';' CSV;

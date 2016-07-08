@@ -16,7 +16,7 @@ import de.tum.in.dbpra.model.dao.StageDAO;
 /**
  * Servlet implementation class
  */
-@WebServlet("location/stage")
+@WebServlet("/location/stage")
 public class StageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
