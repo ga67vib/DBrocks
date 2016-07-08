@@ -38,7 +38,7 @@ public class ConcertAreaServlet extends HttpServlet {
 		try {
 			ConcertAreaDAO cad = new ConcertAreaDAO();
 			ConcertAreaListBean calb = new ConcertAreaListBean();
-			cad.getConcertArea(calb);
+			cad.getConcertAreas(calb);
 			
     	} catch (Throwable e) {
     		e.printStackTrace();

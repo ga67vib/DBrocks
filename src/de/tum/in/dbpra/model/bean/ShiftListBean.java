@@ -7,8 +7,8 @@ public class ShiftListBean {
 
     private ArrayList<ShiftBean> list = new ArrayList<ShiftBean>();
 
-    public void setChild(ShiftBean object, int i) {
-        list.add(i, object);
+    public void setChild(ShiftBean object) {
+        list.add(object);
     }
     
     public ShiftBean getChild(int i) {

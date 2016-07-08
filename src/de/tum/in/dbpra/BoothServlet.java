@@ -37,7 +37,7 @@ public class BoothServlet extends HttpServlet {
 		try {
 			BoothDAO bd = new BoothDAO();
 			BoothListBean blb = new BoothListBean();
-			bd.getAreas(blb);
+			bd.getBooths(blb);
 			
     	} catch (Throwable e) {
     		e.printStackTrace();
