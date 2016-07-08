@@ -37,7 +37,7 @@ public class RFID_TicketServlet extends HttpServlet {
 		try {
 			RFID_TicketDAO rtd = new RFID_TicketDAO();
 			RFID_TicketListBean rtlb = new RFID_TicketListBean();
-			rtd.getAreas(rtlb);
+			rtd.getTickets(rtlb);
 			
     	} catch (Throwable e) {
     		e.printStackTrace();
