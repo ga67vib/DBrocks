@@ -10,7 +10,7 @@ import de.tum.in.dbpra.model.bean.ConcertAreaBean;
 import de.tum.in.dbpra.model.bean.ConcertAreaListBean;
 
 public class ConcertAreaDAO extends DAO{
-	public void getConcertArea(ConcertAreaListBean listObject) throws ConcertAreaNotFoundException, SQLException, ClassNotFoundException {
+	public void getConcertAreas(ConcertAreaListBean listObject) throws ConcertAreaNotFoundException, SQLException, ClassNotFoundException {
 		
 		if(listObject.getList().isEmpty()) {
 			throw new ConcertAreaNotFoundException("There are no Concert Areas found!");

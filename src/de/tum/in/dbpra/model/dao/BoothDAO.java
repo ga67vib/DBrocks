@@ -13,7 +13,7 @@ import de.tum.in.dbpra.model.bean.SponsorBean;
 import de.tum.in.dbpra.model.dao.AreaDAO.AreaNotFoundException;
 
 public class BoothDAO extends DAO{
-	public void getAreas(BoothListBean listobjekt) throws BoothBeanNotFoundException, SQLException, ClassNotFoundException {
+	public void getBooths(BoothListBean listobjekt) throws BoothBeanNotFoundException, SQLException, ClassNotFoundException {
 		
 		if(listobjekt.getList().isEmpty()) {
 			throw new BoothBeanNotFoundException("There is no Booth found!");
