@@ -59,7 +59,7 @@ public class AreaDAO extends DAO {
 
 		con.setAutoCommit(false);
 
-		PreparedStatement pstmt = con.prepareStatement(query);
+		PreparedStatement pstmt = con.prepareStatement(query, ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
 		pstmt.setInt(1, AreaID);
 
 		ResultSet rs = pstmt.executeQuery();

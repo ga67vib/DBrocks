@@ -25,30 +25,30 @@ public class PerformanceDAO extends DAO {
 			con.setAutoCommit(false);
 			
 			
-			PreparedStatement pstmt = con.prepareStatement(query);
+			PreparedStatement pstmt = con.prepareStatement(query, ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
 			
 			ResultSet rs = pstmt.executeQuery();
 		
 			
 			while(rs.next())
 			{
-				PerformanceBean performancebean = new PerformanceBean();
-				performancebean.setPerformanceID(rs.getInt("performance_id"));
-				performancebean.setEndRemoval(rs.getDate("end_removal"));
-				performancebean.setEndTime(rs.getDate("end_time"));
-				performancebean.setStartTime(rs.getDate("start_time"));
-				performancebean.setStartBuildUp(rs.getDate("start_build_up"));
+				PerformanceBean performance = new PerformanceBean();
+				performance.setPerformanceID(rs.getInt("performance_id"));
+				performance.setEndRemoval(rs.getDate("end_removal"));
+				performance.setEndTime(rs.getDate("end_time"));
+				performance.setStartTime(rs.getDate("start_time"));
+				performance.setStartBuildUp(rs.getDate("start_build_up"));
 				BandListBean bandstemp = new BandListBean();
-				getBandsbyPerformanceID(bandstemp,rs.getInt("performance_id"));
-				performancebean.setGerockt(bandstemp);
+				//getBandsbyPerformanceID(bandstemp,rs.getInt("performance_id"));
+				performance.setGerockt(bandstemp);
 				StageBean temp = new StageBean();
 				StageDAO tempa = new StageDAO();
 				tempa.getStagebyID(temp, rs.getInt("is_at"));
 				
-				performancebean.setIsAt(temp);
+				performance.setIsAt(temp);
 				
 				//areabean.setSponsorBean(new SponsorBean(),rs.getInt(columnLabel))
-				listObject.setChild(performancebean);
+				listObject.setChild(performance);
 			} 
 			con.commit();
 			
@@ -77,21 +77,21 @@ public class PerformanceDAO extends DAO {
 		
 		con.setAutoCommit(false);
 		
-		PreparedStatement pstmt = con.prepareStatement(query);
+		PreparedStatement pstmt = con.prepareStatement(query, ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
 		pstmt.setInt(1, PerformanceID);
 		
 		ResultSet rs = pstmt.executeQuery();
 		
 		while(rs.next())
 				{
-			BandBean object = new BandBean();
-			object.setBandID(rs.getInt("band_id"));
-			object.setRegistersAt(rs.getInt("registers_at"));
-			object.setBandName(rs.getString("band_name"));
-			object.setInstruction(rs.getString("instruction"));
-			object.setSonglist(rs.getString("songlist"));
-			object.setSalary(rs.getDouble("salary"));
-			bandlist.setChild(object);
+			BandBean band = new BandBean();
+			band.setBandID(rs.getInt("band_id"));
+			band.setRegistersAt(rs.getInt("registers_at"));
+			band.setBandName(rs.getString("band_name"));
+			band.setInstruction(rs.getString("instruction"));
+			band.setSonglist(rs.getString("songlist"));
+			band.setSalary(rs.getDouble("salary"));
+			bandlist.setChild(band);
 		} 
 		
 		con.commit();

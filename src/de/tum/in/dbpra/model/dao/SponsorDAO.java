@@ -20,7 +20,7 @@ public class SponsorDAO extends DAO{
 		
 		con.setAutoCommit(false);
 		
-		PreparedStatement pstmt = con.prepareStatement(query);
+		PreparedStatement pstmt = con.prepareStatement(query, ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
 		pstmt.setInt(1, SponsorID);
 		
 		ResultSet rs = pstmt.executeQuery();
@@ -47,25 +47,25 @@ public void getSponsors(SponsorListBean sponsorlistbean) throws AreaNotFoundExce
 		
 		
 		
-		String query = "SELECT * FROM Sponsors";
+		String query = "SELECT * FROM Sponsor";
 		
 		Connection con = getConnection();
 		
 		con.setAutoCommit(false);
 		
-		PreparedStatement pstmt = con.prepareStatement(query);
+		PreparedStatement pstmt = con.prepareStatement(query, ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
 		
 		
 		ResultSet rs = pstmt.executeQuery();
 		
 		if(DAO.getRowCount(rs)==0) {
-			throw new AreaNotFoundException("There are no Areas found!");
+			throw new AreaNotFoundException("There are no Sponsors found!");
 		}
 		
 		while(rs.next()){
 			SponsorBean sponsorbean = new SponsorBean();
 			sponsorbean.setSponsorID(rs.getInt("sponsor_id"));
-			sponsorbean.setAddress(rs.getString("adress"));
+			sponsorbean.setAddress(rs.getString("address"));
 			sponsorbean.setPayment(rs.getInt("payment"));
 			sponsorbean.setNumReqBooths(rs.getInt("num_req_booths"));
 			sponsorbean.setNumAssBooths(rs.getInt("num_ass_booths"));

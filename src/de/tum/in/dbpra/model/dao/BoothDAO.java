@@ -25,7 +25,7 @@ public class BoothDAO extends DAO{
 		
 		con.setAutoCommit(false);
 		
-		PreparedStatement pstmt = con.prepareStatement(query);
+		PreparedStatement pstmt = con.prepareStatement(query, ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
 		
 		ResultSet rs = pstmt.executeQuery();
 		
