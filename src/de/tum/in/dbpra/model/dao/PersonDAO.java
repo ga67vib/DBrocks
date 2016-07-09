@@ -17,7 +17,7 @@ public class PersonDAO extends DAO{
 		
 		con.setAutoCommit(false);
 		
-		PreparedStatement pstmt = con.prepareStatement(query);
+		PreparedStatement pstmt = con.prepareStatement(query, ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
 		
 		ResultSet rs = pstmt.executeQuery();
 		
@@ -56,7 +56,7 @@ public class PersonDAO extends DAO{
 		
 		con.setAutoCommit(false);
 		
-		PreparedStatement pstmt = con.prepareStatement(query);
+		PreparedStatement pstmt = con.prepareStatement(query, ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
 		pstmt.setInt(1, PersonID);
 		
 		ResultSet rs = pstmt.executeQuery();

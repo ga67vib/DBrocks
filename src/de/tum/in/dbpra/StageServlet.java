@@ -2,7 +2,6 @@ package de.tum.in.dbpra;
 
 import java.io.IOException;
 
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -19,37 +18,43 @@ import de.tum.in.dbpra.model.dao.StageDAO;
 @WebServlet("/location/stage")
 public class StageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public StageServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public StageServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		try {
 			StageDAO sd = new StageDAO();
 			StageListBean slb = new StageListBean();
 			sd.getStages(slb);
-			
-    	} catch (Throwable e) {
-    		e.printStackTrace();
-    		request.setAttribute("error", e.toString() + e.getMessage());
-    	}
-		RequestDispatcher dispatcher = request.getRequestDispatcher("allStages.jsp"); //fill in jsp
-		dispatcher.forward(request, response);
-}
+			request.setAttribute("bean", slb);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/allStage.jsp"); // fill
+																							// in
+																							// jsp
+			dispatcher.forward(request, response);
+		} catch (Throwable e) {
+			e.printStackTrace();
+			request.setAttribute("error", e.toString() + e.getMessage());
+		}
+	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
 	}
 
 }

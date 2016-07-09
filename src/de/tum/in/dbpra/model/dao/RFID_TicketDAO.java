@@ -22,7 +22,7 @@ public void getTickets(RFID_TicketListBean listObject)
 		
 		con.setAutoCommit(false);
 		
-		PreparedStatement pstmt = con.prepareStatement(query);
+		PreparedStatement pstmt = con.prepareStatement(query, ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
 		
 		ResultSet rs = pstmt.executeQuery();
 		
@@ -69,7 +69,7 @@ String query = "SELECT * FROM Product Where product_id= ?;";
 	
 	con.setAutoCommit(false);
 
-	PreparedStatement pstmt = con.prepareStatement(query);
+	PreparedStatement pstmt = con.prepareStatement(query, ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
 	pstmt.setInt(1, id);
 	ResultSet rs = pstmt.executeQuery();
 	if(DAO.getRowCount(rs)==0)

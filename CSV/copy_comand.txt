@@ -3,3 +3,4 @@ COPY BAND FROM '/home/bernhard/DBrocks/CSV/Band.csv' DELIMITER ';' CSV;
 COPY ConcertArea FROM '/home/bernhard/DBrocks/CSV/ConcertArea.csv' DELIMITER ';' CSV;
 COPY Stage FROM '/home/bernhard/DBrocks/CSV/Stage.csv' DELIMITER ';' CSV;
 COPY Performance FROM '/home/bernhard/DBrocks/CSV/Performance.csv' DELIMITER ';' CSV;
+COPY Sponsor FROM '/home/bernhard/DBrocks/CSV/Sponsor.csv' DELIMITER ';' CSV;

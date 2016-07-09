@@ -24,7 +24,7 @@ public void getShifts(ShiftListBean shiftlist){
 		
 		con.setAutoCommit(false);
 		
-		PreparedStatement pstmt = con.prepareStatement(query);
+		PreparedStatement pstmt = con.prepareStatement(query, ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
 		
 		ResultSet rs = pstmt.executeQuery();
 		
@@ -61,7 +61,7 @@ public void getShifts(ShiftListBean shiftlist){
 			
 			con.setAutoCommit(false);
 		
-			PreparedStatement pstmt = con.prepareStatement(query);
+			PreparedStatement pstmt = con.prepareStatement(query, ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
 			pstmt.setInt(1, id);
 			ResultSet rs = pstmt.executeQuery();
 			if(DAO.getRowCount(rs)==0)
@@ -101,7 +101,7 @@ public void getShifts(ShiftListBean shiftlist){
 			
 			con.setAutoCommit(false);
 		
-			PreparedStatement pstmt = con.prepareStatement(query);
+			PreparedStatement pstmt = con.prepareStatement(query, ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
 			pstmt.setInt(1, id);
 			ResultSet rs = pstmt.executeQuery();
 			if(DAO.getRowCount(rs)==0)
@@ -142,7 +142,7 @@ public void getShifts(ShiftListBean shiftlist){
 		
 		con.setAutoCommit(false);
 	
-		PreparedStatement pstmt = con.prepareStatement(query);
+		PreparedStatement pstmt = con.prepareStatement(query, ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
 		pstmt.setInt(1, id);
 		ResultSet rs = pstmt.executeQuery();
 		if(DAO.getRowCount(rs)==0)
