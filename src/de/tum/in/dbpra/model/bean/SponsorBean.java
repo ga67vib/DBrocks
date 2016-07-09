@@ -3,6 +3,7 @@ package de.tum.in.dbpra.model.bean;
 public class SponsorBean {
 	private int sponsorID;
 	private String address;
+	private String name;
 	private double payment;
 	private int numReqBooths;
 	private int numAssBooths;
@@ -78,5 +79,14 @@ public class SponsorBean {
 	public void setNumAssBooths(int numAssBooth) {
 		this.numAssBooths = numAssBooth;
 	}
+	
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
 	
 }

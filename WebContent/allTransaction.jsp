@@ -89,7 +89,7 @@
 	<%
 		} else {
 	%>
-	<div class="container">
+	<div class="content container">
 
 		<h1>Our cool Transactions:</h1>
 

@@ -89,14 +89,14 @@
 	<%
 		} else {
 	%>
-	<div class="container">
+	<div class="content container">
 
 		<h1>Our cool Sponsors:</h1>
 
 		<div class="box">
 			<table style="width: 100%">
 				<tr>
-					<th>SponsorID</th>
+					<th>Company</th>
 					<th>Address</th>
 					<th>Payment</th>
 					<th>Required Booths</th>
@@ -106,7 +106,7 @@
 					for (int i = 0; i < bean.getList().size(); i++) {
 				%>
 				<tr>
-					<td><%=bean.getChild(i).getSponsorID()%></td>
+					<td><%=bean.getChild(i).getName()%></td>
 					<td><%=bean.getChild(i).getAddress()%></td>
 					<td><%=bean.getChild(i).getPayment()%></td>
 					<td><%=bean.getChild(i).getNumReqBooths()%></td>
