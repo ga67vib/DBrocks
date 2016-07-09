@@ -7,8 +7,8 @@ public class BoothListBean {
 
     private ArrayList<BoothBean> list = new ArrayList<BoothBean>();
 
-    public void setChild(BoothBean object, int i) {
-        list.add(i, object);
+    public void setChild(BoothBean object) {
+        list.add(object);
     }
     
     public BoothBean getChild(int i) {

@@ -14,10 +14,10 @@ public class SponsorDAO extends DAO{
 		
 		
 		
-		String query = "SELECT * FROM Sponsors Where sponsor_id=?";
+		String query = "SELECT * FROM Sponsor Where sponsor_id=?";
 		
 		Connection con = getConnection();
-		
+	
 		con.setAutoCommit(false);
 		
 		PreparedStatement pstmt = con.prepareStatement(query, ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
@@ -31,7 +31,7 @@ public class SponsorDAO extends DAO{
 		
 		while(rs.next()){
 			sponsorbean.setSponsorID(rs.getInt("sponsor_id"));
-			sponsorbean.setAddress(rs.getString("adress"));
+			sponsorbean.setAddress(rs.getString("address"));
 			sponsorbean.setPayment(rs.getInt("payment"));
 			sponsorbean.setNumReqBooths(rs.getInt("num_req_booths"));
 			sponsorbean.setNumAssBooths(rs.getInt("num_ass_booths"));

@@ -15,9 +15,7 @@ import de.tum.in.dbpra.model.dao.AreaDAO.AreaNotFoundException;
 public class BoothDAO extends DAO{
 	public void getBooths(BoothListBean listobjekt) throws BoothBeanNotFoundException, SQLException, ClassNotFoundException {
 		
-		if(listobjekt.getList().isEmpty()) {
-			throw new BoothBeanNotFoundException("There is no Booth found!");
-		}
+
 		
 		String query = "SELECT * FROM booth;";
 		
@@ -29,7 +27,10 @@ public class BoothDAO extends DAO{
 		
 		ResultSet rs = pstmt.executeQuery();
 		
-		for(int i = 0;rs.next();i++){
+		
+
+		
+		while(rs.next()){
 			BoothBean object = new BoothBean();
 			object.setBoothID(rs.getInt("booth_id"));
 			
@@ -53,9 +54,12 @@ public class BoothDAO extends DAO{
 			object.setName(rs.getString("name"));
 			object.setSpecReq(rs.getString("spec_req"));
 			object.setType(rs.getString("type"));
-			listobjekt.setChild(object, i);
-			i++;
+			listobjekt.setChild(object);
 		} 
+		
+		if(listobjekt.getList().isEmpty()) {
+			throw new BoothBeanNotFoundException("There was no Booth found!");
+		}
 		con.commit();
 		
 		rs.close();
