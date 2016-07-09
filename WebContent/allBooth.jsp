@@ -1,13 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <jsp:useBean id="bean" scope="request"
-	class="de.tum.in.dbpra.model.bean.BandListBean"></jsp:useBean>
+	class="de.tum.in.dbpra.model.bean.BoothListBean"></jsp:useBean>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<title>AllBand</title>
+<title>AllBooth</title>
 </head>
 
 <body>
@@ -25,26 +25,30 @@
 	%>
 	<div class="container">
 
-		<h1>Our cool bands:</h1>
+		<h1>Our cool booths:</h1>
 
 		<div class="box">
 			<table style="width: 100%">
 				<tr>
-					<th>BandID</th>
+					<th>BoothID</th>
+					<th>SponsorID</th>
+					<th>Area</th>
+					<th>Spec_Req</th>
+					<th>Size</th>
 					<th>Name</th>
-					<th>Salary</th>
-					<th>Songlist</th>
-					<th>Instruction</th>
+					<th>Type</th>
 				</tr>
 				<%
 					for (int i = 0; i < bean.getList().size(); i++) {
 				%>
 				<tr>
-					<td><%=bean.getChild(i).getBandID()%></td>
-					<td><%=bean.getChild(i).getBandName()%></td>
-					<td><%=bean.getChild(i).getSalary()%></td>
-					<td><%=bean.getChild(i).getSonglist()%></td>
-					<td><%=bean.getChild(i).getInstruction()%></td>
+					<td><%=bean.getChild(i).getBoothID()%></td>
+					<td><%=bean.getChild(i).getOwnedBy().getSponsorID()%></td>
+					<td><%=bean.getChild(i).getIsin().getAreaID()%></td>
+					<td><%=bean.getChild(i).getSpecReq()%></td>
+					<td><%=bean.getChild(i).getSize()%></td>
+					<td><%=bean.getChild(i).getName()%></td>
+					<td><%=bean.getChild(i).getType()%></td>
 				</tr>
 				<%
 					}
