@@ -36,13 +36,13 @@ public class AreaServlet extends HttpServlet {
 			AreaDAO ad = new AreaDAO();
 			AreaListBean alb = new AreaListBean();
 			ad.getAreas(alb);
-			request.setAttribute("bean", ad);
+			request.setAttribute("bean", alb);
 			
     	} catch (Throwable e) {
     		e.printStackTrace();
     		request.setAttribute("error", e.toString() + e.getMessage());
     	}
-		RequestDispatcher dispatcher = request.getRequestDispatcher("allArea.jsp"); //fill in jsp
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/allArea.jsp"); //fill in jsp
 		dispatcher.forward(request, response);
 }
 

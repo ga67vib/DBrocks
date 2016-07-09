@@ -131,5 +131,46 @@ public void getShifts(ShiftListBean shiftlist){
 				e.printStackTrace();
 			}
 	}
-
+	/* TO-DO?
+	public void getShiftbyAreaID(StaffListBean shiftlist, Integer id)
+	{
+		String query = "SELECT s.person_id,s.profession,s.salary FROM Staff s, works w Where s.shift_id = ?;";
+		
+		Connection con;
+		try {
+			con = getConnection();
+		
+		con.setAutoCommit(false);
+	
+		PreparedStatement pstmt = con.prepareStatement(query);
+		pstmt.setInt(1, id);
+		ResultSet rs = pstmt.executeQuery();
+		if(DAO.getRowCount(rs)==0)
+			throw new AreaNotFoundException("There are no Workers found!");
+		while(rs.next())
+		{
+			StaffBean staff = new StaffBean();
+			staff.setPersonID(rs.getInt("person_id"));
+			staff.setProfession(rs.getString("profession"));
+			staff.setSalary(rs.getDouble("salary"));
+			stafflist.setChild(staff);
+		}
+			con.commit();
+		
+		rs.close();
+		pstmt.close();
+		con.close();
+		
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (AreaNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+*/
 }

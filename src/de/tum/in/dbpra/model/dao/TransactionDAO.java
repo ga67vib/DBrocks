@@ -114,6 +114,7 @@ public class TransactionDAO extends DAO{
 					
 					if(DAO.getRowCount(rs)==0)
 						throw new AreaNotFoundException("TransactionsNotfound");
+					
 					ProductBean productbean = new ProductBean();
 					ProductDAO productdao = new ProductDAO();
 					productdao.getProductbyID(productbean, rs.getInt("product_id"));
