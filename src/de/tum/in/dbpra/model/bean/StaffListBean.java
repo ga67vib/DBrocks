@@ -22,4 +22,8 @@ public class StaffListBean {
     public ArrayList<StaffBean> getList() {
         return list;
     }
+    
+    public int getSize(){
+    	return list.size();
+    }
 }

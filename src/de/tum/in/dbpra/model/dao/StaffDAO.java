@@ -11,9 +11,13 @@ import de.tum.in.dbpra.model.bean.StaffListBean;
 
 public class StaffDAO extends DAO
 {
-	public void getStaff(StaffListBean stafflist)
+	public void getStaff(StaffListBean stafflist, int shiftId)
 	{
-		String query = "Select * From Staff s, Person p WHERE p.person_id = s.person_id;";
+		String query = "Select * From Staff s, Person p WHERE p.person_id = s.person_id";
+		if(shiftId > 0){
+			query = "Select * From Staff s, Person p, works w WHERE p.person_id = s.person_id AND s.person_Id =w.person_id AND w.shift_id = ?";
+
+		}
 		Connection con;
 		try {
 			con = getConnection();
@@ -23,6 +27,9 @@ public class StaffDAO extends DAO
 		
 		PreparedStatement pstmt = con.prepareStatement(query, ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
 		
+		if(shiftId > 0){
+			pstmt.setInt(1, shiftId);
+		}
 		ResultSet rs = pstmt.executeQuery();
 		
 		while(rs.next())

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <jsp:useBean id="bean" scope="request"
-	class="de.tum.in.dbpra.model.bean.StaffListBean"></jsp:useBean>
+	class="de.tum.in.dbpra.model.bean.ShiftListBean"></jsp:useBean>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -71,7 +71,7 @@
 						<li><a href="RFID_Ticket">Tickets</a></li>
 						<li><a href="transaction">Transactions</a></li>
 						<li><a href="advertising">Advertising</a></li>
-						<li><a href="#">Staff</a></li>
+						<li><a href="staff">Staff</a></li>
 						<li><a href="note">Notes</a></li>
 					</ul></li>
 			</ul>
@@ -93,38 +93,27 @@
 	%>
 	<div class="content container">
 
-		<h1>Our Staff <%=request.getAttribute("shiftId")!=null? "in shift "+request.getAttribute("shiftId"): ""%>:</h1>
-	<%
-		if (request.getAttribute("shiftId") != null) {
-	%>
-		<div class="box">
-		<a href="staff">Go to all Staff</a>
-		</div>
-	<%
-		}
-	%>
+		<h1>Shifts of Staffmember: <%= request.getAttribute("staffname") %>:</h1>
+
+
 		<div class="box">
 			<table style="width: 100%">
 				<tr>
-					<th>PersonID</th>
-					<th>Firstname</th>
-					<th>Lastname</th>
-					<th>Gender</th>
-					<th>Profession</th>
-					<th>Phonenumber</th>
-					<th>Shifts</th>
+					<th>ShiftID</th>
+					<th>Start Time</th>
+					<th>End Time</th>
+					<th>Workers</th>
+
 				</tr>
 				<%
 					for (int i = 0; i < bean.getList().size(); i++) {
 				%>
 				<tr>
-					<td><%=bean.getChild(i).getPersonID()%></td>
-					<td><%=bean.getChild(i).getPersonData().getFirstName()%></td>
-					<td><%=bean.getChild(i).getPersonData().getLastName()%></td>
-					<td><%=bean.getChild(i).getPersonData().getGender().equals("f")? "female": "male"%></td>
-					<td><%=bean.getChild(i).getProfession()%></td>
-					<td><%=bean.getChild(i).getPersonData().getPhonenumber()%></td>
-					<td><a href="shift?staffId=<%=bean.getChild(i).getPersonID()%>">Shifts</a>
+					<td><%=bean.getChild(i).getShiftID()%></td>
+					<td><%=bean.getChild(i).getStartTime()%></td>
+					<td><%=bean.getChild(i).getEndTime()%></td>
+					<td><a href="staff?shiftId=<%=bean.getChild(i).getShiftID()%>"><%=bean.getChild(i).getWorkers()%></a></td>
+		
 
 				</tr>
 				<%
