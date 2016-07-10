@@ -160,7 +160,7 @@ public class LoginServlet extends HttpServlet {
             request.getRequestDispatcher("/Login.jsp").forward(request, response);
         }
         catch(IllegalArgumentException e){
-        	request.setAttribute("error", "IllegalArgumentException occured. You entered your birthday in an invalid format. \nText of the exception:\n"+e.getLocalizedMessage());
+        	request.setAttribute("error", "IllegalArgumentException occured. You entered your birthday in an invalid format. Required format: yyyy-mm-dd");
             request.getRequestDispatcher("/Login.jsp").forward(request, response);
         }
         
