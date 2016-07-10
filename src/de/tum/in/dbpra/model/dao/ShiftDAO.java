@@ -111,7 +111,7 @@ public void getShifts(ShiftListBean shiftlist){
 				StaffBean staff = new StaffBean();
 				staff.setPersonID(rs.getInt("person_id"));
 				staff.setProfession(rs.getString("profession"));
-				staff.setSalary(rs.getDouble("salary"));
+				staff.setSalary(rs.getBigDecimal("salary"));
 				stafflist.setChild(staff);
 			}
 				con.commit();

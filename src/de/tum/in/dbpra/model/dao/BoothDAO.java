@@ -52,7 +52,7 @@ public class BoothDAO extends DAO{
 			}
 			object.setSize(rs.getInt("size"));
 			object.setName(rs.getString("name"));
-			object.setSpecReq(rs.getString("spec_req"));
+			object.setSpecReq(rs.getString("spec_req")== null? "": rs.getString("spec_req"));
 			object.setType(rs.getString("type"));
 			listobjekt.setChild(object);
 		} 
