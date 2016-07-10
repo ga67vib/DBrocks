@@ -98,6 +98,7 @@
 				<tr>
 					<th>TransactionID</th>
 					<th>Product</th>
+					<th>Quantity</th>
 					<th>Ticket</th>
 					<th>Booth</th>
 					<th>Time</th>
@@ -108,6 +109,7 @@
 				<tr>
 					<td><%=bean.getChild(i).getTransactionID()%></td>
 					<td><%=bean.getChild(i).getProduct().getName()%></td>
+					<td><%=bean.getChild(i).getQuantity()%></td>
 					<td><%=bean.getChild(i).getTicket().getTicketID()%></td>
 					<td><%=bean.getChild(i).getBooth().getName()%></td>
 					<td><%=bean.getChild(i).getTransactionTime()%></td>

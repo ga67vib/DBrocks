@@ -1,0 +1,26 @@
+--Do not edit this template. Make copy of it, name it with your name
+--and then replace <path> with your path. But leave the template for the others.
+
+COPY AREA FROM '<path>/Area.csv' DELIMITER ';' CSV;
+COPY CONCERTAREA FROM '<path>/ConcertArea.csv' DELIMITER ';' CSV;
+COPY STAGE FROM '<path>/Stage.csv' DELIMITER ';' CSV;
+COPY BAND FROM '<path>/Band.csv' DELIMITER ';' CSV;
+COPY PERFORMANCE FROM '<path>/Performance.csv' DELIMITER ';' CSV;
+COPY SPONSOR FROM '<path>/Sponsor.csv' DELIMITER ';' CSV;
+COPY BOOTH FROM '<path>/Booth.csv' DELIMITER ';' CSV;
+COPY PERSON FROM '<path>/Person.csv' DELIMITER ';' CSV;
+COPY VISITOR FROM '<path>/Visitor.csv' DELIMITER ';' CSV;
+COPY STAFF FROM '<path>/Staff.csv' DELIMITER ';' CSV;
+COPY NOTE FROM '<path>/Note.csv' DELIMITER ';' CSV;
+COPY RFID_TICKET FROM '<path>/RFID.csv' DELIMITER ';' CSV;
+COPY PRODUCT FROM '<path>/Product.csv' DELIMITER ';' CSV;
+COPY SHIFT FROM '<path>/Shift.csv' DELIMITER ';' CSV;
+COPY TIMETABLE FROM '<path>/Timetable.csv' DELIMITER ';' CSV;
+COPY ROCKS FROM '<path>/rocks.csv' DELIMITER ';' CSV;
+COPY TRANSACTION FROM '<path>/Transaction.csv' DELIMITER ';' CSV;
+COPY SELLS FROM '<path>/sells.csv' DELIMITER ';' CSV;
+COPY ADVERTISING FROM '<path>/Advertising.csv' DELIMITER ';' CSV;
+COPY WORKS FROM '<path>/works.csv' DELIMITER ';' CSV;
+COPY LOCATED FROM '<path>/located.csv' DELIMITER ';' CSV;
+COPY ASSIGNED_TO FROM '<path>/assigned_to.csv' DELIMITER ';' CSV;
+

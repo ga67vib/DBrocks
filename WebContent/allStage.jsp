@@ -101,6 +101,7 @@
 					<th>Name</th>
 					<th>Auditorium Size</th>
 					<th>Stage Size</th>
+					<th>Description</th>
 				</tr>
 				<%
 					for (int i = 0; i < bean.getList().size(); i++) {
@@ -111,6 +112,7 @@
 					<td><%=bean.getChild(i).getStageName()%></td>
 					<td><%=bean.getChild(i).getAuditSize()%></td>
 					<td><%=bean.getChild(i).getStageSize()%></td>
+					<td><%=bean.getChild(i).getDescription()%></td>
 				</tr>
 				<%
 					}

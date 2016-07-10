@@ -32,6 +32,7 @@ public class TransactionDAO extends DAO {
 			while (rs.next()) {
 				transactionbean.setTransactionTime(rs.getTimestamp("transaction_time"));
 				transactionbean.setTransactionID(rs.getInt("transaction_id"));
+				transactionbean.setQuantity(rs.getInt("quantity"));
 			}
 			con.commit();
 
@@ -71,6 +72,7 @@ public class TransactionDAO extends DAO {
 				TransactionBean transactionbean = new TransactionBean();
 				transactionbean.setTransactionTime(rs.getTimestamp("transaction_time"));
 				transactionbean.setTransactionID(rs.getInt("transaction_id"));
+				transactionbean.setQuantity(rs.getInt("quantity"));
 				ProductBean productbean = new ProductBean();
 				productbean.setName(rs.getString("name"));
 
