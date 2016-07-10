@@ -10,10 +10,21 @@
 <link type="text/css" rel="stylesheet" href="css/dbrocks_main.css" />
 <title>All Tickets</title>
 </head>
-
+<%
+	String s = "";
+%>
+<%
+	if (session.getAttribute("visitor") != null) {
+		s = "visitor";
+	} else if (session.getAttribute("staff") != null) {
+		s = "staff";
+	} else if (session.getAttribute("supplier") != null) {
+		s = "supplier";
+	} else {
+		s = "person";
+	}
+%>
 <body>
-
-
 
 	<nav class="navbar navbar-default navbar-fixed-top">
 	<div class="container">
@@ -25,7 +36,7 @@
 					class="icon-bar"></span> <span class="icon-bar"></span> <span
 					class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="/DBrocks">DBRocks</a>
+			<a class="navbar-brand" href="DBrocks">DBRocks</a>
 		</div>
 		<div id="navbar" class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">
@@ -33,8 +44,8 @@
 					data-toggle="dropdown" role="button" aria-haspopup="true"
 					aria-expanded="false">Location <span class="caret"></span></a>
 					<ul class="dropdown-menu">
-						<li><a href="location/area">Areas</a></li>
-						<li><a href="location/stage">Stages</a></li>
+						<li><a href="area">Areas</a></li>
+						<li><a href="stage">Stages</a></li>
 					</ul></li>
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown" role="button" aria-haspopup="true"
@@ -68,15 +79,14 @@
 					<ul class="dropdown-menu">
 						<li><a href="sponsor">Sponsors</a></li>
 						<li><a href="booth">Booths</a></li>
-						<li><a href="RFID_Ticket">Tickets</a></li>
 						<li><a href="transaction">Transactions</a></li>
 						<li><a href="advertising">Advertising</a></li>
-						<li><a href="#">Staff</a></li>
+						<li><a href="staff">Staff</a></li>
 						<li><a href="note">Notes</a></li>
 					</ul></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="#">Login / Register</a></li>
+				<li><a href="Login">Login / Register</a></li>
 			</ul>
 		</div>
 		<!--/.nav-collapse -->
