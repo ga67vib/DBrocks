@@ -170,7 +170,7 @@ public class PersonDAO extends DAO {
 	 */
 	public boolean isStaffMember(int personID) throws SQLException,
 			ClassNotFoundException {
-		String query = "SELECT * FROM Staff Where personID=?";
+		String query = "SELECT * FROM Staff Where person_ID=?";
 		Connection con = getConnection();
 		con.setAutoCommit(false);
 
