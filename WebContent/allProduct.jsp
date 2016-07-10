@@ -80,12 +80,13 @@
 		</div>
 		<!--/.nav-collapse -->
 	</div>
-	</nav>	<%
+	</nav>
+	<%
 		if (request.getAttribute("error") != null) {
 	%>
 	<div class="box">
-	<h1>An error occured!</h1>
-	<%=request.getAttribute("error")%>
+		<h1>An error occured!</h1>
+		<%=request.getAttribute("error")%>
 	</div>
 	<%
 		} else {
@@ -97,16 +98,17 @@
 		<div class="box">
 			<table style="width: 100%">
 				<tr>
-					<th>Price</th>
 					<th>Name</th>
+					<th>Price in €</th>
 					<th>Additional Info</th>
 				</tr>
 				<%
 					for (int i = 0; i < bean.getList().size(); i++) {
 				%>
 				<tr>
-					<td><%=bean.getChild(i).getPrice()%></td>
+
 					<td><%=bean.getChild(i).getName()%></td>
+					<td><%=bean.getChild(i).getPrice()%></td>
 					<td><%=bean.getChild(i).getAddInfo()%></td>
 				</tr>
 				<%
@@ -119,7 +121,7 @@
 		}
 	%>
 	<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
 </body>
 </html>

@@ -26,7 +26,7 @@ public class ProductDAO extends DAO {
 				ProductBean product = new ProductBean();
 				product.setAddInfo(rs.getString("add_info"));
 				product.setName(rs.getString("name"));
-				product.setPrice(rs.getDouble("price"));
+				product.setPrice(rs.getBigDecimal("price"));
 				product.setProductID(rs.getInt("product_id"));
 				productlist.setChild(product);
 			}
@@ -61,7 +61,7 @@ public class ProductDAO extends DAO {
 			if (DAO.getRowCount(rs) == 0)
 				throw new AreaNotFoundException("There are no Products found!");
 			while (rs.next()) {
-				productbean.setPrice(rs.getDouble("price"));
+				productbean.setPrice(rs.getBigDecimal("price"));
 				productbean.setProductID(rs.getInt("product_id"));
 				productbean.setName(rs.getString("name"));
 				productbean.setAddInfo(rs.getString("add_Info"));

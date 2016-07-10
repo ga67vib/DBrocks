@@ -1,8 +1,10 @@
 package de.tum.in.dbpra.model.bean;
 
+import java.math.BigDecimal;
+
 public class ProductBean {
 	private int productID;
-	private double price;
+	private BigDecimal price;
 	private String name;
 	private String addInfo;
 	private BoothListBean soledin;
@@ -40,7 +42,7 @@ public class ProductBean {
 	/**
 	 * @return the price
 	 */
-	public double getPrice() {
+	public BigDecimal getPrice() {
 		return price;
 	}
 
@@ -48,7 +50,7 @@ public class ProductBean {
 	/**
 	 * @param price the price to set
 	 */
-	public void setPrice(double price) {
+	public void setPrice(BigDecimal price) {
 		this.price = price;
 	}
 
