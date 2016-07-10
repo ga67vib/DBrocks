@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<jsp:useBean id="bean" scope="request" class="de.tum.in.dbpra.model.bean.RFID_TicketListBean"></jsp:useBean>
+<jsp:useBean id="bean" scope="request"
+	class="de.tum.in.dbpra.model.bean.RFID_TicketListBean"></jsp:useBean>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -97,15 +98,15 @@
 		<div class="box">
 			<table style="width: 100%">
 				<tr>
-					<th>Ticket ID</th>
-					<th>Owned By</th>
-					<th>Acc Balance</th>
-					<th>Is Camper</th>
-					<th>Is VIP</th>
-					<th>Purchase Price</th>
-					<th>Purchase Date</th>
-					<th>Valid From</th>
-					<th>Valid To</th>
+					<th style="width: 10%">Ticket ID</th>
+					<th style="width: 10%">Owned By</th>
+					<th style="width: 10%">Acc Balance</th>
+					<th style="width: 10%">Is Camper</th>
+					<th style="width: 10%">Is VIP</th>
+					<th style="width:10%">Purchase Price</th>
+					<th style="width:10%">Purchase Date</th>
+					<th style="width:10%">Valid From</th>
+					<th style="width:10%">Valid To</th>
 
 				</tr>
 				<%
@@ -113,7 +114,8 @@
 				%>
 				<tr>
 					<td><%=bean.getChild(i).getTicketID()%></td>
-					<td><%=bean.getChild(i).getOwnedBy().getFirstName()+" "+bean.getChild(i).getOwnedBy().getLastName()%></td>
+					<td><%=bean.getChild(i).getOwnedBy().getFirstName() + " "
+							+ bean.getChild(i).getOwnedBy().getLastName()%></td>
 					<td><%=bean.getChild(i).getAcctBal()%></td>
 					<td><%=bean.getChild(i).isCamper() ? "Yes" : "No"%></td>
 					<td><%=bean.getChild(i).isVIP() ? "Yes" : "No"%></td>

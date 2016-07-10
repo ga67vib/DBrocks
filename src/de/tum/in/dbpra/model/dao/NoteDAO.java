@@ -25,7 +25,7 @@ Connection con = getConnection();
 		ResultSet rs = pstmt.executeQuery();
 		
 		if(DAO.getRowCount(rs)==0) {
-			throw new AreaNotFoundException("There are no Areas found!");
+			throw new AreaNotFoundException("There were no Notes found!");
 		}
 		
 		while(rs.next())

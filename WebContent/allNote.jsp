@@ -89,14 +89,14 @@
 	<%
 		} else {
 	%>
-	<div class="container">
+	<div class="content container">
 
 		<h1>Our cool notes:</h1>
 
 		<div class="box">
 			<table style="width: 100%">
 				<tr>
-					<th>NoteID</th>
+					<th">NoteID</th>
 					<th>Content</th>
 					<th>Creation Time</th>
 					<th>Done?</th>
