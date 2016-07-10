@@ -64,7 +64,7 @@ public class ProductDAO extends DAO {
 				productbean.setPrice(rs.getBigDecimal("price"));
 				productbean.setProductID(rs.getInt("product_id"));
 				productbean.setName(rs.getString("name"));
-				productbean.setAddInfo(rs.getString("add_Info"));
+				productbean.setAddInfo(rs.getString("add_Info")==null ? "" : rs.getString("add_Info"));
 			}
 			con.commit();
 

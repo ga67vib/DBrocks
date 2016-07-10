@@ -61,7 +61,7 @@ public void getTickets(RFID_TicketListBean listObject)
 
 public void getTicketbyID(RFID_TicketBean RFIDbean, Integer id)
 {
-String query = "SELECT * FROM Product Where product_id= ?;";
+String query = "SELECT * FROM RFID_Ticket Where ticket_id= ?;";
 	
 	Connection con;
 	try {
@@ -73,14 +73,14 @@ String query = "SELECT * FROM Product Where product_id= ?;";
 	pstmt.setInt(1, id);
 	ResultSet rs = pstmt.executeQuery();
 	if(DAO.getRowCount(rs)==0)
-		throw new AreaNotFoundException("There are no Products found!");
+		throw new AreaNotFoundException("There were no Products found!");
 	while(rs.next())
 	{
 		RFIDbean.setTicketID(rs.getInt("ticket_id"));
 		RFIDbean.setAcctBal(rs.getInt("acct_bal"));
 		RFIDbean.setCamper(rs.getBoolean("is_Camper"));
 		RFIDbean.setVIP(rs.getBoolean("is_VIP"));
-		RFIDbean.setPurchaseDate(rs.getDate("purchaseDate"));
+		RFIDbean.setPurchaseDate(rs.getDate("purchase_Date"));
 		RFIDbean.setValidFrom(rs.getDate("valid_From"));
 		RFIDbean.setValidUntil(rs.getDate("valid_Until"));
 		RFIDbean.setPrice(rs.getInt("price"));

@@ -1,13 +1,14 @@
 package de.tum.in.dbpra.model.bean;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 public class TransactionBean {
 	private int transactionID;
-	private int boothID;
-	private RFID_TicketBean ticketID;
-	private ProductBean productID;
-	private Date transactionTime;
+	private BoothBean booth;
+	private RFID_TicketBean ticket;
+	private ProductBean product;
+	private Timestamp transactionTime;
 	
 	public TransactionBean() {}
 
@@ -26,45 +27,45 @@ public class TransactionBean {
 	}
 
 	/**
-	 * @return the boothID
+	 * @return the booth
 	 */
-	public int getBoothID() {
-		return boothID;
+	public BoothBean getBooth() {
+		return booth;
 	}
 
 	/**
-	 * @param boothID the boothID to set
+	 * @param booth the booth to set
 	 */
-	public void setBoothID(int boothID) {
-		this.boothID = boothID;
+	public void setBooth(BoothBean booth) {
+		this.booth = booth;
 	}
 
 	/**
-	 * @return the ticketID
+	 * @return the ticket
 	 */
-	public RFID_TicketBean getTicketID() {
-		return ticketID;
+	public RFID_TicketBean getTicket() {
+		return ticket;
 	}
 
 	/**
-	 * @param ticketID the ticketID to set
+	 * @param ticket the ticket to set
 	 */
-	public void setTicketID(RFID_TicketBean ticketID) {
-		this.ticketID = ticketID;
+	public void setTicket(RFID_TicketBean ticketID) {
+		this.ticket = ticketID;
 	}
 
 	/**
-	 * @return the productID
+	 * @return the product
 	 */
-	public ProductBean getProductID() {
-		return productID;
+	public ProductBean getProduct() {
+		return product;
 	}
 
 	/**
-	 * @param productID the productID to set
+	 * @param product the product to set
 	 */
-	public void setProductID(ProductBean productID) {
-		this.productID = productID;
+	public void setProduct(ProductBean product) {
+		this.product = product;
 	}
 
 	/**
@@ -77,7 +78,7 @@ public class TransactionBean {
 	/**
 	 * @param transactionTime the transactionTime to set
 	 */
-	public void setTransactionTime(Date transactionTime) {
+	public void setTransactionTime(Timestamp transactionTime) {
 		this.transactionTime = transactionTime;
 	}
 

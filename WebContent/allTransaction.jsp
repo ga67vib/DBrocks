@@ -107,9 +107,9 @@
 				%>
 				<tr>
 					<td><%=bean.getChild(i).getTransactionID()%></td>
-					<td><%=bean.getChild(i).getProductID()%></td>
-					<td><%=bean.getChild(i).getTicketID()%></td>
-					<td><%=bean.getChild(i).getBoothID()%></td>
+					<td><%=bean.getChild(i).getProduct().getName()%></td>
+					<td><%=bean.getChild(i).getTicket().getTicketID()%></td>
+					<td><%=bean.getChild(i).getBooth().getName()%></td>
 					<td><%=bean.getChild(i).getTransactionTime()%></td>
 				</tr>
 				<%

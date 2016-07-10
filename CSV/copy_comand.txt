@@ -6,3 +6,6 @@ COPY Performance FROM '/home/bernhard/DBrocks/CSV/Performance.csv' DELIMITER ';'
 COPY Sponsor FROM '/home/bernhard/DBrocks/CSV/Sponsor.csv' DELIMITER ';' CSV;
 COPY Booth FROM '/home/bernhard/DBrocks/CSV/Booth.csv' DELIMITER ';' CSV;
 COPY Product FROM '/home/bernhard/DBrocks/CSV/Product.csv' DELIMITER ';' CSV;
+COPY Person FROM '/home/bernhard/DBrocks/CSV/Person.csv' DELIMITER ';' CSV;
+COPY RFID_Ticket FROM '/home/bernhard/DBrocks/CSV/RFID.csv' DELIMITER ';' CSV;
+COPY Transaction FROM '/home/bernhard/DBrocks/CSV/Transaction.csv' DELIMITER ';' CSV;
