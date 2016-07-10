@@ -1,11 +1,12 @@
 package de.tum.in.dbpra.model.bean;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 public class RFID_TicketBean {
 	private int ticketID;
 	private PersonBean ownedBy;
-	private double acctBal;
+	private BigDecimal acctBal;
 	private boolean isCamper;
 	private boolean isVIP;
 	private Date purchaseDate;
@@ -54,14 +55,14 @@ public class RFID_TicketBean {
 	/**
 	 * @return the acctBal
 	 */
-	public double getAcctBal() {
+	public BigDecimal getAcctBal() {
 		return acctBal;
 	}
 
 	/**
 	 * @param acctBal the acctBal to set
 	 */
-	public void setAcctBal(double acctBal) {
+	public void setAcctBal(BigDecimal acctBal) {
 		this.acctBal = acctBal;
 	}
 

@@ -13,7 +13,7 @@ import de.tum.in.dbpra.model.dao.AreaDAO.AreaNotFoundException;
 public class RFID_TicketDAO extends DAO
 {
 	
-public void getTickets(RFID_TicketListBean listObject)
+public void getTickets(RFID_TicketListBean ticketListBean)
 {
 		
 		String query = "SELECT * FROM RFID_Ticket;";
@@ -31,18 +31,18 @@ public void getTickets(RFID_TicketListBean listObject)
 		{
 			RFID_TicketBean RFIDbean = new RFID_TicketBean();
 			RFIDbean.setTicketID(rs.getInt("ticket_id"));
-			RFIDbean.setAcctBal(rs.getInt("acct_bal"));
+			RFIDbean.setAcctBal(rs.getBigDecimal("acct_bal"));
 			RFIDbean.setCamper(rs.getBoolean("is_Camper"));
 			RFIDbean.setVIP(rs.getBoolean("is_VIP"));
-			RFIDbean.setPurchaseDate(rs.getDate("purchaseDate"));
+			RFIDbean.setPurchaseDate(rs.getDate("purchase_Date"));
 			RFIDbean.setValidFrom(rs.getDate("valid_From"));
 			RFIDbean.setValidUntil(rs.getDate("valid_Until"));
 			RFIDbean.setPrice(rs.getInt("price"));
 			PersonBean ownedBy = new PersonBean();
-			PersonDAO tempa = new PersonDAO();
-			tempa.getPersonbyID(ownedBy, rs.getInt("owned_by"));
+			PersonDAO personData = new PersonDAO();
+			personData.getPersonbyID(ownedBy, rs.getInt("owned_by"));
 			RFIDbean.setOwnedBy(ownedBy);
-			listObject.setChild(RFIDbean);
+			ticketListBean.setChild(RFIDbean);
 		} 
 		con.commit();
 		
@@ -77,7 +77,7 @@ String query = "SELECT * FROM RFID_Ticket Where ticket_id= ?;";
 	while(rs.next())
 	{
 		RFIDbean.setTicketID(rs.getInt("ticket_id"));
-		RFIDbean.setAcctBal(rs.getInt("acct_bal"));
+		RFIDbean.setAcctBal(rs.getBigDecimal("acct_bal"));
 		RFIDbean.setCamper(rs.getBoolean("is_Camper"));
 		RFIDbean.setVIP(rs.getBoolean("is_VIP"));
 		RFIDbean.setPurchaseDate(rs.getDate("purchase_Date"));

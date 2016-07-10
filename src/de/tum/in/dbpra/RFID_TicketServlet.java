@@ -38,12 +38,13 @@ public class RFID_TicketServlet extends HttpServlet {
 			RFID_TicketDAO rtd = new RFID_TicketDAO();
 			RFID_TicketListBean rtlb = new RFID_TicketListBean();
 			rtd.getTickets(rtlb);
+			request.setAttribute("bean", rtlb);
 			
     	} catch (Throwable e) {
     		e.printStackTrace();
     		request.setAttribute("error", e.toString() + e.getMessage());
     	}
-		RequestDispatcher dispatcher = request.getRequestDispatcher("allRFID_Tickets.jsp"); //fill in jsp
+		RequestDispatcher dispatcher = request.getRequestDispatcher("allRFID_Ticket.jsp"); //fill in jsp
 		dispatcher.forward(request, response);
 }
 

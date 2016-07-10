@@ -1,14 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<jsp:useBean id="bean" scope="request"
-	class="de.tum.in.dbpra.model.bean.StaffListBean"></jsp:useBean>
+<jsp:useBean id="bean" scope="request" class="de.tum.in.dbpra.model.bean.RFID_TicketListBean"></jsp:useBean>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
 <link type="text/css" rel="stylesheet" href="css/dbrocks_main.css" />
-<title>AllStaff</title>
+<title>All Tickets</title>
 </head>
 
 <body>
@@ -93,28 +92,36 @@
 	%>
 	<div class="content container">
 
-		<h1>Our Staff:</h1>
+		<h1>All Tickets:</h1>
 
 		<div class="box">
 			<table style="width: 100%">
 				<tr>
-					<th>PersonID</th>
-					<th>Firstname</th>
-					<th>Lastname</th>
-					<th>Gender</th>
-					<th>Profession</th>
-					<th>Phonenumber</th>
+					<th>Ticket ID</th>
+					<th>Owned By</th>
+					<th>Acc Balance</th>
+					<th>Is Camper</th>
+					<th>Is VIP</th>
+					<th>Purchase Price</th>
+					<th>Purchase Date</th>
+					<th>Valid From</th>
+					<th>Valid To</th>
+
 				</tr>
 				<%
 					for (int i = 0; i < bean.getList().size(); i++) {
 				%>
 				<tr>
-					<td><%=bean.getChild(i).getPersonID()%></td>
-					<td><%=bean.getChild(i).getPersonData().getFirstName()%></td>
-					<td><%=bean.getChild(i).getPersonData().getLastName()%></td>
-					<td><%=bean.getChild(i).getPersonData().getGender().equals("f")? "female": "male"%></td>
-					<td><%=bean.getChild(i).getProfession()%></td>
-					<td><%=bean.getChild(i).getPersonData().getPhonenumber()%></td>
+					<td><%=bean.getChild(i).getTicketID()%></td>
+					<td><%=bean.getChild(i).getOwnedBy().getFirstName()+" "+bean.getChild(i).getOwnedBy().getLastName()%></td>
+					<td><%=bean.getChild(i).getAcctBal()%></td>
+					<td><%=bean.getChild(i).isCamper() ? "Yes" : "No"%></td>
+					<td><%=bean.getChild(i).isVIP() ? "Yes" : "No"%></td>
+					<td><%=bean.getChild(i).getPrice()%></td>
+					<td><%=bean.getChild(i).getPurchaseDate()%></td>
+					<td><%=bean.getChild(i).getValidFrom()%></td>
+					<td><%=bean.getChild(i).getValidFrom()%></td>
+
 
 				</tr>
 				<%
