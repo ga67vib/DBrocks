@@ -2,7 +2,6 @@ package de.tum.in.dbpra;
 
 import java.io.IOException;
 
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -21,37 +20,42 @@ import de.tum.in.dbpra.model.dao.ProductDAO;
 @WebServlet("/product")
 public class ProductServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public ProductServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public ProductServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		try {
 			ProductDAO pd = new ProductDAO();
 			ProductListBean plb = new ProductListBean();
 			pd.getProducts(plb);
-			
-    	} catch (Throwable e) {
-    		e.printStackTrace();
-    		request.setAttribute("error", e.toString() + e.getMessage());
-    	}
-		RequestDispatcher dispatcher = request.getRequestDispatcher("allProducts.jsp"); //fill in jsp
-		dispatcher.forward(request, response);
-}
+			request.setAttribute("bean", plb);
+			// fill in jsp
+			RequestDispatcher dispatcher = request.getRequestDispatcher("allProduct.jsp");
+			dispatcher.forward(request, response);
+		} catch (Throwable e) {
+			e.printStackTrace();
+			request.setAttribute("error", e.toString() + e.getMessage());
+		}
+	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
 	}
 
 }

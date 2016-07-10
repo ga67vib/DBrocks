@@ -5,3 +5,4 @@ COPY Stage FROM '/home/bernhard/DBrocks/CSV/Stage.csv' DELIMITER ';' CSV;
 COPY Performance FROM '/home/bernhard/DBrocks/CSV/Performance.csv' DELIMITER ';' CSV;
 COPY Sponsor FROM '/home/bernhard/DBrocks/CSV/Sponsor.csv' DELIMITER ';' CSV;
 COPY Booth FROM '/home/bernhard/DBrocks/CSV/Booth.csv' DELIMITER ';' CSV;
+COPY Product FROM '/home/bernhard/DBrocks/CSV/Product.csv' DELIMITER ';' CSV;

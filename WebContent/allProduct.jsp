@@ -83,20 +83,20 @@
 	</nav>	<%
 		if (request.getAttribute("error") != null) {
 	%>
+	<div class="box">
 	<h1>An error occured!</h1>
 	<%=request.getAttribute("error")%>
-
+	</div>
 	<%
 		} else {
 	%>
-	<div class="container">
+	<div class="content container">
 
 		<h1>Our cool Products:</h1>
 
 		<div class="box">
 			<table style="width: 100%">
 				<tr>
-					<th>ProductID</th>
 					<th>Price</th>
 					<th>Name</th>
 					<th>Additional Info</th>
@@ -105,7 +105,6 @@
 					for (int i = 0; i < bean.getList().size(); i++) {
 				%>
 				<tr>
-					<td><%=bean.getChild(i).getProductID()%></td>
 					<td><%=bean.getChild(i).getPrice()%></td>
 					<td><%=bean.getChild(i).getName()%></td>
 					<td><%=bean.getChild(i).getAddInfo()%></td>
