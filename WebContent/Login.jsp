@@ -98,6 +98,7 @@
 
 		<div class="box">
 			 <form method="POST">
+			 	<input type="hidden" name="whoami" value="login">
 			 	Mail address:<br>
 			 	<input type="text" name="mail"><br>
 			 	Password:<br>
@@ -109,7 +110,38 @@
 		<h1>Here you can register:</h1>
 
 		<div class="box">
-			 Not implemented!
+			 <form method="POST">
+			 	<input type="hidden" name="whoami" value="register">
+			 	First Name:<br>
+			 	<input type="text" name="firstname"><br>
+			 	Last Name:<br>
+			 	<input type="text" name=lastname><br>
+			 	Mail address:<br>
+			 	<input type="text" name="email"><br>
+			 	Password:<br>
+			 	<input type="password" name="newPassword"><br>
+			 	Birthday:<br>
+			 	<input type="text" name="bday"><br>
+			 	Gender:<br>
+			 	<input type="radio" name="gender" value="m" checked> Male<br>
+  				<input type="radio" name="gender" value="f"> Female<br>
+  				Address:<br>
+  				<input type="text" name="address"><br>
+  				Phonenumber:<br>
+  				<input type="text" name="phonenumber"><br>
+  				<input type="radio" name="camper" value="camper"> Camper<br>
+  				<input type="radio" name="vip" value="vip"> VIP<br>
+  				<% //*Ticket valid from:<br>
+  				//*<input type="date" name="valid_from" min="2016-08-19"><br>
+  				//*Ticket valid until:<br>
+  				//*<input type="date" name="valid_until" max="2016-08-21"><br> %>
+  				Preferred Genre:<br>
+  				<input type="text" name="prefGenre"><br>
+  				<br>
+  				Since today is a special day, your ticket costs only 9.99 for the whole festival!<br>
+			 	<br>
+			 	<input type="submit" value="Register">
+			 </form> 
 		</div>
 	</div>
 	<%
