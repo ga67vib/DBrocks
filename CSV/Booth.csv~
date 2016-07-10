@@ -1,0 +1,21 @@
+1;1;6;;80;Foodfactory;food
+2;1;6;;130;Wooden Figures;products
+3;2;6;fireplace;100;Fire up;food
+4;2;6;bar, mixer;80;Jumbo Cocktails;alcohol
+5;3;7;freezer;100;Slushy MAN;drinks
+6;3;7;;130;Party Tools;products
+7;4;7;mixer;80;Smoothie Bar;drinks
+8;4;7;;240;The Pizza;food
+9;4;8;;130;Beer House;alcohol
+10;5;8;;100;minimarkt;all
+11;5;8;;200;Bucket Store;alcohol
+12;6;8;freezer;80;XXL Burger;food
+13;6;9;;130;Heißer Hobel;food
+14;7;9;;100;Get your stuff;products
+15;7;9;grill;100;Hot Grill;food
+16;8;9;;200;Do it yourself sandwich;food
+17;8;1;freezer;80;My Icecream;food
+18;9;12;;20;Champaign Bar;alcohol
+19;9;3;grill;100;Grill Corn;food
+20;10;4;;100;Tapas Bar;food
+21;10;4;;100;Nachos Bar;food

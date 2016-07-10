@@ -103,7 +103,8 @@
 				<tr>
 					<th>AreaID</th>
 					<th>Size</th>
-					<th>Location</th>
+					<th>Name</th>
+					<th>Description</th>
 				</tr>
 				<%
 					for (int i = 0; i < bean.getList().size(); i++) {
@@ -111,7 +112,8 @@
 				<tr>
 					<td><%=bean.getChild(i).getAreaID()%></td>
 					<td><%=bean.getChild(i).getSize()%></td>
-					<td><%=bean.getChild(i).getLocation()%></td>
+					<td><%=bean.getChild(i).getName()%></td>
+					<td><%=bean.getChild(i).getDescription()%></td>
 				</tr>
 				<%
 					}

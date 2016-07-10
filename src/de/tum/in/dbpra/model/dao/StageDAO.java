@@ -37,6 +37,7 @@ public class StageDAO extends DAO {
 				stageBean.setStageID(rs.getInt("stage_id"));
 				stageBean.setStageName(rs.getString("stage_name"));
 				stageBean.setStageSize(rs.getInt("stage_size"));
+				stageBean.setDescription(rs.getString("description"));
 				stageListBean.setChild(stageBean);
 			}
 
@@ -81,6 +82,7 @@ public class StageDAO extends DAO {
 				stage.setStageID(rs.getInt("stage_id"));
 				stage.setStageName(rs.getString("stage_name"));
 				stage.setStageSize(rs.getInt("stage_size"));
+				stage.setDescription(rs.getString("description"));
 			}
 
 			con.commit();

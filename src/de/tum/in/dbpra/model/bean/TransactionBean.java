@@ -9,6 +9,7 @@ public class TransactionBean {
 	private RFID_TicketBean ticket;
 	private ProductBean product;
 	private Timestamp transactionTime;
+	private int quantity;
 	
 	public TransactionBean() {}
 
@@ -82,6 +83,14 @@ public class TransactionBean {
 		this.transactionTime = transactionTime;
 	}
 
+	public int getQuantity() {
+		return quantity;
+	}
 
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+
+	
 	
 }

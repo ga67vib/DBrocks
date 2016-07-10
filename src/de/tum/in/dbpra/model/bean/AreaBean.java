@@ -3,7 +3,8 @@ package de.tum.in.dbpra.model.bean;
 public class AreaBean {
 	private int areaID;
 	private int size;
-	private int location;
+	private String name;
+	private String description;
 	private SponsorListBean sponsor;
 	private ShiftListBean shifts;
 	
@@ -61,21 +62,27 @@ public class AreaBean {
 	}
 
 
-	/**
-	 * @return the location
-	 */
-	public int getLocation() {
-		return location;
+	public String getName() {
+		return name;
 	}
 
 
-	/**
-	 * @param location the location to set
-	 */
-	public void setLocation(int location) {
-		this.location = location;
+	public void setName(String name) {
+		this.name = name;
 	}
+
+
+	public String getDescription() {
+		return description;
+	}
+
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
 	
+
 	
 	
 }

@@ -6,6 +6,7 @@ public class StageBean {
 	private String stageName;
 	private int auditSize;
 	private int stageSize;
+	private String description;
 	
 	
 	public StageBean() {}
@@ -90,5 +91,17 @@ public class StageBean {
 		this.stageSize = stageSize;
 	}
 
+
+	public String getDescription() {
+		return description;
+	}
+
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	
+	
 	
 }
