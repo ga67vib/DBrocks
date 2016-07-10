@@ -49,7 +49,11 @@ public class LoginServlet extends HttpServlet {
 	        //get the person for this mail
 	        pd.getPersonbyMail(pb, mail);
 	        
-	        if(pb.getPassword().equals(password)){
+	        if(pb.getMail()==null){//mail not set => no person with that mail
+	        	request.setAttribute("error", "Unknown mail, please try again.");
+	            request.getRequestDispatcher("/Login.jsp").forward(request, response);
+	        }
+	        else if(pb.getPassword().equals(password)){
 	        	//Successful login. Find out, whether the person is visitor or staff
 	        	if(pd.isVisitor(pb.getPersonID())){
 	        		request.getSession().setAttribute("visitor", pb.getPersonID());
@@ -64,9 +68,6 @@ public class LoginServlet extends HttpServlet {
 	        		request.getSession().setAttribute("supplier", pb.getPersonID());
 		            request.getRequestDispatcher("/Welcome.jsp").forward(request, response);
 	        	}
-	        }
-	        else if (pb.getMail()==null){ //mail not set => no person with that mail
-	        	request.setAttribute("error", "Unknown mail, please try again.");
 	        }
 	        else{//Mail set, but password not equal => Wrong password
 	        	request.setAttribute("error", "Wrong password. Please try again.");
