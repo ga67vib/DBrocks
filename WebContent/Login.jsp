@@ -77,7 +77,7 @@
 					</ul></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="../Login">Login / Register</a></li>
+				<li><a href="#">Login / Register</a></li>
 			</ul>
 		</div>
 		<!--/.nav-collapse -->
@@ -96,40 +96,22 @@
 	%>
 	<div class="content container">
 
-		<% String s; %>
-		<% if(session.getAttribute("visitor")!=null){
-			s = "visitor";
-		}else if(session.getAttribute("staff")!=null){
-			s = "staff";
-		}else if(session.getAttribute("supplier")!=null){
-			s = "supplier";
-		}else{ s = "person";} %>
-		
-		<h1>Welcome, dear <%=s %> with number <%=session.getAttribute(s) %></h1>
-
-		<h1>Our cool areas:</h1>
+		<h1>Here you can log in:</h1>
 
 		<div class="box">
-			<table style="width: 100%">
-				<tr>
-					<th>AreaID</th>
-					<th>Size</th>
-					<th>Name</th>
-					<th>Description</th>
-				</tr>
-				<%
-					for (int i = 0; i < bean.getList().size(); i++) {
-				%>
-				<tr>
-					<td><%=bean.getChild(i).getAreaID()%></td>
-					<td><%=bean.getChild(i).getSize()%></td>
-					<td><%=bean.getChild(i).getName()%></td>
-					<td><%=bean.getChild(i).getDescription()%></td>
-				</tr>
-				<%
-					}
-				%>
-			</table>
+			 <form method="POST">
+			 	Mail address:<br>
+			 	<input type="text" name="mail"><br>
+			 	Password:<br>
+			 	<input type="password" name="password">
+			 	<input type="submit" value="Login">
+			 </form> 
+		</div>
+		
+		<h1>Here you can register:</h1>
+
+		<div class="box">
+			 Not implemented!
 		</div>
 	</div>
 	<%

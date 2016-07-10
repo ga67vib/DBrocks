@@ -77,7 +77,7 @@
 					</ul></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="../Login">Login / Register</a></li>
+				<li><a href="Login">Login / Register</a></li>
 			</ul>
 		</div>
 		<!--/.nav-collapse -->
@@ -96,6 +96,7 @@
 	%>
 	<div class="content container">
 
+		
 		<% String s; %>
 		<% if(session.getAttribute("visitor")!=null){
 			s = "visitor";
@@ -107,30 +108,6 @@
 		
 		<h1>Welcome, dear <%=s %> with number <%=session.getAttribute(s) %></h1>
 
-		<h1>Our cool areas:</h1>
-
-		<div class="box">
-			<table style="width: 100%">
-				<tr>
-					<th>AreaID</th>
-					<th>Size</th>
-					<th>Name</th>
-					<th>Description</th>
-				</tr>
-				<%
-					for (int i = 0; i < bean.getList().size(); i++) {
-				%>
-				<tr>
-					<td><%=bean.getChild(i).getAreaID()%></td>
-					<td><%=bean.getChild(i).getSize()%></td>
-					<td><%=bean.getChild(i).getName()%></td>
-					<td><%=bean.getChild(i).getDescription()%></td>
-				</tr>
-				<%
-					}
-				%>
-			</table>
-		</div>
 	</div>
 	<%
 		}

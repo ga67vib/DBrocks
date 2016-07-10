@@ -11,6 +11,7 @@ public class PersonBean {
 	private String firstName;
 	private String lastName;
 	private String phonenumber;
+	private String password;
 	private boolean doNotify;
 	private NoteListBean notes;
 	
@@ -168,6 +169,16 @@ public class PersonBean {
 	 */
 	public void setDoNotify(boolean doNotify) {
 		this.doNotify = doNotify;
+	}
+
+
+	public String getPassword() {
+		return password;
+	}
+
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 }
