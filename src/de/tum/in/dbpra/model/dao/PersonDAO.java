@@ -27,13 +27,13 @@ public class PersonDAO extends DAO{
 			PersonBean personBean = new PersonBean();
 			personBean.setAddress(rs.getString("Address"));
 			personBean.setBirthdate(rs.getDate("Birthdate"));
-			personBean.setDoNotify(rs.getBoolean("DoNotify"));
-			personBean.setFirstName(rs.getString("FirstName"));
+			personBean.setDoNotify(rs.getBoolean("Do_Notify"));
+			personBean.setFirstName(rs.getString("First_Name"));
 			personBean.setGender(rs.getString("Gender"));
-			personBean.setLastName(rs.getString("LastName"));
+			personBean.setLastName(rs.getString("Last_Name"));
 			personBean.setMail(rs.getString("Mail"));
-			personBean.setPersonID(rs.getInt("PersonID"));
-			personBean.setPhonenumber(rs.getString("Phonenumber"));
+			personBean.setPersonID(rs.getInt("Person_ID"));
+			personBean.setPhonenumber(rs.getString("Phone_number"));
 			//personBean.setNotes(new NoteListBean());
 			personsBean.setChild(personBean);
 		} 
@@ -65,13 +65,13 @@ public class PersonDAO extends DAO{
 		while(rs.next()){
 			personBean.setAddress(rs.getString("Address"));
 			personBean.setBirthdate(rs.getDate("Birthdate"));
-			personBean.setDoNotify(rs.getBoolean("DoNotify"));
-			personBean.setFirstName(rs.getString("FirstName"));
+			personBean.setDoNotify(rs.getBoolean("Do_Notify"));
+			personBean.setFirstName(rs.getString("First_Name"));
 			personBean.setGender(rs.getString("Gender"));
-			personBean.setLastName(rs.getString("LastName"));
+			personBean.setLastName(rs.getString("Last_Name"));
 			personBean.setMail(rs.getString("Mail"));
-			personBean.setPersonID(rs.getInt("PersonID"));
-			personBean.setPhonenumber(rs.getString("Phonenumber"));
+			personBean.setPersonID(rs.getInt("Person_ID"));
+			personBean.setPhonenumber(rs.getString("Phone_number"));
 			personBean.setNotes(new NoteListBean());
 		} 
 		con.commit();

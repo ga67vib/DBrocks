@@ -1,9 +1,12 @@
 package de.tum.in.dbpra.model.bean;
 
+import java.math.BigDecimal;
+
 public class StaffBean {
 	private int personID;
+	private PersonBean personData;
 	private String profession;
-	private double salary;
+	private BigDecimal salary;
 	private ShiftBean works;
 	
 	
@@ -55,7 +58,7 @@ public class StaffBean {
 	/**
 	 * @return the salary
 	 */
-	public double getSalary() {
+	public BigDecimal getSalary() {
 		return salary;
 	}
 
@@ -63,8 +66,18 @@ public class StaffBean {
 	/**
 	 * @param salary the salary to set
 	 */
-	public void setSalary(double salary) {
+	public void setSalary(BigDecimal salary) {
 		this.salary = salary;
 	}
+	
+	public PersonBean getPersonData() {
+		return personData;
+	}
+
+
+	public void setPersonData(PersonBean personData) {
+		this.personData = personData;
+	}
+
 
 }
