@@ -139,12 +139,7 @@
 
 
 
-		<h1>
-			Welcome, dear
-			<%=s%>
-			with number
-			<%=session.getAttribute(s)%></h1>
-
+	
 		<h1>Our cool areas:</h1>
 
 		<div class="box">

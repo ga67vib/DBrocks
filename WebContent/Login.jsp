@@ -8,7 +8,24 @@
 <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
 <link type="text/css" rel="stylesheet" href="css/dbrocks_main.css" />
 
+<%
+	String s = "";
+%>
+<%
+	if (session.getAttribute("visitor") != null) {
+		s = "visitor";
+	} else if (session.getAttribute("staff") != null) {
+		s = "staff";
+	} else if (session.getAttribute("supplier") != null) {
+		s = "supplier";
+	} else {
+		s = "person";
+	}
 
+	session.removeAttribute(s);
+	
+	s="";
+%>
 
 <title>Areas of our cool festival</title>
 </head>
@@ -33,7 +50,7 @@
 					data-toggle="dropdown" role="button" aria-haspopup="true"
 					aria-expanded="false">Location <span class="caret"></span></a>
 					<ul class="dropdown-menu">
-						<li><a href="#">Areas</a></li>
+						<li><a href="area">Areas</a></li>
 						<li><a href="stage">Stages</a></li>
 					</ul></li>
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
@@ -44,6 +61,9 @@
 						<li><a href="band">Bands</a></li>
 						<li><a href="sponsor">Sponsors</a></li>
 					</ul></li>
+				<%
+					if (s.equals("visitor") || s.equals("staff")) {
+				%>
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown" role="button" aria-haspopup="true"
 					aria-expanded="false">Visitors Place <span class="caret"></span></a>
@@ -51,6 +71,12 @@
 						<li><a href="#">My Timetable</a></li>
 						<li><a href="RFID_Ticket">My Ticket</a></li>
 					</ul></li>
+				<%
+					}
+				%>
+				<%
+					if (s.equals("supplier") || s.equals("staff")) {
+				%>
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown" role="button" aria-haspopup="true"
 					aria-expanded="false">Suppliers Place <span class="caret"></span></a>
@@ -62,6 +88,12 @@
 						<li><a href="product">My Products</a></li>
 						<li><a href="advertising">All Advertisements (per Area)</a></li>
 					</ul></li>
+				<%
+					}
+				%>
+				<%
+					if (s.equals("staff")) {
+				%>
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown" role="button" aria-haspopup="true"
 					aria-expanded="false">Organisation <span class="caret"></span></a>
@@ -73,9 +105,22 @@
 						<li><a href="staff">Staff</a></li>
 						<li><a href="note">Notes</a></li>
 					</ul></li>
+				<%
+					}
+				%>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="#">Login / Register</a></li>
+				<%
+					if (session.getAttribute(s) == null) {
+				%>
+				<li><a href="Login">Login / Register</a></li>
+				<%
+					} else {
+				%>
+				<li><a href="Login">Logout</a></li>
+				<%
+					}
+				%>
 			</ul>
 		</div>
 		<!--/.nav-collapse -->
@@ -86,8 +131,8 @@
 	%>
 	<div class="box">
 
-	<h1>An error occured!</h1>
-	<%=request.getAttribute("error")%>
+		<h1>An error occured!</h1>
+		<%=request.getAttribute("error")%>
 	</div>
 	<%
 		} else {
@@ -97,27 +142,23 @@
 		<h1>Here you can log in:</h1>
 
 		<div class="box">
-			 <form method="POST">
-			 	Mail address:<br>
-			 	<input type="text" name="mail"><br>
-			 	Password:<br>
-			 	<input type="password" name="password">
-			 	<input type="submit" value="Login">
-			 </form> 
+			<form method="POST">
+				Mail address:<br> <input type="text" name="mail"><br>
+				Password:<br> <input type="password" name="password"> <input
+					type="submit" value="Login">
+			</form>
 		</div>
-		
+
 		<h1>Here you can register:</h1>
 
-		<div class="box">
-			 Not implemented!
-		</div>
+		<div class="box">Not implemented!</div>
 	</div>
 	<%
 		}
 	%>
 
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
 </body>
 </html>
