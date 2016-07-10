@@ -25,7 +25,7 @@
 					class="icon-bar"></span> <span class="icon-bar"></span> <span
 					class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="/DBrocks">DBRocks</a>
+			<a class="navbar-brand" href="DBrocks">/DBRocks</a>
 		</div>
 		<div id="navbar" class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">
@@ -40,42 +40,42 @@
 					data-toggle="dropdown" role="button" aria-haspopup="true"
 					aria-expanded="false">MusicAndMore <span class="caret"></span></a>
 					<ul class="dropdown-menu">
-						<li><a href="/performance">Performances</a></li>
-						<li><a href="/band">Bands</a></li>
-						<li><a href="/sponsor">Sponsors</a></li>
+						<li><a href="performance">Performances</a></li>
+						<li><a href="band">Bands</a></li>
+						<li><a href="sponsor">Sponsors</a></li>
 					</ul></li>
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown" role="button" aria-haspopup="true"
 					aria-expanded="false">Visitors Place <span class="caret"></span></a>
 					<ul class="dropdown-menu">
 						<li><a href="#">My Timetable</a></li>
-						<li><a href="/RFID_Ticket">My Ticket</a></li>
+						<li><a href="RFID_Ticket">My Ticket</a></li>
 					</ul></li>
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown" role="button" aria-haspopup="true"
 					aria-expanded="false">Suppliers Place <span class="caret"></span></a>
 					<ul class="dropdown-menu">
 						<li><a href="#">(Maxi schreib sauber!)</a></li>
-						<li><a href="/booth">My Booths</a></li>
-						<li><a href="/advertising">My Advertisement</a></li>
-						<li><a href="/transaction">My Transactions</a></li>
-						<li><a href="/product">My Products</a></li>
-						<li><a href="/advertising">All Advertisements (per Area)</a></li>
+						<li><a href="booth">My Booths</a></li>
+						<li><a href="advertising">My Advertisement</a></li>
+						<li><a href="transaction">My Transactions</a></li>
+						<li><a href="product">My Products</a></li>
+						<li><a href="advertising">All Advertisements (per Area)</a></li>
 					</ul></li>
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown" role="button" aria-haspopup="true"
 					aria-expanded="false">Organisation <span class="caret"></span></a>
 					<ul class="dropdown-menu">
-						<li><a href="/sponsor">Sponsors</a></li>
-						<li><a href="/booth">Booths</a></li>
-						<li><a href="/transaction">Transactions</a></li>
-						<li><a href="/advertising">Advertising</a></li>
-						<li><a href="/staff">Staff</a></li>
-						<li><a href="/note">Notes</a></li>
+						<li><a href="sponsor">Sponsors</a></li>
+						<li><a href="booth">Booths</a></li>
+						<li><a href="transaction">Transactions</a></li>
+						<li><a href="advertising">Advertising</a></li>
+						<li><a href="staff">Staff</a></li>
+						<li><a href="note">Notes</a></li>
 					</ul></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="/Login">Login / Register</a></li>
+				<li><a href="Login">Login / Register</a></li>
 			</ul>
 		</div>
 		<!--/.nav-collapse -->
