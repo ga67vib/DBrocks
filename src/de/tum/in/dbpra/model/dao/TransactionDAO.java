@@ -54,7 +54,7 @@ public class TransactionDAO extends DAO {
 	}
 
 	public void getTransactions(TransactionListBean transactionlist) {
-		String query = "Select t.transaction_ID,b.booth_id,t.transaction_time, p.name, t.Ticket_id, b.name AS booth_name From Transaction t,Booth b, Product p WHERE p.product_id = t.product_id AND b.booth_id = t.booth_id ORDER BY t.transaction_ID ASC";
+		String query = "Select t.transaction_ID,b.booth_id,t.transaction_time, p.name, t.Ticket_id, quantity, b.name AS booth_name From Transaction t,Booth b, Product p WHERE p.product_id = t.product_id AND b.booth_id = t.booth_id ORDER BY t.transaction_ID ASC";
 		try {
 			Connection con = getConnection();
 
