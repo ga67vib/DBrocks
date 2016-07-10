@@ -1,20 +1,21 @@
 package de.tum.in.dbpra.model.bean;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 public class ShiftBean {
 	private int shiftID;
-	private Date startTime;
-	private Date endTime;
-	private StaffBean workers;
+	private Timestamp startTime;
+	private Timestamp endTime;
+	private int workers;
 	
 	
-	public StaffBean getWorkers() {
+	public int getWorkers() {
 		return workers;
 	}
 
 
-	public void setWorkers(StaffBean workers) {
+	public void setWorkers(int workers) {
 		this.workers = workers;
 	}
 
@@ -41,7 +42,7 @@ public class ShiftBean {
 	/**
 	 * @return the startTime
 	 */
-	public Date getStartTime() {
+	public Timestamp getStartTime() {
 		return startTime;
 	}
 
@@ -49,7 +50,7 @@ public class ShiftBean {
 	/**
 	 * @param startTime the startTime to set
 	 */
-	public void setStartTime(Date startTime) {
+	public void setStartTime(Timestamp startTime) {
 		this.startTime = startTime;
 	}
 
@@ -57,7 +58,7 @@ public class ShiftBean {
 	/**
 	 * @return the endTime
 	 */
-	public Date getEndTime() {
+	public Timestamp getEndTime() {
 		return endTime;
 	}
 
@@ -65,7 +66,7 @@ public class ShiftBean {
 	/**
 	 * @param endTime the endTime to set
 	 */
-	public void setEndTime(Date endTime) {
+	public void setEndTime(Timestamp endTime) {
 		this.endTime = endTime;
 	}
 
