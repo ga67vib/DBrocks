@@ -13,8 +13,6 @@
 
 <body>
 
-
-
 	<nav class="navbar navbar-default navbar-fixed-top">
 	<div class="container">
 		<div class="navbar-header">
@@ -34,7 +32,7 @@
 					aria-expanded="false">Location <span class="caret"></span></a>
 					<ul class="dropdown-menu">
 						<li><a href="area">Areas</a></li>
-						<li><a href="#">Stages</a></li>
+						<li><a href="stage">Stages</a></li>
 					</ul></li>
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown" role="button" aria-haspopup="true"
@@ -75,7 +73,7 @@
 					</ul></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="#">Login / Register</a></li>
+				<li><a href="Login">Login / Register</a></li>
 			</ul>
 		</div>
 		<!--/.nav-collapse -->
