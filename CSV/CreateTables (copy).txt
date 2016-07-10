@@ -65,7 +65,7 @@ CREATE TABLE Person(
 person_id		Serial		Primary Key,
 birthdate		Date 		NOT NULL,
 gender			Varchar(1)	NOT NULL,
-mail 			Varchar(256)  	NOT NULL,
+mail 			Varchar(256)  	NOT NULL UNIQUE,
 address 			Varchar(256)	NOT NULL,
 first_name		Varchar(256)	NOT NULL,
 last_name		Varchar(256)	NOT NULL,
