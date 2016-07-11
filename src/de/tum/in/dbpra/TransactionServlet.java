@@ -41,9 +41,7 @@ public class TransactionServlet extends HttpServlet {
 			td.getTransactions(tlb);
 			request.setAttribute("bean", tlb);
 
-			RequestDispatcher dispatcher = request.getRequestDispatcher("allTransaction.jsp"); // fill
-																					// in
-																					// jsp
+			RequestDispatcher dispatcher = request.getRequestDispatcher("allTransaction.jsp"); 
 			dispatcher.forward(request, response);
 
 		} catch (Throwable e) {
