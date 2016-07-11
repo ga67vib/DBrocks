@@ -2,6 +2,7 @@ package de.tum.in.dbpra;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Enumeration;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -36,6 +37,18 @@ public class NoteCreateServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		//concatenate all selected person_ids (if called from staff site)
+		String result="";
+		Enumeration<String> parameterNames = request.getParameterNames(); //get set parameters; possibly none, if not called from staff side
+		if(parameterNames != null){ //if == null, just do nothing, leave result as ""
+			while(parameterNames.hasMoreElements()){
+				result+= request.getParameter(parameterNames.nextElement()) + ","; //while there are still checked staff members, concatenate their person id to the result
+			}
+			if (result!=""){
+				result = result.substring(0, result.length()-1);//remove last comma
+			}
+		}
+		request.setAttribute("input_person_ids", result); //set input_person_ids, so they are immediately displayed
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/createNote.jsp");
 		dispatcher.forward(request, response);
 	}

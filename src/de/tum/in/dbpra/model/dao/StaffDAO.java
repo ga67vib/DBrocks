@@ -9,31 +9,27 @@ import de.tum.in.dbpra.model.bean.PersonBean;
 import de.tum.in.dbpra.model.bean.StaffBean;
 import de.tum.in.dbpra.model.bean.StaffListBean;
 
-public class StaffDAO extends DAO
-{
-	public void getStaff(StaffListBean stafflist, int shiftId)
-	{
+public class StaffDAO extends DAO {
+	public void getStaff(StaffListBean stafflist, int shiftId) throws ClassNotFoundException, SQLException {
 		String query = "Select * From Staff s, Person p WHERE p.person_id = s.person_id";
-		if(shiftId > 0){
+		if (shiftId > 0) {
 			query = "Select * From Staff s, Person p, works w WHERE p.person_id = s.person_id AND s.person_Id =w.person_id AND w.shift_id = ?";
 
 		}
 		Connection con;
-		try {
-			con = getConnection();
-		
-		
+		con = getConnection();
+
 		con.setAutoCommit(false);
-		
-		PreparedStatement pstmt = con.prepareStatement(query, ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
-		
-		if(shiftId > 0){
+
+		PreparedStatement pstmt = con.prepareStatement(query, ResultSet.TYPE_SCROLL_INSENSITIVE,
+				ResultSet.CONCUR_READ_ONLY);
+
+		if (shiftId > 0) {
 			pstmt.setInt(1, shiftId);
 		}
 		ResultSet rs = pstmt.executeQuery();
-		
-		while(rs.next())
-				{
+
+		while (rs.next()) {
 			StaffBean staff = new StaffBean();
 			staff.setPersonID(rs.getInt("person_id"));
 			PersonBean personData = new PersonBean();
@@ -50,19 +46,12 @@ public class StaffDAO extends DAO
 			staff.setProfession(rs.getString("profession"));
 			staff.setSalary(rs.getBigDecimal("salary"));
 			stafflist.setChild(staff);
-		} 
-		
+		}
+
 		con.commit();
-		
+
 		rs.close();
 		pstmt.close();
 		con.close();
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 }

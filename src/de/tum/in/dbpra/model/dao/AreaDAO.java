@@ -9,7 +9,7 @@ import de.tum.in.dbpra.model.bean.AreaBean;
 import de.tum.in.dbpra.model.bean.AreaListBean;
 
 public class AreaDAO extends DAO {
-	public void getAreas(AreaListBean listObject) throws AreaNotFoundException, SQLException, ClassNotFoundException {
+	public void getAreas(AreaListBean listObject) throws SQLException, ClassNotFoundException {
 
 		String query = "SELECT * FROM Area;";
 
@@ -21,10 +21,6 @@ public class AreaDAO extends DAO {
 				ResultSet.CONCUR_READ_ONLY);
 
 		ResultSet rs = pstmt.executeQuery();
-
-		if (DAO.getRowCount(rs) == 0) {
-			throw new AreaNotFoundException("There are no Areas found!");
-		}
 
 		while (rs.next()) {
 			AreaBean areabean = new AreaBean();
@@ -42,17 +38,8 @@ public class AreaDAO extends DAO {
 
 	}
 
-	public static class AreaNotFoundException extends Throwable {
-
-		private static final long serialVersionUID = 1L;
-
-		AreaNotFoundException(String message) {
-			super(message);
-		}
-	}
-
 	public void getAreabyID(AreaBean areabean, int AreaID)
-			throws AreaNotFoundException, SQLException, ClassNotFoundException {
+			throws SQLException, ClassNotFoundException {
 
 		String query = "SELECT * FROM Area Where area_id=?";
 
@@ -64,10 +51,6 @@ public class AreaDAO extends DAO {
 		pstmt.setInt(1, AreaID);
 
 		ResultSet rs = pstmt.executeQuery();
-
-		if (DAO.getRowCount(rs) == 0) {
-			throw new AreaNotFoundException("There are no Areas found!");
-		}
 
 		while (rs.next()) {
 			areabean.setAreaID(rs.getInt("area_id"));
