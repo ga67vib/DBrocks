@@ -1,32 +1,46 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<jsp:useBean id="bean" scope="request"
-	class="de.tum.in.dbpra.model.bean.RFID_TicketListBean"></jsp:useBean>
+<%@ page import="java.text.SimpleDateFormat"%>
+<%@ page import="java.util.ArrayList"%>
+<%@ page import='de.tum.in.dbpra.model.bean.BandBean'%>
+
+
+
+<jsp:useBean id="bean19" scope="request"
+	class="de.tum.in.dbpra.model.bean.PerformanceListBean"></jsp:useBean>
+<jsp:useBean id="bean20" scope="request"
+	class="de.tum.in.dbpra.model.bean.PerformanceListBean"></jsp:useBean>
+
+<jsp:useBean id="bean19own" scope="request"
+	class="de.tum.in.dbpra.model.bean.PerformanceListBean"></jsp:useBean>
+<jsp:useBean id="bean20own" scope="request"
+	class="de.tum.in.dbpra.model.bean.PerformanceListBean"></jsp:useBean>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
 <link type="text/css" rel="stylesheet" href="css/dbrocks_main.css" />
-<title>All Tickets</title>
+<title>AllPerson</title>
 </head>
-<%
-	String s = "";
-%>
-<%
-	if (session.getAttribute("visitor") != null) {
-		s = "visitor";
-	} else if (session.getAttribute("staff") != null) {
-		s = "staff";
-	} else if (session.getAttribute("supplier") != null) {
-		s = "supplier";
-	} else {
-		s = "person";
-	}
-%>
-<body>
 
-<nav class="navbar navbar-default navbar-fixed-top">
+<body>
+	<%
+		String s = "";
+	%>
+	<%
+		if (session.getAttribute("visitor") != null) {
+			s = "visitor";
+		} else if (session.getAttribute("staff") != null) {
+			s = "staff";
+		} else if (session.getAttribute("supplier") != null) {
+			s = "supplier";
+		} else {
+			s = "person";
+		}
+	%>
+	<nav class="navbar navbar-default navbar-fixed-top">
 	<div class="container">
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle collapsed"
@@ -131,43 +145,120 @@
 	%>
 	<div class="content container">
 
-		<h1>All Tickets:</h1>
+		<h1>My Timetable:</h1>
+		<div class="col-box row">
+			<div class="col-md-6">
+				<table style="width: 100%">
+					<tr>
+						<th colspan=4 class="table-head">August 19th</th>
+					</tr>
+					<tr>
+						<th>Stage</th>
+						<th>Band(s)</th>
+						<th>Begin</th>
+						<th>End</th>
+					</tr>
+					<%
+						SimpleDateFormat formatter = new SimpleDateFormat("hh:mm");
+					System.out.println(bean19own.getList().size());
 
-		<div class="box">
-			<table style="width: 100%">
-				<tr>
-					<th style="width: 10%">Ticket ID</th>
-					<th style="width: 10%">Owned By</th>
-					<th style="width: 10%">Acc Balance</th>
-					<th style="width: 10%">Is Camper</th>
-					<th style="width: 10%">Is VIP</th>
-					<th style="width:10%">Purchase Price</th>
-					<th style="width:10%">Purchase Date</th>
-					<th style="width:10%">Valid From</th>
-					<th style="width:10%">Valid To</th>
+							for (int i = 0; i < bean19own.getList().size(); i++) {
+					%>
 
-				</tr>
-				<%
-					for (int i = 0; i < bean.getList().size(); i++) {
-				%>
-				<tr>
-					<td><%=bean.getChild(i).getTicketID()%></td>
-					<td><%=bean.getChild(i).getOwnedBy().getFirstName() + " "
-							+ bean.getChild(i).getOwnedBy().getLastName()%></td>
-					<td><%=bean.getChild(i).getAcctBal()%></td>
-					<td><%=bean.getChild(i).isCamper() ? "Yes" : "No"%></td>
-					<td><%=bean.getChild(i).isVIP() ? "Yes" : "No"%></td>
-					<td><%=bean.getChild(i).getPrice()%></td>
-					<td><%=bean.getChild(i).getPurchaseDate()%></td>
-					<td><%=bean.getChild(i).getValidFrom()%></td>
-					<td><%=bean.getChild(i).getValidFrom()%></td>
+					<tr>
+						<td><%=bean19own.getChild(i).getIsAt().getStageName()%></td>
+						<td><%=bean19own.getChild(i).getAllPerformers()%></td>
+						<td><%=formatter.format(bean19own.getChild(i).getStartTime())%></td>
+						<td><%=formatter.format(bean19own.getChild(i).getEndTime())%></td>
+					</tr>
+					<%
+						}
+					%>
+				</table>
+			</div>
+			<div class="col-md-6">
+				<table style="width: 100%">
+					<tr>
+						<th colspan=4 class="table-head">August 20th</th>
+					</tr>
+					<tr>
+						<th>Stage</th>
+						<th>Band(s)</th>
+						<th>Begin</th>
+						<th>End</th>
+					</tr>
+					<%
+					System.out.println(bean20own.getList().size());
+						for (int i = 0; i < bean20own.getList().size(); i++) {
+					%>
+					<tr>
+						<td><%=bean20own.getChild(i).getIsAt().getStageName()%></td>
+						<td><%=bean20own.getChild(i).getAllPerformers()%></td>
+						<td><%=formatter.format(bean20own.getChild(i).getStartTime())%></td>
+						<td><%=formatter.format(bean20own.getChild(i).getEndTime())%></td>
+					</tr>
+					<%
+						}
+					%>
+				</table>
+			</div>
+		</div>
 
 
-				</tr>
-				<%
-					}
-				%>
-			</table>
+
+		<h1>All Performances:</h1>
+		<div class="col-box row">
+			<div class="col-md-6">
+				<table style="width: 100%">
+					<tr>
+						<th colspan=4 class="table-head">August 19th</th>
+					</tr>
+					<tr>
+						<th>Stage</th>
+						<th>Band(s)</th>
+						<th>Begin</th>
+						<th>End</th>
+					</tr>
+					<%
+						for (int i = 0; i < bean19.getList().size(); i++) {
+					%>
+
+					<tr>
+						<td><%=bean19.getChild(i).getIsAt().getStageName()%></td>
+						<td><%=bean19.getChild(i).getAllPerformers()%></td>
+						<td><%=formatter.format(bean19.getChild(i).getStartTime())%></td>
+						<td><%=formatter.format(bean19.getChild(i).getEndTime())%></td>
+					</tr>
+					<%
+						}
+					%>
+				</table>
+			</div>
+			<div class="col-md-6">
+				<table style="width: 100%">
+					<tr>
+						<th colspan=4 class="table-head">August 20th</th>
+					</tr>
+					<tr>
+						<th>Stage</th>
+						<th>Band(s)</th>
+						<th>Begin</th>
+						<th>End</th>
+					</tr>
+					<%
+						for (int i = 0; i < bean20.getList().size(); i++) {
+					%>
+					<tr>
+						<td><%=bean20.getChild(i).getIsAt().getStageName()%></td>
+						<td><%=bean20.getChild(i).getAllPerformers()%></td>
+						<td><%=formatter.format(bean20.getChild(i).getStartTime())%></td>
+						<td><%=formatter.format(bean20.getChild(i).getEndTime())%></td>
+					</tr>
+					<%
+						}
+					%>
+				</table>
+			</div>
 		</div>
 	</div>
 	<%
@@ -176,5 +267,6 @@
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
+
 </body>
 </html>

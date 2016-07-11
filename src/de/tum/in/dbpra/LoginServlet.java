@@ -2,7 +2,6 @@ package de.tum.in.dbpra;
 
 import java.io.IOException;
 import java.math.BigDecimal;
-import java.sql.Connection;
 import java.sql.Date;
 import java.sql.SQLException;
 
@@ -21,7 +20,7 @@ import de.tum.in.dbpra.model.dao.VisitorDAO;
 /**
  * Servlet implementation class LoginServlet
  */
-@WebServlet("/Login")
+@WebServlet("/login")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -37,7 +36,7 @@ public class LoginServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp"); //fill in jsp
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/login.jsp"); //fill in jsp
 		dispatcher.forward(request, response);
 	}
 
@@ -58,7 +57,7 @@ public class LoginServlet extends HttpServlet {
 		}
 		else{
 			request.setAttribute("error", "Post request from unkown form.");
-            request.getRequestDispatcher("/login.jsp").forward(request, response);
+            request.getRequestDispatcher("login.jsp").forward(request, response);
 		}
 	}
 	
@@ -78,36 +77,34 @@ public class LoginServlet extends HttpServlet {
 	        
 	        if(pb.getMail()==null){//mail not set => no person with that mail
 	        	request.setAttribute("error", "Unknown mail, please try again.");
-	            request.getRequestDispatcher("/Login.jsp").forward(request, response);
+	            request.getRequestDispatcher("/login.jsp").forward(request, response);
 	        }
 	        else if(pb.getPassword().equals(password)){
 	        	//Successful login. Find out, whether the person is visitor or staff
 	        	if(pd.isVisitor(pb.getPersonID())){
 	        		request.getSession().setAttribute("visitor", pb.getPersonID());
-		            request.getRequestDispatcher("/Welcome.jsp").forward(request, response);
 	        	}
 	        	else if(pd.isStaffMember(pb.getPersonID())){ 
 	        		request.getSession().setAttribute("staff", pb.getPersonID());
-		            request.getRequestDispatcher("/Welcome.jsp").forward(request, response);
-
 	        	}
 	        	else{ //this then is a supplier. Registered suppliers are in person, but not visitors or staff.
 	        		request.getSession().setAttribute("supplier", pb.getPersonID());
-		            request.getRequestDispatcher("/Welcome.jsp").forward(request, response);
 	        	}
+	            request.getRequestDispatcher("/welcome.jsp").forward(request, response);
+
 	        }
 	        else{//Mail set, but password not equal => Wrong password
 	        	request.setAttribute("error", "Wrong password. Please try again.");
-	            request.getRequestDispatcher("/Login.jsp").forward(request, response);
+	            request.getRequestDispatcher("/login.jsp").forward(request, response);
 	        }
         }
         catch(SQLException e){
         	request.setAttribute("error", "SQLException occured. Text:\n"+e.getMessage());
-            request.getRequestDispatcher("/Login.jsp").forward(request, response);
+            request.getRequestDispatcher("/login.jsp").forward(request, response);
         }
         catch(ClassNotFoundException e){
         	request.setAttribute("error", "ClassNotFoundException occured. Text:\n"+e.getMessage());
-            request.getRequestDispatcher("/Login.jsp").forward(request, response);
+            request.getRequestDispatcher("/login.jsp").forward(request, response);
         }
         
         

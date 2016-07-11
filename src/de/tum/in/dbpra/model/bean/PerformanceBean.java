@@ -12,7 +12,16 @@ public class PerformanceBean {
 	private Timestamp endRemoval;
 	private BandListBean gerockt;
 	private VisitorListBean visitors;
+	private String allPerformers;
 	
+	public String getAllPerformers() {
+		return allPerformers;
+	}
+
+	public void setAllPerformers(String allPerformers) {
+		this.allPerformers = allPerformers;
+	}
+
 	public VisitorListBean getVisitors() {
 		return visitors;
 	}
