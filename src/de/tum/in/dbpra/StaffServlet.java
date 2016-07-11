@@ -49,9 +49,8 @@ public class StaffServlet extends HttpServlet {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("allStaff.jsp");
 			dispatcher.forward(request, response);
 		} catch (Throwable e) {
-			e.printStackTrace();
-			request.setAttribute("error", e.toString() + e.getMessage());
-			request.getRequestDispatcher("/allStaff.jsp").forward(request, response);
+			request.setAttribute("error", "Exception occured. Text:<br>" + e.getMessage());
+            request.getRequestDispatcher("/allStaff.jsp").forward(request, response);
 		}
 	}
 

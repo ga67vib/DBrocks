@@ -45,8 +45,8 @@ public class TransactionServlet extends HttpServlet {
 			dispatcher.forward(request, response);
 
 		} catch (Throwable e) {
-			e.printStackTrace();
-			request.setAttribute("error", e.toString() + e.getMessage());
+			request.setAttribute("error", "Exception occured. Text:<br>" + e.getMessage());
+            request.getRequestDispatcher("/allTransaction.jsp").forward(request, response);
 		}
 	}
 

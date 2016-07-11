@@ -40,12 +40,11 @@ public class ProductServlet extends HttpServlet {
 			ProductListBean plb = new ProductListBean();
 			pd.getProducts(plb);
 			request.setAttribute("bean", plb);
-			// fill in jsp
 			RequestDispatcher dispatcher = request.getRequestDispatcher("allProduct.jsp");
 			dispatcher.forward(request, response);
 		} catch (Throwable e) {
-			e.printStackTrace();
-			request.setAttribute("error", e.toString() + e.getMessage());
+			request.setAttribute("error", "Exception occured. Text:<br>" + e.getMessage());
+            request.getRequestDispatcher("/allProduct.jsp").forward(request, response);
 		}
 	}
 

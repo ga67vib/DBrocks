@@ -42,13 +42,11 @@ public class SponsorServlet extends HttpServlet {
 			sd.getSponsors(slb);
 			request.setAttribute("bean", slb);
 
-			RequestDispatcher dispatcher = request.getRequestDispatcher("allSponsor.jsp"); // fill
-																							// in
-																							// jsp
+			RequestDispatcher dispatcher = request.getRequestDispatcher("allSponsor.jsp"); 
 			dispatcher.forward(request, response);
 		} catch (Throwable e) {
-			e.printStackTrace();
-			request.setAttribute("error", e.toString() + e.getMessage());
+			request.setAttribute("error", "Exception occured. Text:<br>" + e.getMessage());
+            request.getRequestDispatcher("/allSponsor.jsp").forward(request, response);
 		}
 	}
 
