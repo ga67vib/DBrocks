@@ -8,11 +8,10 @@ import java.sql.SQLException;
 import de.tum.in.dbpra.model.bean.NoteBean;
 import de.tum.in.dbpra.model.bean.NoteListBean;
 import de.tum.in.dbpra.model.bean.PersonBean;
-import de.tum.in.dbpra.model.dao.AreaDAO.AreaNotFoundException;
 
 public class NoteDAO extends DAO {
 
-	public void getNotes(NoteListBean listObject) throws AreaNotFoundException, SQLException, ClassNotFoundException {
+	public void getNotes(NoteListBean listObject) throws SQLException, ClassNotFoundException {
 
 		String query = "SELECT * FROM Note n;";
 
@@ -24,10 +23,6 @@ public class NoteDAO extends DAO {
 				ResultSet.CONCUR_READ_ONLY);
 
 		ResultSet rs = pstmt.executeQuery();
-
-		if (DAO.getRowCount(rs) == 0) {
-			throw new AreaNotFoundException("There were no Notes found!");
-		}
 
 		while (rs.next()) {
 			NoteBean notebean = new NoteBean();

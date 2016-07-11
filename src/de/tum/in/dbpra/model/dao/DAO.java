@@ -12,7 +12,7 @@ import de.tum.in.dbpra.Config;
 import de.tum.in.dbpra.Config.Database;
 
 /**
- * @author Michael Schwarz
+ * @author 
  * 
  */
 public abstract class DAO {

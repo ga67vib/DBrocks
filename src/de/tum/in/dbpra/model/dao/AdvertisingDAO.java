@@ -9,11 +9,10 @@ import de.tum.in.dbpra.model.bean.AdvertisingBean;
 import de.tum.in.dbpra.model.bean.AdvertisingListBean;
 import de.tum.in.dbpra.model.bean.AreaBean;
 import de.tum.in.dbpra.model.bean.SponsorBean;
-import de.tum.in.dbpra.model.dao.AreaDAO.AreaNotFoundException;
 
 public class AdvertisingDAO extends DAO {
 
-	public void getAdvertisings(AdvertisingListBean listObject) throws AreaNotFoundException, SQLException, ClassNotFoundException {
+	public void getAdvertisings(AdvertisingListBean listObject) throws SQLException, ClassNotFoundException {
 
 		String query = "SELECT ar.*,ad.type,s.*,s.name AS sname FROM Area ar JOIN advertising ad ON ar.area_id=ad.area_id JOIN sponsor s ON ad.sponsor_id=s.sponsor_id;";
 		Connection con = getConnection();
