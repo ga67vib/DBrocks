@@ -1,14 +1,15 @@
 package de.tum.in.dbpra.model.bean;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 public class PerformanceBean {
 	private int performanceID;
 	private StageBean isAt;
-	private Date startBuildUp;
-	private Date startTime;
-	private Date endTime;
-	private Date endRemoval;
+	private Timestamp startBuildUp;
+	private Timestamp startTime;
+	private Timestamp endTime;
+	private Timestamp endRemoval;
 	private BandListBean gerockt;
 	private VisitorListBean visitors;
 	
@@ -59,56 +60,56 @@ public class PerformanceBean {
 	/**
 	 * @return the startBuildUp
 	 */
-	public Date getStartBuildUp() {
+	public Timestamp getStartBuildUp() {
 		return startBuildUp;
 	}
 
 	/**
 	 * @param startBuildUp the startBuildUp to set
 	 */
-	public void setStartBuildUp(Date startBuildUp) {
+	public void setStartBuildUp(Timestamp startBuildUp) {
 		this.startBuildUp = startBuildUp;
 	}
 
 	/**
 	 * @return the startTime
 	 */
-	public Date getStartTime() {
+	public Timestamp getStartTime() {
 		return startTime;
 	}
 
 	/**
 	 * @param startTime the startTime to set
 	 */
-	public void setStartTime(Date startTime) {
+	public void setStartTime(Timestamp startTime) {
 		this.startTime = startTime;
 	}
 
 	/**
 	 * @return the endTime
 	 */
-	public Date getEndTime() {
+	public Timestamp getEndTime() {
 		return endTime;
 	}
 
 	/**
 	 * @param endTime the endTime to set
 	 */
-	public void setEndTime(Date endTime) {
+	public void setEndTime(Timestamp endTime) {
 		this.endTime = endTime;
 	}
 
 	/**
 	 * @return the endRemoval
 	 */
-	public Date getEndRemoval() {
+	public Timestamp getEndRemoval() {
 		return endRemoval;
 	}
 
 	/**
 	 * @param endRemoval the endRemoval to set
 	 */
-	public void setEndRemoval(Date endRemoval) {
+	public void setEndRemoval(Timestamp endRemoval) {
 		this.endRemoval = endRemoval;
 	}
 

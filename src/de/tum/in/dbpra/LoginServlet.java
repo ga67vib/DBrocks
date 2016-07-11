@@ -37,7 +37,7 @@ public class LoginServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/Login.jsp"); //fill in jsp
+		RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp"); //fill in jsp
 		dispatcher.forward(request, response);
 	}
 
@@ -58,7 +58,7 @@ public class LoginServlet extends HttpServlet {
 		}
 		else{
 			request.setAttribute("error", "Post request from unkown form.");
-            request.getRequestDispatcher("/Login.jsp").forward(request, response);
+            request.getRequestDispatcher("/login.jsp").forward(request, response);
 		}
 	}
 	

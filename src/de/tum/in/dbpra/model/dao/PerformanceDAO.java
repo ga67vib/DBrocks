@@ -20,6 +20,7 @@ public class PerformanceDAO extends DAO {
 			
 			String query = "SELECT * FROM Performance;";
 			
+	
 			Connection con = getConnection();
 			
 			con.setAutoCommit(false);
@@ -34,12 +35,11 @@ public class PerformanceDAO extends DAO {
 			{
 				PerformanceBean performance = new PerformanceBean();
 				performance.setPerformanceID(rs.getInt("performance_id"));
-				performance.setEndRemoval(rs.getDate("end_removal"));
-				performance.setEndTime(rs.getDate("end_time"));
-				performance.setStartTime(rs.getDate("start_time"));
-				performance.setStartBuildUp(rs.getDate("start_build_up"));
+				performance.setEndRemoval(rs.getTimestamp("end_removal"));
+				performance.setEndTime(rs.getTimestamp("end_time"));
+				performance.setStartTime(rs.getTimestamp("start_time"));
+				performance.setStartBuildUp(rs.getTimestamp("start_build_up"));
 				BandListBean bandstemp = new BandListBean();
-				//getBandsbyPerformanceID(bandstemp,rs.getInt("performance_id"));
 				performance.setGerockt(bandstemp);
 				StageBean temp = new StageBean();
 				StageDAO tempa = new StageDAO();
@@ -68,7 +68,7 @@ public class PerformanceDAO extends DAO {
 	
 	public void getBandsbyPerformanceID(BandListBean bandlist, int PerformanceID)
 	{
-		String query = "Select * From Performance Where PerformanceID=?";
+		String query = "Select b.* From Band b, Performance p, rocks r WHERE p.Performance_ID=? AND p.Performance_ID= r.performance_ID AND r.Band_id = b.Band_id";
 
 		Connection con;
 		try {
@@ -86,7 +86,6 @@ public class PerformanceDAO extends DAO {
 				{
 			BandBean band = new BandBean();
 			band.setBandID(rs.getInt("band_id"));
-			band.setRegistersAt(rs.getInt("registers_at"));
 			band.setBandName(rs.getString("band_name"));
 			band.setInstruction(rs.getString("instruction"));
 			band.setSonglist(rs.getString("songlist"));
@@ -108,5 +107,56 @@ public class PerformanceDAO extends DAO {
 		}
 		
 	}
+	
+
+	public void getPerformancesByDay(PerformanceListBean listObject, int beginDay)
+	{
+			
+		try {
+			
+			
+			String query = "SELECT performance_id, stage_name, start_time, end_time FROM Performance, Stage WHERE is_at = stage_id and start_time::text LIKE ? ORDER BY stage_name ASC, start_time ASC";
+			String searchPattern = "%08-"+beginDay+"%";
+	
+			Connection con = getConnection();
+			
+			con.setAutoCommit(false);
+			
+			
+			PreparedStatement pstmt = con.prepareStatement(query, ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
+			
+			pstmt.setString(1, searchPattern);
+			ResultSet rs = pstmt.executeQuery();
+		
+			
+			while(rs.next())
+			{
+				PerformanceBean performanceBean = new PerformanceBean();
+				BandListBean bandListBean = new BandListBean();
+			
+				performanceBean.setEndTime(rs.getTimestamp("end_time"));
+				performanceBean.setStartTime(rs.getTimestamp("start_time"));
+				StageBean stageBean = new StageBean();
+				stageBean.setStageName(rs.getString("stage_name"));
+				performanceBean.setIsAt(stageBean);
+				getBandsbyPerformanceID(bandListBean, rs.getInt("performance_id"));
+				performanceBean.setGerockt(bandListBean);
+				listObject.setChild(performanceBean);
+			} 
+			con.commit();
+			
+			rs.close();
+			pstmt.close();
+			con.close();
+			
+			
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} 
+		}
 
 }
