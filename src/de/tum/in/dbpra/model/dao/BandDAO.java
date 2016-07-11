@@ -75,10 +75,10 @@ public class BandDAO extends DAO{
 		{
 			PerformanceBean performancebean = new PerformanceBean();
 			performancebean.setPerformanceID(rs.getInt("performance_id"));
-			performancebean.setEndRemoval(rs.getDate("end_removal"));
-			performancebean.setEndTime(rs.getDate("end_time"));
-			performancebean.setStartTime(rs.getDate("start_time"));
-			performancebean.setStartBuildUp(rs.getDate("start_build_up"));
+			performancebean.setEndRemoval(rs.getTimestamp("end_removal"));
+			performancebean.setEndTime(rs.getTimestamp("end_time"));
+			performancebean.setStartTime(rs.getTimestamp("start_time"));
+			performancebean.setStartBuildUp(rs.getTimestamp("start_build_up"));
 			BandListBean bandstemp = new BandListBean();
 			performancebean.setGerockt(bandstemp);
 			StageBean temp = new StageBean();

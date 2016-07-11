@@ -66,7 +66,7 @@
 					data-toggle="dropdown" role="button" aria-haspopup="true"
 					aria-expanded="false">Visitors Place <span class="caret"></span></a>
 					<ul class="dropdown-menu">
-						<li><a href="#">My Timetable</a></li>
+						<li><a href="timetable">My Timetable</a></li>
 						<li><a href="RFID_Ticket">My Ticket</a></li>
 					</ul></li>
 				<%
