@@ -124,20 +124,21 @@
 		<!--/.nav-collapse -->
 	</div>
 	</nav>
-	<%
-		if (request.getAttribute("error") != null) {
-	%>
-	<div class="box">
-
-		<h1>An error occured!</h1>
-		<%=request.getAttribute("error")%>
-	</div>
-	<%
-		} else {
-	%>
+	
+	
 	<div class="content container">
 
-
+		<%
+			if (request.getAttribute("error") != null) {
+		%>
+			<div class="box">
+		
+				<h1>An error occured!</h1>
+				<%=request.getAttribute("error")%>
+			</div>
+		<%
+			} else {
+		%>
 
 	
 		<h1>Our cool advertisements:</h1>

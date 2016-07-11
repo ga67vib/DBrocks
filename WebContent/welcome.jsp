@@ -26,7 +26,7 @@
 
 %>
 
-<title>Areas of our cool festival</title>
+<title>Welcome to our festival</title>
 </head>
 
 <body>
