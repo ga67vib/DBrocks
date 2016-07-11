@@ -82,7 +82,45 @@ public class PersonDAO extends DAO {
 		con.close();
 
 	}
+	
+	/**
+	 * Gets all persons for one note_id and inserts them into a PersonListBean
+	 */
+	public PersonListBean getPersonsByNoteID(int noteID) throws SQLException, ClassNotFoundException{
+		String query = "SELECT * FROM Person p JOIN assigned_to a ON a.person_id=p.person_id Where note_id=?";
+		Connection con = getConnection();
+		con.setAutoCommit(false);
 
+		PreparedStatement pstmt = con.prepareStatement(query,
+				ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+		pstmt.setInt(1, noteID);
+
+		ResultSet rs = pstmt.executeQuery();
+		PersonListBean result = new PersonListBean();
+
+		while (rs.next()) {
+			PersonBean personBean = new PersonBean();
+			personBean.setAddress(rs.getString("Address"));
+			personBean.setBirthdate(rs.getDate("Birthdate"));
+			personBean.setDoNotify(rs.getBoolean("Do_Notify"));
+			personBean.setFirstName(rs.getString("First_Name"));
+			personBean.setGender(rs.getString("Gender"));
+			personBean.setLastName(rs.getString("Last_Name"));
+			personBean.setMail(rs.getString("Mail"));
+			personBean.setPersonID(rs.getInt("Person_ID"));
+			personBean.setPhonenumber(rs.getString("Phone_number"));
+			personBean.setPassword(rs.getString("password"));
+			result.setChild(personBean);
+		}
+		con.commit();
+
+		rs.close();
+		pstmt.close();
+		con.close();
+		
+		return result;
+	}
+	
 	/**
 	 * Fills a personBean according to a mail address. Since mail is unique,
 	 * this works fine. Used for login, to get password and person_id with one
@@ -107,7 +145,7 @@ public class PersonDAO extends DAO {
 
 		ResultSet rs = pstmt.executeQuery();
 
-		while (rs.next()) {
+		if(rs.next()) {
 			personBean.setAddress(rs.getString("Address"));
 			personBean.setBirthdate(rs.getDate("Birthdate"));
 			personBean.setDoNotify(rs.getBoolean("Do_Notify"));
@@ -250,4 +288,5 @@ public class PersonDAO extends DAO {
 		return personID;
 	}
 
+	
 }

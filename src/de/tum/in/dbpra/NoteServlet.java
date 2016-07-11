@@ -41,9 +41,7 @@ public class NoteServlet extends HttpServlet {
 			nd.getNotes(nlb);
 			request.setAttribute("bean", nlb);
 
-			RequestDispatcher dispatcher = request.getRequestDispatcher("allNote.jsp"); // fill
-																							// in
-																							// jsp
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/allNote.jsp"); 
 			dispatcher.forward(request, response);
 		} catch (Throwable e) {
 			e.printStackTrace();

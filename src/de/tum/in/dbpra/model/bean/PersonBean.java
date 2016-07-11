@@ -14,19 +14,32 @@ public class PersonBean {
 	private String password;
 	private boolean doNotify;
 	private NoteListBean notes;
-	
+
+	//This saves some writing when initializing the whole bean; unused
+	public void setAllPersonAttributes(int personID, Date birthdate, String gender, String mail, String address,
+			String firstName, String lastName, String phonenumber, String password, boolean doNotify) {
+		this.personID = personID;
+		this.birthdate = birthdate;
+		this.gender = gender;
+		this.mail =mail;
+		this.address = address;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.phonenumber = phonenumber;
+		this.password = password;
+		this.doNotify = doNotify;
+	}
+
 	public NoteListBean getNotes() {
 		return notes;
 	}
-
 
 	public void setNotes(NoteListBean notes) {
 		this.notes = notes;
 	}
 
-
-	public PersonBean() {}
-
+	public PersonBean() {
+	}
 
 	/**
 	 * @return the personID
@@ -35,14 +48,13 @@ public class PersonBean {
 		return personID;
 	}
 
-
 	/**
-	 * @param personID the personID to set
+	 * @param personID
+	 *            the personID to set
 	 */
 	public void setPersonID(int personID) {
 		this.personID = personID;
 	}
-
 
 	/**
 	 * @return the birthdate
@@ -51,14 +63,13 @@ public class PersonBean {
 		return birthdate;
 	}
 
-
 	/**
-	 * @param birthdate the birthdate to set
+	 * @param birthdate
+	 *            the birthdate to set
 	 */
 	public void setBirthdate(Date birthdate) {
 		this.birthdate = birthdate;
 	}
-
 
 	/**
 	 * @return the gender
@@ -67,14 +78,13 @@ public class PersonBean {
 		return gender;
 	}
 
-
 	/**
-	 * @param gender the gender to set
+	 * @param gender
+	 *            the gender to set
 	 */
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
-
 
 	/**
 	 * @return the mail
@@ -83,14 +93,13 @@ public class PersonBean {
 		return mail;
 	}
 
-
 	/**
-	 * @param mail the mail to set
+	 * @param mail
+	 *            the mail to set
 	 */
 	public void setMail(String mail) {
 		this.mail = mail;
 	}
-
 
 	/**
 	 * @return the address
@@ -99,14 +108,13 @@ public class PersonBean {
 		return address;
 	}
 
-
 	/**
-	 * @param address the address to set
+	 * @param address
+	 *            the address to set
 	 */
 	public void setAddress(String address) {
 		this.address = address;
 	}
-
 
 	/**
 	 * @return the firstName
@@ -115,14 +123,13 @@ public class PersonBean {
 		return firstName;
 	}
 
-
 	/**
-	 * @param firstName the firstName to set
+	 * @param firstName
+	 *            the firstName to set
 	 */
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
-
 
 	/**
 	 * @return the lastName
@@ -131,14 +138,13 @@ public class PersonBean {
 		return lastName;
 	}
 
-
 	/**
-	 * @param lastName the lastName to set
+	 * @param lastName
+	 *            the lastName to set
 	 */
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-
 
 	/**
 	 * @return the phonenumber
@@ -147,14 +153,13 @@ public class PersonBean {
 		return phonenumber;
 	}
 
-
 	/**
-	 * @param phonenumber the phonenumber to set
+	 * @param phonenumber
+	 *            the phonenumber to set
 	 */
 	public void setPhonenumber(String phonenumber) {
 		this.phonenumber = phonenumber;
 	}
-
 
 	/**
 	 * @return the doNotify
@@ -163,19 +168,17 @@ public class PersonBean {
 		return doNotify;
 	}
 
-
 	/**
-	 * @param doNotify the doNotify to set
+	 * @param doNotify
+	 *            the doNotify to set
 	 */
 	public void setDoNotify(boolean doNotify) {
 		this.doNotify = doNotify;
 	}
 
-
 	public String getPassword() {
 		return password;
 	}
-
 
 	public void setPassword(String password) {
 		this.password = password;
