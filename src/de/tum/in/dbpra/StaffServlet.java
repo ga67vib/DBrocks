@@ -1,6 +1,7 @@
 package de.tum.in.dbpra;
 
 import java.io.IOException;
+import java.util.Enumeration;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -50,6 +51,7 @@ public class StaffServlet extends HttpServlet {
 		} catch (Throwable e) {
 			e.printStackTrace();
 			request.setAttribute("error", e.toString() + e.getMessage());
+			request.getRequestDispatcher("/allStaff.jsp").forward(request, response);
 		}
 	}
 
@@ -59,7 +61,7 @@ public class StaffServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		
 	}
 
 }

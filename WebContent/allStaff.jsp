@@ -120,16 +120,20 @@
 		</div>
 		<!--/.nav-collapse -->
 	</div>
-	</nav><%
+	</nav>
+	<div class="content container">
+	
+	<%
 		if (request.getAttribute("error") != null) {
 	%>
-	<h1>An error occured!</h1>
-	<%=request.getAttribute("error")%>
+	<div class="box">
+		<h1>An error occured!</h1>
+		<%=request.getAttribute("error")%>
+	</div>
 
 	<%
 		} else {
 	%>
-	<div class="content container">
 
 		<h1>Our Staff <%=request.getAttribute("shiftId")!=null? "in shift "+request.getAttribute("shiftId"): ""%>:</h1>
 	<%
@@ -142,6 +146,7 @@
 		}
 	%>
 		<div class="box">
+		<form method="GET" action="noteCreate">
 			<table style="width: 100%">
 				<tr>
 					<th>PersonID</th>
@@ -151,7 +156,9 @@
 					<th>Profession</th>
 					<th>Phonenumber</th>
 					<th>Shifts</th>
+					<th>Select</th>
 				</tr>
+				
 				<%
 					for (int i = 0; i < bean.getList().size(); i++) {
 				%>
@@ -163,12 +170,15 @@
 					<td><%=bean.getChild(i).getProfession()%></td>
 					<td><%=bean.getChild(i).getPersonData().getPhonenumber()%></td>
 					<td><a href="shift?staffId=<%=bean.getChild(i).getPersonID()%>">Shifts</a>
+					<td><input type="checkbox" name="selected<%=i %>" value="<%=bean.getChild(i).getPersonID()%>" /></td>
 
 				</tr>
 				<%
 					}
 				%>
 			</table>
+			<input type="submit" value="Create Note for selected staff">
+			</form>
 		</div>
 	</div>
 	<%
