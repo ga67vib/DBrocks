@@ -47,13 +47,13 @@ public class LoginServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("Post login");
+		//System.out.println("Post login");
 		if (request.getParameter("whoami").equals("login")){
-			System.out.println("ogin");
+			//System.out.println("ogin");
 			doLogin(request,response);
 		}
 		else if (request.getParameter("whoami").equals("register")){
-			System.out.println("register");
+			//System.out.println("register");
 			doRegister(request,response);
 		}
 		else{
