@@ -44,8 +44,8 @@ public class NoteServlet extends HttpServlet {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/allNote.jsp"); 
 			dispatcher.forward(request, response);
 		} catch (Throwable e) {
-			e.printStackTrace();
-			request.setAttribute("error", e.toString() + e.getMessage());
+			request.setAttribute("error", "Exception occured. Text:<br>" + e.getMessage());
+            request.getRequestDispatcher("/allNote.jsp").forward(request, response);
 		}
 	}
 

@@ -41,13 +41,11 @@ public class BoothServlet extends HttpServlet {
 			bd.getBooths(blb);
 
 			request.setAttribute("bean", blb);
-			RequestDispatcher dispatcher = request.getRequestDispatcher("allBooth.jsp"); // fill
-																							// in
-																							// jsp
+			RequestDispatcher dispatcher = request.getRequestDispatcher("allBooth.jsp"); 
 			dispatcher.forward(request, response);
 		} catch (Throwable e) {
-			e.printStackTrace();
-			request.setAttribute("error", e.toString() + e.getMessage());
+			request.setAttribute("error", "Exception occured. Text:<br>" + e.getMessage());
+            request.getRequestDispatcher("/allBooth.jsp").forward(request, response);
 		}
 	}
 

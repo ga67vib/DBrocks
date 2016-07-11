@@ -8,7 +8,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
 <link type="text/css" rel="stylesheet" href="css/dbrocks_main.css" />
-<title>AllStaff</title>
+<title>ShiftsPerStaff</title>
 </head>
 <%
 	String s = "";

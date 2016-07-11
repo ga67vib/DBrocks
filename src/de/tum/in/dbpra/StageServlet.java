@@ -38,13 +38,11 @@ public class StageServlet extends HttpServlet {
 			StageListBean slb = new StageListBean();
 			sd.getStages(slb);
 			request.setAttribute("bean", slb);
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/allStage.jsp"); // fill
-																							// in
-																							// jsp
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/allStage.jsp"); 
 			dispatcher.forward(request, response);
 		} catch (Throwable e) {
-			e.printStackTrace();
-			request.setAttribute("error", e.toString() + e.getMessage());
+			request.setAttribute("error", "Exception occured. Text:<br>" + e.getMessage());
+            request.getRequestDispatcher("/allStage.jsp").forward(request, response);
 		}
 	}
 

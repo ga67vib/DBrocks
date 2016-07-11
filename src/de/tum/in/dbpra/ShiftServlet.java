@@ -54,8 +54,8 @@ public class ShiftServlet extends HttpServlet {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("shiftsPerStaff.jsp");
 			dispatcher.forward(request, response);
 		} catch (Throwable e) {
-			e.printStackTrace();
-			request.setAttribute("error", e.toString() + e.getMessage());
+			request.setAttribute("error", "Exception occured. Text:<br>" + e.getMessage());
+            request.getRequestDispatcher("/shiftsPerStaff.jsp").forward(request, response);
 		}
 	}
 
