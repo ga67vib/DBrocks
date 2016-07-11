@@ -84,30 +84,30 @@ public class LoginServlet extends HttpServlet {
 	        	//Successful login. Find out, whether the person is visitor or staff
 	        	if(pd.isVisitor(pb.getPersonID())){
 	        		request.getSession().setAttribute("visitor", pb.getPersonID());
-		            request.getRequestDispatcher("/Welcome.jsp").forward(request, response);
+		            request.getRequestDispatcher("/welcome.jsp").forward(request, response);
 	        	}
 	        	else if(pd.isStaffMember(pb.getPersonID())){ 
 	        		request.getSession().setAttribute("staff", pb.getPersonID());
-		            request.getRequestDispatcher("/Welcome.jsp").forward(request, response);
+		            request.getRequestDispatcher("/welcome.jsp").forward(request, response);
 
 	        	}
 	        	else{ //this then is a supplier. Registered suppliers are in person, but not visitors or staff.
 	        		request.getSession().setAttribute("supplier", pb.getPersonID());
-		            request.getRequestDispatcher("/Welcome.jsp").forward(request, response);
+		            request.getRequestDispatcher("/welcome.jsp").forward(request, response);
 	        	}
 	        }
 	        else{//Mail set, but password not equal => Wrong password
 	        	request.setAttribute("error", "Wrong password. Please try again.");
-	            request.getRequestDispatcher("/Login.jsp").forward(request, response);
+	            request.getRequestDispatcher("/login.jsp").forward(request, response);
 	        }
         }
         catch(SQLException e){
         	request.setAttribute("error", "SQLException occured. Text:\n"+e.getMessage());
-            request.getRequestDispatcher("/Login.jsp").forward(request, response);
+            request.getRequestDispatcher("/login.jsp").forward(request, response);
         }
         catch(ClassNotFoundException e){
         	request.setAttribute("error", "ClassNotFoundException occured. Text:\n"+e.getMessage());
-            request.getRequestDispatcher("/Login.jsp").forward(request, response);
+            request.getRequestDispatcher("/login.jsp").forward(request, response);
         }
         
         
@@ -144,24 +144,24 @@ public class LoginServlet extends HttpServlet {
         	if(pd.isVisitor(personID)){ //check the visitor was successfully inserted
         		//immediately login and welcome the new visitor
         		request.getSession().setAttribute("visitor", personID);
-	            request.getRequestDispatcher("/Welcome.jsp").forward(request, response);
+	            request.getRequestDispatcher("/welcome.jsp").forward(request, response);
         	}
         	else{
         		request.setAttribute("error", "Unexpected error: Insert threw no exception, but visitor does not exist.");
-                request.getRequestDispatcher("/Login.jsp").forward(request, response);
+                request.getRequestDispatcher("/login.jsp").forward(request, response);
         	}
         }
         catch(SQLException e){
         	request.setAttribute("error", "SQLException occured. Text:\n"+e.getMessage());
-            request.getRequestDispatcher("/Login.jsp").forward(request, response);
+            request.getRequestDispatcher("/login.jsp").forward(request, response);
         }
         catch(ClassNotFoundException e){
         	request.setAttribute("error", "ClassNotFoundException occured. Text:\n"+e.getMessage());
-            request.getRequestDispatcher("/Login.jsp").forward(request, response);
+            request.getRequestDispatcher("/login.jsp").forward(request, response);
         }
         catch(IllegalArgumentException e){
         	request.setAttribute("error", "IllegalArgumentException occured. You entered your birthday in an invalid format. Required format: yyyy-mm-dd");
-            request.getRequestDispatcher("/Login.jsp").forward(request, response);
+            request.getRequestDispatcher("/login.jsp").forward(request, response);
         }
         
         

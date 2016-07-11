@@ -51,7 +51,7 @@ public class ShiftServlet extends HttpServlet {
 			sd.getShifts(slb, staffId);
 			request.setAttribute("bean", slb);
 			// fill in jsp
-			RequestDispatcher dispatcher = request.getRequestDispatcher("ShiftsPerStaff.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("shiftsPerStaff.jsp");
 			dispatcher.forward(request, response);
 		} catch (Throwable e) {
 			e.printStackTrace();
