@@ -48,6 +48,9 @@ public class LoginServlet extends HttpServlet {
 		if (request.getParameter("whoami").equals("login")){
 			//System.out.println("ogin");
 			doLogin(request,response);
+		}else if (request.getParameter("whoami").equals("login-sponsor")){
+			//System.out.println("ogin");
+			doLoginSponsor(request,response);
 		}
 		else if (request.getParameter("whoami").equals("register")){
 			//System.out.println("register");
@@ -110,6 +113,10 @@ public class LoginServlet extends HttpServlet {
         
 	}
 
+	protected void doLoginSponsor(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String mail = request.getParameter("id");
+        String password = request.getParameter("password-sponsor");
+	}
 	/**
 	 * Reads necessary data from the register form, and then tries to register a visitor.
 	 * Inserts a new Person, a new visitor and a new RFID_ticket.

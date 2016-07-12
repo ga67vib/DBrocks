@@ -155,6 +155,21 @@
 			 </form> 
 
 		</div>
+		
+		<h1>Here you can log in as Sponsor:</h1>
+
+		<div class="box">
+
+			 <form method="POST">
+			 	<input type="hidden" name="whoami" value="login-sponsor">
+			 	Sponsor ID:<br>
+			 	<input type="text" name="id"><br>
+			 	Password:<br>
+			 	<input type="password" name="password-sponsor">
+			 	<input type="submit" value="Login">
+			 </form> 
+
+		</div>
 
 		<h1>Here you can register:</h1>
 

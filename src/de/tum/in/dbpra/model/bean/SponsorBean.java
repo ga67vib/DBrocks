@@ -5,6 +5,9 @@ public class SponsorBean {
 	private String address;
 	private String name;
 	private double payment;
+	private String password;
+
+
 	private int numReqBooths;
 	private int numAssBooths;
 	
@@ -88,5 +91,17 @@ public class SponsorBean {
 		this.name = name;
 	}
 
-	
+	/**
+	 * @return the password
+	 */
+	public String getPassword() {
+		return password;
+	}
+
+	/**
+	 * @param password the password to set
+	 */
+	public void setPassword(String password) {
+		this.password = password;
+	}
 }

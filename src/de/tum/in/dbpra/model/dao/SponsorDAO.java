@@ -29,6 +29,7 @@ public class SponsorDAO extends DAO {
 			sponsorbean.setPayment(rs.getInt("payment"));
 			sponsorbean.setNumReqBooths(rs.getInt("num_req_booths"));
 			sponsorbean.setNumAssBooths(rs.getInt("num_ass_booths"));
+			sponsorbean.setPassword(rs.getString("password"));
 		}
 		con.commit();
 
