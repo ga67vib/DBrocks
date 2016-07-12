@@ -71,7 +71,7 @@
 					aria-expanded="false">Suppliers Place <span class="caret"></span></a>
 					<ul class="dropdown-menu">
 						<li><a href="#">(Maxi schreib sauber!)</a></li>
-						<li><a href="booth">My Booths</a></li>
+						<li><a href="myBooth">My Booths</a></li>
 						<li><a href="myAdvertising">My Advertisement</a></li>
 						<li><a href="transaction">My Transactions</a></li>
 						<li><a href="myProduct">My Products</a></li>
