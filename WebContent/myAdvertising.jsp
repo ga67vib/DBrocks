@@ -1,19 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <jsp:useBean id="bean" scope="request"
-	class="de.tum.in.dbpra.model.bean.BandListBean"></jsp:useBean>
+	class="de.tum.in.dbpra.model.bean.AdvertisingListBean"></jsp:useBean>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<title>AllBand</title>
 <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
 <link type="text/css" rel="stylesheet" href="css/dbrocks_main.css" />
-<title>Here are all the bands!</title>
-</head>
 
-<body>
 <%
 	String s = "";
 %>
@@ -28,6 +24,12 @@
 		s = "person";
 	}
 %>
+
+<title>Ads of our cool festival</title>
+</head>
+
+<body>
+
 	<nav class="navbar navbar-default navbar-fixed-top">
 	<div class="container">
 		<div class="navbar-header">
@@ -122,8 +124,8 @@
 		<!--/.nav-collapse -->
 	</div>
 	</nav>
-
-
+	
+	
 	<div class="content container">
 
 		<%
@@ -137,27 +139,30 @@
 		<%
 			} else {
 		%>
-		
-		<h1>Our cool bands:</h1>
+
+	
+		<h1>Our cool advertisements:</h1>
 
 		<div class="box">
 			<table style="width: 100%">
 				<tr>
-					<th>BandID</th>
-					<th>Name</th>
-					<th>Salary</th>
-					<th>Songlist</th>
-					<th>Instruction</th>
+					<th>Sponsor Name</th>
+					<th>Sponsor ID</th>
+					<th>Area Name</th>
+					<th>Area ID</th>
+					<th>Area Size</th>
+					<th>Advertising Type</th>
 				</tr>
 				<%
 					for (int i = 0; i < bean.getList().size(); i++) {
 				%>
 				<tr>
-					<td><%=bean.getChild(i).getBandID()%></td>
-					<td><%=bean.getChild(i).getBandName()%></td>
-					<td><%=bean.getChild(i).getSalary()%></td>
-					<td><%=bean.getChild(i).getSonglist()%></td>
-					<td><%=bean.getChild(i).getInstruction()%></td>
+					<td><%=bean.getChild(i).getSponsor().getName() %></td>
+					<td><%=bean.getChild(i).getSponsor().getSponsorID() %></td>
+					<td><%=bean.getChild(i).getArea().getName()%></td>
+					<td><%=bean.getChild(i).getArea().getAreaID()%></td>
+					<td><%=bean.getChild(i).getArea().getSize()%></td>
+					<td><%=bean.getChild(i).getType()%></td>
 				</tr>
 				<%
 					}
@@ -173,5 +178,4 @@
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 </body>
->>>>>>> branch 'master' of https://github.com/ga67vib/DBrocks.git
 </html>

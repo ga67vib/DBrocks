@@ -93,10 +93,7 @@ public class LoginServlet extends HttpServlet {
 		            request.getRequestDispatcher("/welcome.jsp").forward(request, response);
 
 	        	}
-	        	else{ //this then is a supplier. Registered suppliers are in person, but not visitors or staff.
-	        		request.getSession().setAttribute("supplier", pb.getPersonID());
-		            request.getRequestDispatcher("/welcome.jsp").forward(request, response);
-	        	}
+	        	
 	        }
 	        else{//Mail set, but password not equal => Wrong password
 	        	request.setAttribute("error", "Wrong password. Please try again.");
@@ -127,7 +124,8 @@ public class LoginServlet extends HttpServlet {
 	        	request.setAttribute("error", "Unknown id, please try again.");
 	            request.getRequestDispatcher("/login.jsp").forward(request, response);
         	}else if(sb.getPassword().equals(password)){
-        		
+        		request.getSession().setAttribute("supplier", sb.getSponsorID());
+	            request.getRequestDispatcher("/welcome.jsp").forward(request, response);
         	}
         	
         }catch(SQLException e){

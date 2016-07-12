@@ -91,7 +91,7 @@
 					<ul class="dropdown-menu">
 						<li><a href="#">(Maxi schreib sauber!)</a></li>
 						<li><a href="booth">My Booths</a></li>
-						<li><a href="advertising">My Advertisement</a></li>
+						<li><a href="myAdvertising">My Advertisement</a></li>
 						<li><a href="transaction">My Transactions</a></li>
 						<li><a href="product">My Products</a></li>
 						<li><a href="advertising">All Advertisements (per Area)</a></li>
