@@ -61,29 +61,32 @@ public class ProductDAO extends DAO {
 		con.close();
 
 	}
-	public void getProductbySponsorID(ProductBean productbean, Integer id) throws ClassNotFoundException, SQLException {
-		String query = "SELECT p.name, p.price, p.add_info FROM Product p, Booth b, Sells s Where b.owned_by = " + id + " and s.booth_id = b.booth_id and s.product_id = p.product_id;";
+	public void getProductbySponsorID(ProductListBean productlist, int id) throws ClassNotFoundException, SQLException {
+		String query = "SELECT p.product_id, p.name, p.price, p.add_info FROM Product p, Booth b, Sells s Where b.owned_by = " + id + " and s.booth_id = b.booth_id and s.product_id = p.product_id;";
 
-		Connection con;
-		con = getConnection();
+		Connection con = getConnection();
 
 		con.setAutoCommit(false);
 
 		PreparedStatement pstmt = con.prepareStatement(query, ResultSet.TYPE_SCROLL_INSENSITIVE,
 				ResultSet.CONCUR_READ_ONLY);
-		pstmt.setInt(1, id);
+
 		ResultSet rs = pstmt.executeQuery();
+
 		while (rs.next()) {
-			productbean.setPrice(rs.getBigDecimal("price"));
-			productbean.setProductID(rs.getInt("product_id"));
-			productbean.setName(rs.getString("name"));
-			productbean.setAddInfo(rs.getString("add_Info") == null ? "" : rs.getString("add_Info"));
+			ProductBean product = new ProductBean();
+			product.setAddInfo(rs.getString("add_info"));
+			product.setName(rs.getString("name"));
+			product.setPrice(rs.getBigDecimal("price"));
+			product.setProductID(rs.getInt("product_id"));
+			productlist.setChild(product);
 		}
+
 		con.commit();
 
 		rs.close();
 		pstmt.close();
 		con.close();
-
 	}
+	
 }

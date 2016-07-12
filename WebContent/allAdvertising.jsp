@@ -11,7 +11,7 @@
 <link type="text/css" rel="stylesheet" href="css/dbrocks_main.css" />
 
 
-<title>Ads of our cool festival</title>
+<title>Advertisments:</title>
 </head>
 
 <body>

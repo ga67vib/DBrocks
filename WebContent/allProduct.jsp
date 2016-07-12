@@ -27,7 +27,7 @@
 			} else {
 		%>
 
-		<h1>Our cool Products:</h1>
+		<h1>Products:</h1>
 
 		<div class="box">
 			<table style="width: 100%">
