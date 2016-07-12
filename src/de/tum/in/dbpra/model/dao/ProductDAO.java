@@ -61,5 +61,29 @@ public class ProductDAO extends DAO {
 		con.close();
 
 	}
+	public void getProductbySponsorID(ProductBean productbean, Integer id) throws ClassNotFoundException, SQLException {
+		String query = "SELECT p.name, p.price, p.add_info FROM Product p, Booth b, Sells s Where b.owned_by = " + id + " and s.booth_id = b.booth_id and s.product_id = p.product_id;";
 
+		Connection con;
+		con = getConnection();
+
+		con.setAutoCommit(false);
+
+		PreparedStatement pstmt = con.prepareStatement(query, ResultSet.TYPE_SCROLL_INSENSITIVE,
+				ResultSet.CONCUR_READ_ONLY);
+		pstmt.setInt(1, id);
+		ResultSet rs = pstmt.executeQuery();
+		while (rs.next()) {
+			productbean.setPrice(rs.getBigDecimal("price"));
+			productbean.setProductID(rs.getInt("product_id"));
+			productbean.setName(rs.getString("name"));
+			productbean.setAddInfo(rs.getString("add_Info") == null ? "" : rs.getString("add_Info"));
+		}
+		con.commit();
+
+		rs.close();
+		pstmt.close();
+		con.close();
+
+	}
 }

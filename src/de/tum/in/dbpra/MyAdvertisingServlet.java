@@ -34,7 +34,8 @@ public class MyAdvertisingServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		try {
-			
+			System.out.println(request.getSession().getAttribute("staff"));
+			System.out.println(request.getSession().getAttribute("supplier"));
 			if(request.getSession().getAttribute("staff") !=null){
 					AdvertisingDAO ad = new AdvertisingDAO();
 					AdvertisingListBean alb = new AdvertisingListBean();
