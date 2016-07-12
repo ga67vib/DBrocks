@@ -14,7 +14,7 @@ import de.tum.in.dbpra.model.dao.BoothDAO;
 /**
  * Servlet implementation class
  */
-@WebServlet("/booth")
+@WebServlet("/myBooth")
 public class MyBoothServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
