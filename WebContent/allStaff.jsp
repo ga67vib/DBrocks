@@ -108,11 +108,11 @@
 				<%
 					if (session.getAttribute(s) == null) {
 				%>
-				<li><a href="login">Login / Register</a></li>
+				<li><a href="Login">Login / Register</a></li>
 				<%
 					} else {
 				%>
-				<li><a href="login">Logout</a></li>
+				<li><a href="Login">Logout</a></li>
 				<%
 					}
 				%>

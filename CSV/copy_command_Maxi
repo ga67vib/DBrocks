@@ -1,26 +1,26 @@
 --Do not edit this template. Make copy of it, name it with your name
 --and then replace /home/mashmax/workspace/DBrocks/CSV with your path. But leave the template for the others.
 
-COPY AREA FROM '/home/mashmax/workspace/DBrocks/CSV/Area.csv' DELIMITER ';' CSV;
-COPY CONCERTAREA FROM '/home/mashmax/workspace/DBrocks/CSV/ConcertArea.csv' DELIMITER ';' CSV;
-COPY STAGE FROM '/home/mashmax/workspace/DBrocks/CSV/Stage.csv' DELIMITER ';' CSV;
-COPY BAND FROM '/home/mashmax/workspace/DBrocks/CSV/Band.csv' DELIMITER ';' CSV;
-COPY PERFORMANCE FROM '/home/mashmax/workspace/DBrocks/CSV/Performance.csv' DELIMITER ';' CSV;
-COPY SPONSOR FROM '/home/mashmax/workspace/DBrocks/CSV/Sponsor.csv' DELIMITER ';' CSV;
-COPY BOOTH FROM '/home/mashmax/workspace/DBrocks/CSV/Booth.csv' DELIMITER ';' CSV;
-COPY PERSON FROM '/home/mashmax/workspace/DBrocks/CSV/Person.csv' DELIMITER ';' CSV;
-COPY VISITOR FROM '/home/mashmax/workspace/DBrocks/CSV/Visitor.csv' DELIMITER ';' CSV;
-COPY STAFF FROM '/home/mashmax/workspace/DBrocks/CSV/Staff.csv' DELIMITER ';' CSV;
-COPY NOTE FROM '/home/mashmax/workspace/DBrocks/CSV/Note.csv' DELIMITER ';' CSV;
-COPY RFID_TICKET FROM '/home/mashmax/workspace/DBrocks/CSV/RFID.csv' DELIMITER ';' CSV;
-COPY PRODUCT FROM '/home/mashmax/workspace/DBrocks/CSV/Product.csv' DELIMITER ';' CSV;
-COPY SHIFT FROM '/home/mashmax/workspace/DBrocks/CSV/Shift.csv' DELIMITER ';' CSV;
-COPY TIMETABLE FROM '/home/mashmax/workspace/DBrocks/CSV/Timetable.csv' DELIMITER ';' CSV;
-COPY ROCKS FROM '/home/mashmax/workspace/DBrocks/CSV/rocks.csv' DELIMITER ';' CSV;
-COPY TRANSACTION FROM '/home/mashmax/workspace/DBrocks/CSV/Transaction.csv' DELIMITER ';' CSV;
-COPY SELLS FROM '/home/mashmax/workspace/DBrocks/CSV/sells.csv' DELIMITER ';' CSV;
-COPY ADVERTISING FROM '/home/mashmax/workspace/DBrocks/CSV/Advertising.csv' DELIMITER ';' CSV;
-COPY WORKS FROM '/home/mashmax/workspace/DBrocks/CSV/works.csv' DELIMITER ';' CSV;
-COPY LOCATED FROM '/home/mashmax/workspace/DBrocks/CSV/located.csv' DELIMITER ';' CSV;
-COPY ASSIGNED_TO FROM '/home/mashmax/workspace/DBrocks/CSV/assigned_to.csv' DELIMITER ';' CSV;
+COPY AREA FROM 'F:\workspace\DBrocks\CSV\Area.csv' DELIMITER ';' CSV;
+COPY CONCERTAREA FROM 'F:\workspace\DBrocks\CSV\ConcertArea.csv' DELIMITER ';' CSV;
+COPY STAGE FROM 'F:\workspace\DBrocks\CSV\Stage.csv' DELIMITER ';' CSV;
+COPY BAND FROM 'F:\workspace\DBrocks\CSV\Band.csv' DELIMITER ';' CSV;
+COPY PERFORMANCE FROM 'F:\workspace\DBrocks\CSV\Performance.csv' DELIMITER ';' CSV;
+COPY SPONSOR FROM 'F:\workspace\DBrocks\CSV\Sponsor.csv' DELIMITER ';' CSV;
+COPY BOOTH FROM 'F:\workspace\DBrocks\CSV\Booth.csv' DELIMITER ';' CSV;
+COPY PERSON FROM 'F:\workspace\DBrocks\CSV\Person.csv' DELIMITER ';' CSV;
+COPY VISITOR FROM 'F:\workspace\DBrocks\CSV\Visitor.csv' DELIMITER ';' CSV;
+COPY STAFF FROM 'F:\workspace\DBrocks\CSV\Staff.csv' DELIMITER ';' CSV;
+COPY NOTE FROM 'F:\workspace\DBrocks\CSV\Note.csv' DELIMITER ';' CSV;
+COPY RFID_TICKET FROM 'F:\workspace\DBrocks\CSV\RFID.csv' DELIMITER ';' CSV;
+COPY PRODUCT FROM 'F:\workspace\DBrocks\CSV\Product.csv' DELIMITER ';' CSV;
+COPY SHIFT FROM 'F:\workspace\DBrocks\CSV\Shift.csv' DELIMITER ';' CSV;
+COPY TIMETABLE FROM 'F:\workspace\DBrocks\CSV\Timetable.csv' DELIMITER ';' CSV;
+COPY ROCKS FROM 'F:\workspace\DBrocks\CSV\rocks.csv' DELIMITER ';' CSV;
+COPY TRANSACTION FROM 'F:\workspace\DBrocks\CSV\Transaction.csv' DELIMITER ';' CSV;
+COPY SELLS FROM 'F:\workspace\DBrocks\CSV\sells.csv' DELIMITER ';' CSV;
+COPY ADVERTISING FROM 'F:\workspace\DBrocks\CSV\Advertising.csv' DELIMITER ';' CSV;
+COPY WORKS FROM 'F:\workspace\DBrocks\CSV\works.csv' DELIMITER ';' CSV;
+COPY LOCATED FROM 'F:\workspace\DBrocks\CSV\located.csv' DELIMITER ';' CSV;
+COPY ASSIGNED_TO FROM 'F:\workspace\DBrocks\CSV\assigned_to.csv' DELIMITER ';' CSV;
 
