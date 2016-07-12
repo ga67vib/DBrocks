@@ -48,7 +48,9 @@ address			Varchar(256)	NOT NULL,
 payment			Decimal(15,2)	NOT NULL,
 num_req_booths		Integer		NOT NULL,
 num_ass_booths		Integer		NOT NULL DEFAULT 0,
-name			Varchar(256) NOT NULL
+name			Varchar(256) NOT NULL,
+password		Varchar(256) NOT NULL
+
 );
 
 CREATE TABLE Booth(
