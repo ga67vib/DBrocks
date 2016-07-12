@@ -13,7 +13,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import de.tum.in.dbpra.model.bean.PersonBean;
+import de.tum.in.dbpra.model.bean.SponsorBean;
 import de.tum.in.dbpra.model.dao.PersonDAO;
+import de.tum.in.dbpra.model.dao.SponsorDAO;
 
 /**
  * Servlet implementation class LoginServlet
@@ -114,8 +116,30 @@ public class LoginServlet extends HttpServlet {
 	}
 
 	protected void doLoginSponsor(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String mail = request.getParameter("id");
+		int id = Integer.parseInt(request.getParameter("id"));
         String password = request.getParameter("password-sponsor");
+        
+        SponsorBean sb = new SponsorBean();
+        SponsorDAO sd = new SponsorDAO();
+        try{
+        	sd.getSponsorbyID(sb, id);
+        	if(sb.getSponsorID()==0){//Id not set => no person with that mail
+	        	request.setAttribute("error", "Unknown id, please try again.");
+	            request.getRequestDispatcher("/login.jsp").forward(request, response);
+        	}else if(sb.getPassword().equals(password)){
+        		
+        	}
+        	
+        }catch(SQLException e){
+        	request.setAttribute("error", "SQLException occured. Text:\n"+e.getMessage());
+            request.getRequestDispatcher("/login.jsp").forward(request, response);
+        }
+        catch(ClassNotFoundException e){
+        	request.setAttribute("error", "ClassNotFoundException occured. Text:\n"+e.getMessage());
+            request.getRequestDispatcher("/login.jsp").forward(request, response);
+        }
+        
+        
 	}
 	/**
 	 * Reads necessary data from the register form, and then tries to register a visitor.
