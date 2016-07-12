@@ -9,7 +9,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import de.tum.in.dbpra.Config;
-import de.tum.in.dbpra.Config.Database;
 
 /**
  * @author 

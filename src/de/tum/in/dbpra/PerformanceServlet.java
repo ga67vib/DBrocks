@@ -9,9 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import de.tum.in.dbpra.model.bean.AreaListBean;
 import de.tum.in.dbpra.model.bean.PerformanceListBean;
-import de.tum.in.dbpra.model.dao.AreaDAO;
 import de.tum.in.dbpra.model.dao.PerformanceDAO;
 
 /**

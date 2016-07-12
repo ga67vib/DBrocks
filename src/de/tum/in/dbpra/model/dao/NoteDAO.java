@@ -7,7 +7,6 @@ import java.sql.SQLException;
 
 import de.tum.in.dbpra.model.bean.NoteBean;
 import de.tum.in.dbpra.model.bean.NoteListBean;
-import de.tum.in.dbpra.model.bean.PersonBean;
 
 public class NoteDAO extends DAO {
 

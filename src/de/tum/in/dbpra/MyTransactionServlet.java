@@ -15,14 +15,14 @@ import de.tum.in.dbpra.model.dao.TransactionDAO;
 /**
  * Servlet implementation class
  */
-@WebServlet("/transaction")
-public class TransactionServlet extends HttpServlet {
+@WebServlet("/myTransaction")
+public class MyTransactionServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public TransactionServlet() {
+	public MyTransactionServlet() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -34,13 +34,26 @@ public class TransactionServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		try {
-			TransactionDAO td = new TransactionDAO();
-			TransactionListBean tlb = new TransactionListBean();
-			td.getTransactions(tlb);
-			request.setAttribute("bean", tlb);
-
-			RequestDispatcher dispatcher = request.getRequestDispatcher("allTransaction.jsp"); 
-			dispatcher.forward(request, response);
+			if(request.getSession().getAttribute("staff") !=null){
+				TransactionDAO td = new TransactionDAO();
+				TransactionListBean tlb = new TransactionListBean();
+				td.getTransactions(tlb);
+				request.setAttribute("bean", tlb);
+	
+				RequestDispatcher dispatcher = request.getRequestDispatcher("allTransaction.jsp"); 
+				dispatcher.forward(request, response);
+			}else if(request.getSession().getAttribute("supplier") != null){
+				
+				int sponsorId = Integer.parseInt(request.getSession().getAttribute("supplier").toString());
+				TransactionDAO td = new TransactionDAO();
+				TransactionListBean tlb = new TransactionListBean();
+				td.getTransactionsBySponsorID(tlb, sponsorId);
+				
+				request.setAttribute("bean", tlb);
+				
+				RequestDispatcher dispatcher = request.getRequestDispatcher("allTransaction.jsp"); 
+				dispatcher.forward(request, response);
+			}
 
 		} catch (Throwable e) {
 			request.setAttribute("error", "Exception occured. Text:<br>" + e.getMessage());

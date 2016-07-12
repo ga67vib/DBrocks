@@ -73,7 +73,7 @@
 						<li><a href="#">(Maxi schreib sauber!)</a></li>
 						<li><a href="myBooth">My Booths</a></li>
 						<li><a href="myAdvertising">My Advertisement</a></li>
-						<li><a href="transaction">My Transactions</a></li>
+						<li><a href="myTransaction">My Transactions</a></li>
 						<li><a href="myProduct">My Products</a></li>
 						<li><a href="advertising">All Advertisements (per Area)</a></li>
 					</ul></li>
