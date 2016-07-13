@@ -25,6 +25,7 @@ public class SponsorDAO extends DAO {
 
 		while (rs.next()) {
 			sponsorbean.setSponsorID(rs.getInt("sponsor_id"));
+			sponsorbean.setName(rs.getString("name"));
 			sponsorbean.setAddress(rs.getString("address"));
 			sponsorbean.setPayment(rs.getInt("payment"));
 			sponsorbean.setNumReqBooths(rs.getInt("num_req_booths"));

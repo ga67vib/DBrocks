@@ -52,11 +52,10 @@
 		<div class="box">
 			<table style="width: 100%">
 				<tr>
-					<th>BoothID</th>
-					<th>SponsorID</th>
+					<th>Sponsor</th>
 					<th>Area</th>
 					<th>Spec_Req</th>
-					<th>Size</th>
+					<th>Size in m²</th>
 					<th>Name</th>
 					<th>Type</th>
 				</tr>
@@ -64,9 +63,8 @@
 					for (int i = 0; i < bean.getList().size(); i++) {
 				%>
 				<tr>
-					<td><%=bean.getChild(i).getBoothID()%></td>
-					<td><%=bean.getChild(i).getOwnedBy().getSponsorID()%></td>
-					<td><%=bean.getChild(i).getIsin().getAreaID()%></td>
+					<td><%=bean.getChild(i).getOwnedBy().getName()%></td>
+					<td><%=bean.getChild(i).getIsin().getName()%></td>
 					<td><%=bean.getChild(i).getSpecReq()%></td>
 					<td><%=bean.getChild(i).getSize()%></td>
 					<td><%=bean.getChild(i).getName()%></td>
