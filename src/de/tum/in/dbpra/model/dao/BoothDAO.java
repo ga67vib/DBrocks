@@ -27,27 +27,27 @@ public class BoothDAO extends DAO {
 		ResultSet rs = pstmt.executeQuery();
 
 		while (rs.next()) {
-			BoothBean object = new BoothBean();
-			object.setBoothID(rs.getInt("booth_id"));
+			BoothBean boothBean = new BoothBean();
+			boothBean.setBoothID(rs.getInt("booth_id"));
 
 			//SponsorBean for ownership of the Booth
-			SponsorBean temp = new SponsorBean();
-			SponsorDAO tempdao = new SponsorDAO();
-			tempdao.getSponsorbyID(temp, rs.getInt("owned_by"));
+			SponsorBean sponsorBean = new SponsorBean();
+			SponsorDAO sponsorDAO = new SponsorDAO();
+			sponsorDAO.getSponsorbyID(sponsorBean, rs.getInt("owned_by"));
 
-			object.setOwnedBy(temp);
+			boothBean.setOwnedBy(sponsorBean);
 			
 			//AreaBean for location of BoothDAO
-			AreaBean tempa = new AreaBean();
-			AreaDAO tempadao = new AreaDAO();
-			tempadao.getAreabyID(tempa, rs.getInt("is_in"));
-			object.setIsin(tempa);
+			AreaBean areaBean = new AreaBean();
+			AreaDAO areaDAO = new AreaDAO();
+			areaDAO.getAreabyID(areaBean, rs.getInt("is_in"));
+			boothBean.setIsin(areaBean);
 
-			object.setSize(rs.getInt("size"));
-			object.setName(rs.getString("name"));
-			object.setSpecReq(rs.getString("spec_req") == null ? "" : rs.getString("spec_req"));
-			object.setType(rs.getString("type"));
-			listobjekt.setChild(object);
+			boothBean.setSize(rs.getInt("size"));
+			boothBean.setName(rs.getString("name"));
+			boothBean.setSpecReq(rs.getString("spec_req") == null ? "" : rs.getString("spec_req"));
+			boothBean.setType(rs.getString("type"));
+			listobjekt.setChild(boothBean);
 		}
 
 		con.commit();
