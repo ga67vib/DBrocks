@@ -9,6 +9,7 @@ import de.tum.in.dbpra.model.bean.SponsorListBean;
 
 public class SponsorDAO extends DAO {
 
+	//get Sponsor by SponsorID (as parameter)
 	public void getSponsorbyID(SponsorBean sponsorbean, int SponsorID) throws SQLException, ClassNotFoundException {
 
 		String query = "SELECT * FROM Sponsor Where sponsor_id=?";
@@ -37,13 +38,13 @@ public class SponsorDAO extends DAO {
 		rs.close();
 		pstmt.close();
 		con.close();
-
 	}
 
+	//get all Sponsor
 	public void getSponsors(SponsorListBean sponsorlistbean)
 			throws SQLException, ClassNotFoundException {
 
-		String query = "SELECT * FROM Sponsor";
+		String query = "SELECT * FROM Sponsor;";
 
 		Connection con = getConnection();
 
@@ -65,7 +66,7 @@ public class SponsorDAO extends DAO {
 			sponsorlistbean.setChild(sponsorbean);
 		}
 		con.commit();
-
+		//close all open Resources
 		rs.close();
 		pstmt.close();
 		con.close();

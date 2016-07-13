@@ -4,18 +4,19 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
 import de.tum.in.dbpra.model.bean.ShiftBean;
 import de.tum.in.dbpra.model.bean.ShiftListBean;
-import de.tum.in.dbpra.model.bean.StaffBean;
-import de.tum.in.dbpra.model.bean.StaffListBean;
 
 public class ShiftDAO extends DAO {
-	public void getShifts(ShiftListBean shiftlist, int staffId) throws ClassNotFoundException, SQLException {
+	
+	//get all Shifts by StaffID
+	//if StaffID <= 0, then get ALL Shift
+	public void getShiftsbyStaffID(ShiftListBean shiftlist, int staffId) throws ClassNotFoundException, SQLException {
 
 		String query = "SELECT * FROM Shift";
 		if (staffId > 0) {
-			query = "select s.* from shift s, works w WHERE person_id = ? AND w.shift_id = s.shift_id;";
+			query = "select s.* from shift s, works w WHERE person_id = ? "
+					+ "AND w.shift_id = s.shift_id;";
 		}
 
 		Connection con;
@@ -42,12 +43,12 @@ public class ShiftDAO extends DAO {
 		}
 
 		con.commit();
-
+		//close Resources
 		rs.close();
 		pstmt.close();
 		con.close();
 	}
-
+	//getShift by ShiftID
 	public void getShiftbyID(ShiftBean shiftbean, Integer id) throws ClassNotFoundException, SQLException {
 		String query = "SELECT * FROM Shift Where shift_id = ?;";
 
@@ -94,32 +95,6 @@ public class ShiftDAO extends DAO {
 		return count;
 	}
 
-	public void getStaffbyShiftID(StaffListBean stafflist, Integer id) throws ClassNotFoundException, SQLException {
-		String query = "SELECT s.person_id,s.profession,s.salary FROM Staff s, works w Where s.shift_id = ?;";
-
-		Connection con;
-		con = getConnection();
-
-		con.setAutoCommit(false);
-
-		PreparedStatement pstmt = con.prepareStatement(query, ResultSet.TYPE_SCROLL_INSENSITIVE,
-				ResultSet.CONCUR_READ_ONLY);
-		pstmt.setInt(1, id);
-		ResultSet rs = pstmt.executeQuery();
-		while (rs.next()) {
-			StaffBean staff = new StaffBean();
-			staff.setPersonID(rs.getInt("person_id"));
-			staff.setProfession(rs.getString("profession"));
-			staff.setSalary(rs.getBigDecimal("salary"));
-			stafflist.setChild(staff);
-		}
-		con.commit();
-
-		rs.close();
-		pstmt.close();
-		con.close();
-
-	}
 	/*
 	 * TO-DO? public void getShiftbyAreaID(StaffListBean shiftlist, Integer id)
 	 * { String query =
