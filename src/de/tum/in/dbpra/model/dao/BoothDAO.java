@@ -11,6 +11,8 @@ import de.tum.in.dbpra.model.bean.BoothListBean;
 import de.tum.in.dbpra.model.bean.SponsorBean;
 
 public class BoothDAO extends DAO {
+	
+	//get all Booths 
 	public void getBooths(BoothListBean listobjekt) throws SQLException, ClassNotFoundException {
 
 		String query = "SELECT * FROM booth;";
@@ -28,12 +30,14 @@ public class BoothDAO extends DAO {
 			BoothBean object = new BoothBean();
 			object.setBoothID(rs.getInt("booth_id"));
 
+			//SponsorBean for ownership of the Booth
 			SponsorBean temp = new SponsorBean();
 			SponsorDAO tempdao = new SponsorDAO();
 			tempdao.getSponsorbyID(temp, rs.getInt("owned_by"));
 
 			object.setOwnedBy(temp);
-
+			
+			//AreaBean for location of BoothDAO
 			AreaBean tempa = new AreaBean();
 			AreaDAO tempadao = new AreaDAO();
 			tempadao.getAreabyID(tempa, rs.getInt("is_in"));
@@ -47,16 +51,17 @@ public class BoothDAO extends DAO {
 		}
 
 		con.commit();
-
+		//close Resources
 		rs.close();
 		pstmt.close();
 		con.close();
 
 	}
 	
+	//same Method as getBooths just with a Parameter for SponsorID
 	public void getBoothsBySponsorID(BoothListBean listobjekt, int id) throws SQLException, ClassNotFoundException {
 
-		String query = "SELECT * FROM booth b where b.owned_by = " + id + ";";
+		String query = "SELECT * FROM booth b where b.owned_by = ?;";
 
 		Connection con = getConnection();
 
@@ -64,7 +69,7 @@ public class BoothDAO extends DAO {
 
 		PreparedStatement pstmt = con.prepareStatement(query, ResultSet.TYPE_SCROLL_INSENSITIVE,
 				ResultSet.CONCUR_READ_ONLY);
-
+		pstmt.setInt(1, id);
 		ResultSet rs = pstmt.executeQuery();
 
 		while (rs.next()) {
@@ -90,7 +95,7 @@ public class BoothDAO extends DAO {
 		}
 
 		con.commit();
-
+		//close Resources
 		rs.close();
 		pstmt.close();
 		con.close();
