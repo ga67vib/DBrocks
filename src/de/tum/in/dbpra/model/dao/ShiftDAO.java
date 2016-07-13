@@ -13,11 +13,13 @@ import de.tum.in.dbpra.model.bean.StaffListBean;
 public class ShiftDAO extends DAO {
 	
 	//get all Shifts by StaffID
+	//if StaffID <= 0, then get ALL Shift
 	public void getShiftsbyStaffID(ShiftListBean shiftlist, int staffId) throws ClassNotFoundException, SQLException {
 
 		String query = "SELECT * FROM Shift";
 		if (staffId > 0) {
-			query = "select s.* from shift s, works w WHERE person_id = ? AND w.shift_id = s.shift_id;";
+			query = "select s.* from shift s, works w WHERE person_id = ? "
+					+ "AND w.shift_id = s.shift_id;";
 		}
 
 		Connection con;
@@ -44,12 +46,12 @@ public class ShiftDAO extends DAO {
 		}
 
 		con.commit();
-
+		//close Resources
 		rs.close();
 		pstmt.close();
 		con.close();
 	}
-
+	//getShift by ShiftID
 	public void getShiftbyID(ShiftBean shiftbean, Integer id) throws ClassNotFoundException, SQLException {
 		String query = "SELECT * FROM Shift Where shift_id = ?;";
 
