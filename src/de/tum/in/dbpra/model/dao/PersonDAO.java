@@ -13,6 +13,7 @@ import de.tum.in.dbpra.model.bean.PersonListBean;
 
 public class PersonDAO extends DAO {
 
+	//get All Person
 	public void getPersons(PersonListBean personsBean) throws SQLException,
 			ClassNotFoundException {
 		String query = "SELECT * FROM Person;";
@@ -25,7 +26,7 @@ public class PersonDAO extends DAO {
 				ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 
 		ResultSet rs = pstmt.executeQuery();
-
+		//set ALL attributes for the Person
 		while (rs.next()) {
 			PersonBean personBean = new PersonBean();
 			personBean.setAddress(rs.getString("Address"));
@@ -37,7 +38,7 @@ public class PersonDAO extends DAO {
 			personBean.setMail(rs.getString("Mail"));
 			personBean.setPersonID(rs.getInt("Person_ID"));
 			personBean.setPhonenumber(rs.getString("Phone_number"));
-			// personBean.setNotes(new NoteListBean());
+			//add Person to the List
 			personsBean.setChild(personBean);
 		}
 		con.commit();
@@ -48,6 +49,8 @@ public class PersonDAO extends DAO {
 
 	}
 
+	//get Person by PersonID (as Parameter)
+	//else same Method as getPerson
 	public void getPersonbyID(PersonBean personBean, int PersonID)
 			throws SQLException, ClassNotFoundException {
 
@@ -76,7 +79,7 @@ public class PersonDAO extends DAO {
 			personBean.setNotes(new NoteListBean());
 		}
 		con.commit();
-
+		//close all Resources after Commit
 		rs.close();
 		pstmt.close();
 		con.close();
@@ -93,6 +96,7 @@ public class PersonDAO extends DAO {
 
 		PreparedStatement pstmt = con.prepareStatement(query,
 				ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+		//setParameter (noteID) in the Query
 		pstmt.setInt(1, noteID);
 
 		ResultSet rs = pstmt.executeQuery();
@@ -113,7 +117,7 @@ public class PersonDAO extends DAO {
 			result.setChild(personBean);
 		}
 		con.commit();
-
+		//close all Resources
 		rs.close();
 		pstmt.close();
 		con.close();
@@ -158,7 +162,7 @@ public class PersonDAO extends DAO {
 			personBean.setPassword(rs.getString("password"));
 		}
 		con.commit();
-
+		//close all Resources
 		rs.close();
 		pstmt.close();
 		con.close();
@@ -172,7 +176,7 @@ public class PersonDAO extends DAO {
 	 * 
 	 * @param personID
 	 *            The personID to be checked
-	 * @return True iff the personID belongs to a visitor
+	 * @return True (if and only if) the personID belongs to a visitor
 	 */
 	public boolean isVisitor(int personID) throws SQLException,
 			ClassNotFoundException {
@@ -204,7 +208,7 @@ public class PersonDAO extends DAO {
 	 * 
 	 * @param personID
 	 *            The personID to be checked
-	 * @return True iff the personID belongs to a staff member
+	 * @return True (if and only if) the personID belongs to a staff member
 	 */
 	public boolean isStaffMember(int personID) throws SQLException,
 			ClassNotFoundException {
@@ -272,8 +276,7 @@ public class PersonDAO extends DAO {
 		ResultSet rs = finalStmt.executeQuery();
 		rs.next();
 		int personID = rs.getInt(1);
-		rs.close();
-		finalStmt.close();
+		
 
 		RFID_TicketDAO rd = new RFID_TicketDAO();
 		VisitorDAO vd = new VisitorDAO();
@@ -283,6 +286,9 @@ public class PersonDAO extends DAO {
 		vd.insertVisitor(con, personID, prefGenre);
 
 		con.commit();
+		//close Resources 
+		rs.close();
+		finalStmt.close();
 		con.close();
 
 		return personID;
