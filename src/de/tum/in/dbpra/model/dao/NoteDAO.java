@@ -85,7 +85,7 @@ public class NoteDAO extends DAO {
 	
 	public void getNotesbyPersonID(NoteListBean notelist, int person_id) throws ClassNotFoundException, SQLException
 	{
-		String query = "Select * From Notes n, assigned_to a "
+		String query = "Select * From Note n, assigned_to a "
 				+"Where a.person_id = ? AND n.note_id = a.note_id;";
 		Connection con = getConnection();
 

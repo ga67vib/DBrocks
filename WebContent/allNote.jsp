@@ -28,8 +28,11 @@
 			} else {
 		%>
 
+		<%if (request.getAttribute("singleStaff") != null)  { //if we want to display the notes for only a single staff%>
+		<h1>The notes which are attached to you: </h1>
+		<%}else{%>
 		<h1>Our cool notes:</h1>
-
+		<%}%>
 		<div class="box">
 			<table style="width: 100%">
 				<tr>
