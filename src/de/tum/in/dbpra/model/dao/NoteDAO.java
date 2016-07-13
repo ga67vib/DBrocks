@@ -9,10 +9,11 @@ import de.tum.in.dbpra.model.bean.NoteBean;
 import de.tum.in.dbpra.model.bean.NoteListBean;
 
 public class NoteDAO extends DAO {
-
+	
+	//get all Notes
 	public void getNotes(NoteListBean listObject) throws SQLException, ClassNotFoundException {
 
-		String query = "SELECT * FROM Note n;";
+		String query = "SELECT * FROM Note;";
 
 		Connection con = getConnection();
 
@@ -29,12 +30,17 @@ public class NoteDAO extends DAO {
 			notebean.setContent(rs.getString("content"));
 			notebean.setCreationTime(rs.getDate("creation_time"));
 			notebean.setDone(rs.getBoolean("done"));
+			
+			//create persondao, to get whom the note is attached to
 			PersonDAO pd = new PersonDAO();
-			notebean.setAttachedto(pd.getPersonsByNoteID(rs.getInt("note_id"))); //get Persons for this note
+			//set all attributes for the Person by his ID
+			notebean.setAttachedto(pd.getPersonsByNoteID(rs.getInt("note_id")));
+			
+			//add the notebean to the list
 			listObject.setChild(notebean);
 		}
 		con.commit();
-
+		//close all resources
 		rs.close();
 		pstmt.close();
 		con.close();
@@ -70,7 +76,7 @@ public class NoteDAO extends DAO {
 			insertAssignedTo.executeUpdate(); //insert for each person_id
 		}
 		insertAssignedTo.close();
-		
+		//close Resources
 		con.commit();
 		con.close();
 		
