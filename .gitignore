@@ -1,3 +1,5 @@
 /build/
 /src/de/tum/in/dbpra/config.java
 .classpath
+
+.settings/org.eclipse.wst.ws.service.policy.prefs
