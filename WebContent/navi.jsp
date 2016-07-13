@@ -74,7 +74,7 @@
 						<li><a href="myAdvertising">My Advertisement</a></li>
 						<li><a href="myTransaction">My Transactions</a></li>
 						<li><a href="myProduct">My Products</a></li>
-						<li><a href="advertising">All Advertisements (per Area)</a></li>
+						<li><a href="advertising">All Advertisements</a></li>
 					</ul></li>
 				<%
 					}
