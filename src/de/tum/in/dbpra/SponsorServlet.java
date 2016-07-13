@@ -36,6 +36,7 @@ public class SponsorServlet extends HttpServlet {
 		try {
 			SponsorDAO sd = new SponsorDAO();
 			SponsorListBean slb = new SponsorListBean();
+			//get All sponsors
 			sd.getSponsors(slb);
 			request.setAttribute("bean", slb);
 

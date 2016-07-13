@@ -36,6 +36,7 @@ public class NoteServlet extends HttpServlet {
 		try {
 			NoteDAO nd = new NoteDAO();
 			NoteListBean nlb = new NoteListBean();
+			//get ALL notes
 			nd.getNotes(nlb);
 			request.setAttribute("bean", nlb);
 

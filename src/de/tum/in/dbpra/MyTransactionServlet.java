@@ -37,6 +37,7 @@ public class MyTransactionServlet extends HttpServlet {
 			if(request.getSession().getAttribute("staff") !=null){
 				TransactionDAO td = new TransactionDAO();
 				TransactionListBean tlb = new TransactionListBean();
+				//get All Transactions
 				td.getTransactions(tlb);
 				request.setAttribute("bean", tlb);
 	
@@ -47,6 +48,7 @@ public class MyTransactionServlet extends HttpServlet {
 				int sponsorId = Integer.parseInt(request.getSession().getAttribute("supplier").toString());
 				TransactionDAO td = new TransactionDAO();
 				TransactionListBean tlb = new TransactionListBean();
+				//get All Transactions by SponsorID
 				td.getTransactionsBySponsorID(tlb, sponsorId);
 				
 				request.setAttribute("bean", tlb);
