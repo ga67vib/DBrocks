@@ -88,7 +88,7 @@
 					<ul class="dropdown-menu">
 						<li><a href="Organization">My Profile</a></li>
 						<li><a href="RFID_Ticket">Tickets</a></li>
-						<li><a href="sponsor">Sponsors</a></li>
+						<li><a href="sponsorlist">Sponsors</a></li>
 						<li><a href="booth">Booths</a></li>
 						<li><a href="transaction">Transactions</a></li>
 						<li><a href="advertising">Advertising</a></li>
