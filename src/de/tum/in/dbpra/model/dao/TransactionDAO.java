@@ -13,6 +13,7 @@ import de.tum.in.dbpra.model.bean.TransactionListBean;
 
 public class TransactionDAO extends DAO {
 
+	//get Transaction by Transaction_ID
 	public void getTransactionbyID(TransactionBean transactionbean, int id)
 			throws ClassNotFoundException, SQLException {
 		String query = "SELECT * FROM Transaction Where transaction_id = ?;";
@@ -125,4 +126,31 @@ public class TransactionDAO extends DAO {
 		con.close();
 	}
 
+	public void getTransactionsbyPersonID(TransactionListBean tlist, int transaction_id) throws ClassNotFoundException, SQLException
+	{
+		String query = "Select t.transaction_id,t.product_id,p.person_id,p.first_name" +
+				"From Transaction t, rfid_ticket r, Person p" +
+				"Where t.ticket_id = r.ticket_id" +
+					"And r.owned_by = p.person_id;";
+		
+		Connection con = getConnection();
+
+		con.setAutoCommit(false);
+
+		PreparedStatement pstmt = con.prepareStatement(query, ResultSet.TYPE_SCROLL_INSENSITIVE,
+				ResultSet.CONCUR_READ_ONLY);
+
+		ResultSet rs = pstmt.executeQuery();
+		while(rs.next())
+		{
+			TransactionBean tbean = new TransactionBean();
+			//tbean.setTransactionID(rs.getInt("transaction_id"));
+			getTransactionbyID(tbean, rs.getInt("transaction_id"));
+			tlist.setChild(tbean);
+		}
+		
+		
+		
+	}
+	
 }
