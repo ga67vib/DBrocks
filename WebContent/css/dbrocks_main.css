@@ -62,11 +62,11 @@ table {
 }
 
 th {
-	padding: 7px;
 	width: 16%;
 	text-align: left;
 	background: #555753;
 	color: #fff;
+	padding: 7px;
 }
 
 td {
@@ -97,4 +97,100 @@ th.table-head {
 
 .col-md-4>img {
 	width: 100%;
+}
+
+#primary_filter {
+	display: none;
+}
+
+th input {
+	width: 100%;
+	cursor: text;
+}
+
+.dataTables_length, .dataTables_info, .dataTables_paginate {
+	margin: 8px;
+}
+
+.dataTables_info {
+	padding-bottom: 10px;
+}
+
+.paginate_button {
+	background: #555753;
+	padding: 7px;
+	margin: 2px;
+	color: #fff !important;
+	border-radius: 5px;
+}
+
+.previous {
+	padding-left: 10px;
+	border-radius: 15px 5px 5px 15px;
+}
+
+input[type=submit] {
+	border: none;
+	background: none;
+	background-color: #555753;
+	height: 27px;
+	border-radius: 100px;
+	color: #fff;
+	padding: 0 10px;
+	margin: 10px;
+}
+
+input[type=password] {
+	background-color: #fff !important;
+	border: 1px solid #808080;
+	height: 27px;
+}
+
+input[type=radio] {
+	margin-bottom: 10px;
+}
+
+form {
+	padding: 0px 10px;
+	margin: 10px 0;
+}
+
+.form-register {
+	text-align: center
+}
+
+.form-register>.row {
+	text-align: left;
+}
+
+form input {
+	margin-bottom: 20px;
+}
+
+.next {
+	padding-right: 10px;
+	border-radius: 5px 15px 15px 5px;
+}
+
+.paginate_button {
+	cursor: pointer;
+}
+
+.paginate_button.current, .paginate_button.disabled {
+	color: #808080 !important;
+	cursor: default;
+}
+
+.paginate_button.current:hover, .paginate_button.disabled:hover {
+	text-decoration: none;
+}
+
+.dataTables_paginate.paging_simple_numbers {
+	text-align: center
+}
+
+.register {
+	font-size: 24px;
+	height: 35px !important;
+	padding: 0 15px !important;
 }

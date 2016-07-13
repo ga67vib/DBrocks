@@ -23,11 +23,11 @@
 		<%
 			if (request.getAttribute("error") != null) {
 		%>
-			<div class="box">
-		
-				<h1>An error occured!</h1>
-				<%=request.getAttribute("error")%>
-			</div>
+		<div class="box">
+
+			<h1>An error occured!</h1>
+			<%=request.getAttribute("error")%>
+		</div>
 		<%
 			} else {
 		%>
@@ -36,67 +36,63 @@
 
 		<div class="box">
 
-			 <form method="POST">
-			 	<input type="hidden" name="whoami" value="login">
-			 	Mail address:<br>
-			 	<input type="text" name="mail"><br>
-			 	Password:<br>
-			 	<input type="password" name="password">
-			 	<input type="submit" value="Login">
-			 </form> 
+			<form method="POST">
+				<input type="hidden" name="whoami" value="login"> Mail
+				address:<br> <input type="text" name="mail"><br>
+				Password:<br> <input type="password" name="password"> <input
+					type="submit" value="Login">
+			</form>
 
 		</div>
-		
+
 		<h1>Here you can log in as Sponsor:</h1>
 
 		<div class="box">
 
-			 <form method="POST">
-			 	<input type="hidden" name="whoami" value="login-sponsor">
-			 	Sponsor ID:<br>
-			 	<input type="text" name="id"><br>
-			 	Password:<br>
-			 	<input type="password" name="password-sponsor">
-			 	<input type="submit" value="Login">
-			 </form> 
+			<form method="POST">
+				<input type="hidden" name="whoami" value="login-sponsor">
+				Sponsor ID:<br> <input type="text" name="id"><br>
+				Password:<br> <input type="password" name="password-sponsor">
+				<input type="submit" value="Login">
+			</form>
 
 		</div>
 
 		<h1>Here you can register:</h1>
 
 		<div class="box">
-			 <form method="POST">
-			 	<input type="hidden" name="whoami" value="register">
-			 	First Name:<br>
-			 	<input type="text" name="firstname"><br>
-			 	Last Name:<br>
-			 	<input type="text" name=lastname><br>
-			 	Mail address:<br>
-			 	<input type="text" name="email"><br>
-			 	Password:<br>
-			 	<input type="password" name="newPassword"><br>
-			 	Birthday:<br>
-			 	<input type="text" name="bday"><br>
-			 	Gender:<br>
-			 	<input type="radio" name="gender" value="m" checked> Male<br>
-  				<input type="radio" name="gender" value="f"> Female<br>
-  				Address:<br>
-  				<input type="text" name="address"><br>
-  				Phonenumber:<br>
-  				<input type="text" name="phonenumber"><br>
-  				<input type="radio" name="camper" value="camper"> Camper<br>
-  				<input type="radio" name="vip" value="vip"> VIP<br>
-  				<% //*Ticket valid from:<br>
-  				//*<input type="date" name="valid_from" min="2016-08-19"><br>
-  				//*Ticket valid until:<br>
-  				//*<input type="date" name="valid_until" max="2016-08-21"><br> %>
-  				Preferred Genre:<br>
-  				<input type="text" name="prefGenre"><br>
-  				<br>
-  				Since today is a special day, your ticket costs only 9.99 for the whole festival!<br>
-			 	<br>
-			 	<input type="submit" value="Register">
-			 </form> 
+			<form class="form-register" method="POST">
+				<p style="text-decoration: underline; font-weight:bold; text-align:center">Since today is a special day, your ticket costs only 9.99 € for
+					the whole festival!
+				<p>
+				<div class="row">
+					<div class="col-md-6">
+						<input type="hidden" name="whoami" value="register"> First
+						Name:<br> <input type="text" name="firstname"><br>
+						Last Name:<br> <input type="text" name=lastname><br>
+						Mail address:<br> <input type="text" name="email"><br>
+						Password:<br> <input type="password" name="newPassword"><br>
+						Birthday:<br> <input type="text" name="bday"><br>
+					</div>
+					<div class="col-md-6">
+						Gender:<br> <input type="radio" name="gender" value="m"
+							checked> Male<br> <input type="radio" name="gender"
+							value="f"> Female<br> Address:<br> <input
+							type="text" name="address"><br> Phonenumber:<br>
+						<input type="text" name="phonenumber"><br> <input
+							type="radio" name="camper" value="camper"> Camper<br>
+						<input type="radio" name="vip" value="vip"> VIP<br>
+						<%
+							//*Ticket valid from:<br>
+								//*<input type="date" name="valid_from" min="2016-08-19"><br>
+								//*Ticket valid until:<br>
+								//*<input type="date" name="valid_until" max="2016-08-21"><br>
+						%>
+						Preferred Genre:<br> <input type="text" name="prefGenre"><br>
+					</div>
+				</div>
+				<br> <input class="register" type="submit" value="Register Now!">
+			</form>
 		</div>
 	</div>
 	<%
