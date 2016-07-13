@@ -40,11 +40,11 @@ public class PerformanceServlet extends HttpServlet {
 			pd.getPerformances(plb);
 
 			request.setAttribute("bean", plb);
-			RequestDispatcher dispatcher = request.getRequestDispatcher("allPerformance.jsp"); 
+			RequestDispatcher dispatcher = request.getRequestDispatcher("allPerformanceDatatables.jsp"); 
 			dispatcher.forward(request, response);
 		} catch (Throwable e) {
 			request.setAttribute("error", "Exception occured. Text:<br>" + e.getMessage());
-            request.getRequestDispatcher("/allPerformance.jsp").forward(request, response);
+            request.getRequestDispatcher("/allPerformanceDatatables.jsp").forward(request, response);
 		}
 	}
 

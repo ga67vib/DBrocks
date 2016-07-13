@@ -20,6 +20,13 @@
 	}
 %>
 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+
+
+		
+		
+
 
 <nav class="navbar navbar-default navbar-fixed-top">
 	<div class="container">
