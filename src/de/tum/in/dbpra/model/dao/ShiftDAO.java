@@ -98,32 +98,6 @@ public class ShiftDAO extends DAO {
 		return count;
 	}
 
-	public void getStaffbyShiftID(StaffListBean stafflist, Integer id) throws ClassNotFoundException, SQLException {
-		String query = "SELECT s.person_id,s.profession,s.salary FROM Staff s, works w Where s.shift_id = ?;";
-
-		Connection con;
-		con = getConnection();
-
-		con.setAutoCommit(false);
-
-		PreparedStatement pstmt = con.prepareStatement(query, ResultSet.TYPE_SCROLL_INSENSITIVE,
-				ResultSet.CONCUR_READ_ONLY);
-		pstmt.setInt(1, id);
-		ResultSet rs = pstmt.executeQuery();
-		while (rs.next()) {
-			StaffBean staff = new StaffBean();
-			staff.setPersonID(rs.getInt("person_id"));
-			staff.setProfession(rs.getString("profession"));
-			staff.setSalary(rs.getBigDecimal("salary"));
-			stafflist.setChild(staff);
-		}
-		con.commit();
-
-		rs.close();
-		pstmt.close();
-		con.close();
-
-	}
 	/*
 	 * TO-DO? public void getShiftbyAreaID(StaffListBean shiftlist, Integer id)
 	 * { String query =

@@ -10,6 +10,8 @@ import de.tum.in.dbpra.model.bean.StaffBean;
 import de.tum.in.dbpra.model.bean.StaffListBean;
 
 public class StaffDAO extends DAO {
+	
+	//get Staff by ShiftID
 	public void getStaff(StaffListBean stafflist, int shiftId) throws ClassNotFoundException, SQLException {
 		String query = "Select * From Staff s, Person p WHERE p.person_id = s.person_id";
 		if (shiftId > 0) {

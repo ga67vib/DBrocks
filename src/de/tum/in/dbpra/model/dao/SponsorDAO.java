@@ -38,7 +38,6 @@ public class SponsorDAO extends DAO {
 		rs.close();
 		pstmt.close();
 		con.close();
-
 	}
 
 	//get all Sponsor
