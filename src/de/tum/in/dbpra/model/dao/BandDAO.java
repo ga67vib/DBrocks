@@ -32,7 +32,7 @@ public class BandDAO extends DAO {
 			BandBean object = new BandBean();
 			object.setBandID(rs.getInt("band_id"));
 			object.setBandName(rs.getString("band_name"));
-			object.setInstruction(rs.getString("instruction"));
+			object.setInstruction(rs.getString("instruction")==null? "" : rs.getString("instruction") );
 			object.setSonglist(rs.getString("songlist"));
 			object.setSalary(rs.getDouble("salary"));
 			listobjekt.setChild(object);
