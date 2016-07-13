@@ -22,45 +22,44 @@
 		<%
 			if (request.getAttribute("error") != null) {
 		%>
-			<div class="box">
-		
-				<h1>An error occured!</h1>
-				<%=request.getAttribute("error")%>
-			</div>
+		<div class="box">
+
+			<h1>An error occured!</h1>
+			<%=request.getAttribute("error")%>
+		</div>
 		<%
 			} else {
 		%>
-		
+
 		<h1>Our cool bands:</h1>
 
-		<div class="box">
-			<table style="width: 100%">
-				<tr>
-					<th>BandID</th>
-					<th>Name</th>
-					<th>Salary</th>
-					<th>Songlist</th>
-					<th>Instruction</th>
-				</tr>
-				<%
-					for (int i = 0; i < bean.getList().size(); i++) {
-				%>
-				<tr>
-					<td><%=bean.getChild(i).getBandID()%></td>
-					<td><%=bean.getChild(i).getBandName()%></td>
-					<td><%=bean.getChild(i).getSalary()%></td>
-					<td><%=bean.getChild(i).getSonglist()%></td>
-					<td><%=bean.getChild(i).getInstruction()%></td>
-				</tr>
-				<%
-					}
-				%>
-			</table>
+		<%
+			for (int i = 0; i < bean.getList().size(); i++) {
+		%>
+		<div class="row box">
+			<div class="col-md-4">
+				<img src="media/note<%=i%5%>.png">
+			</div>
+			<div class="col-md-8">
+				<h2><%=bean.getChild(i).getBandName()%></h2>
+				<%String songs = bean.getChild(i).getSonglist().toString();
+				songs = songs.substring(1,songs.length()-1).replace("|",", ");%>
+				<h3>Songs:</h3><%=songs%>
+				<h3>Annotations:</h3>
+				<p><%=bean.getChild(i).getInstruction()%></p>
+			</div>
+
 		</div>
+		<%
+			}
+		%>
+		<%
+			}
+		%>
 	</div>
-	<%
-		}
-	%>
+
+
+
 
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
