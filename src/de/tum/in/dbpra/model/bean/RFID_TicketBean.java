@@ -39,7 +39,7 @@ public class RFID_TicketBean {
 	}
 
 	/**
-	 * @return the ownedBy
+	 * You got ownedBy [Output]
 	 */
 	public PersonBean getOwnedBy() {
 		return ownedBy;

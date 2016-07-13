@@ -9,41 +9,36 @@ import de.tum.in.dbpra.model.bean.VisitorBean;
 import de.tum.in.dbpra.model.bean.VisitorListBean;
 
 public class VisitorDAO extends DAO {
-	public void getVisitors(VisitorListBean visitorlist) {
+
+	/**
+	 * Gets all visitors and fills the visitorListBean.
+	 */
+	public void getVisitors(VisitorListBean visitorlist) throws SQLException, ClassNotFoundException {
 
 		String query = "SELECT * FROM Visitor;";
 
 		Connection con;
-		try {
-			con = getConnection();
+		con = getConnection();
 
-			con.setAutoCommit(false);
+		con.setAutoCommit(false);
 
-			PreparedStatement pstmt = con.prepareStatement(query,
-					ResultSet.TYPE_SCROLL_INSENSITIVE,
-					ResultSet.CONCUR_READ_ONLY);
+		PreparedStatement pstmt = con.prepareStatement(query, ResultSet.TYPE_SCROLL_INSENSITIVE,
+				ResultSet.CONCUR_READ_ONLY);
 
-			ResultSet rs = pstmt.executeQuery();
+		ResultSet rs = pstmt.executeQuery();
 
-			while (rs.next()) {
-				VisitorBean visitor = new VisitorBean();
-				visitor.setPersonID(rs.getInt("person_id"));
-				visitor.setPreferredGenre(rs.getString("preferred_genre"));
-				visitorlist.setChild(visitor);
-			}
-
-			con.commit();
-
-			rs.close();
-			pstmt.close();
-			con.close();
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		while (rs.next()) {
+			VisitorBean visitor = new VisitorBean();
+			visitor.setPersonID(rs.getInt("person_id"));
+			visitor.setPreferredGenre(rs.getString("preferred_genre"));
+			visitorlist.setChild(visitor);
 		}
+
+		con.commit();
+
+		rs.close();
+		pstmt.close();
+		con.close();
 
 	}
 
@@ -54,11 +49,10 @@ public class VisitorDAO extends DAO {
 	 */
 	public void insertVisitor(Connection con, int personID, String prefGenre)
 			throws SQLException, ClassNotFoundException {
-		PreparedStatement pstmt = con
-				.prepareStatement("INSERT INTO VISITOR(person_id, preferred_genre) VALUES (?,?)");
+		PreparedStatement pstmt = con.prepareStatement("INSERT INTO VISITOR(person_id, preferred_genre) VALUES (?,?)");
 		pstmt.setInt(1, personID);
 		pstmt.setString(2, prefGenre);
-		
+
 		// insert the visitor related data
 		pstmt.executeUpdate();
 		pstmt.close();

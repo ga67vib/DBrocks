@@ -36,6 +36,7 @@ public class MyBoothServlet extends HttpServlet {
 			if(request.getSession().getAttribute("staff") !=null){
 				BoothDAO bd = new BoothDAO();
 				BoothListBean blb = new BoothListBean();
+				//get ALL booths
 				bd.getBooths(blb);
 	
 				request.setAttribute("bean", blb);
@@ -47,10 +48,10 @@ public class MyBoothServlet extends HttpServlet {
 				int sponsorId = Integer.parseInt(request.getSession().getAttribute("supplier").toString());
 				BoothDAO bd = new BoothDAO();
 				BoothListBean blb = new BoothListBean();
-				
+				//get all Booths by SponsorID
 				bd.getBoothsBySponsorID(blb, sponsorId);
 				request.setAttribute("bean", blb);
-				RequestDispatcher dispatcher = request.getRequestDispatcher("allBooth.jsp"); 
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/allBooth.jsp"); 
 				dispatcher.forward(request, response);
 			}
 		} catch (Throwable e) {

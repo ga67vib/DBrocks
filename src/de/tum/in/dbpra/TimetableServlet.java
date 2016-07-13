@@ -45,19 +45,25 @@ public class TimetableServlet extends HttpServlet {
 					&& Helpermethods.isParsable(request.getSession().getAttribute("staff").toString())) {
 				person_id = Integer.parseInt(request.getSession().getAttribute("staff").toString());
 			}
+			//get ALL performances
+			//tlb19 contains all Performances at the 19.
 			td.getPerformancesByDay(tlb19, 19, 0);
 			td.getPerformancesByDay(tlb20, 20, 0);
+			//performances, person_id wishes to visit/already visited
 			td.getPerformancesByDay(tlb20own, 20, person_id);
 			td.getPerformancesByDay(tlb19own, 19, person_id);
+			
 			request.setAttribute("bean19", tlb19);
 			request.setAttribute("bean20", tlb20);
 			request.setAttribute("bean19own", tlb19own);
 			request.setAttribute("bean20own", tlb20own);
 
-			RequestDispatcher dispatcher = request.getRequestDispatcher("timetable.jsp"); // fill
-			// in
-			// jsp
-			dispatcher.forward(request, response);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("timetable.jsp"); 
+			
+			//only dispatch request if user is a logged in visitor or staff member; else blank page
+			if (request.getSession().getAttribute("visitor") != null || request.getSession().getAttribute("staff") != null){
+				dispatcher.forward(request, response);
+			}
 
 		} catch (Throwable e) {
 			e.printStackTrace();

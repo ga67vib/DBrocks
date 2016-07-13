@@ -37,6 +37,7 @@ public class MyAdvertisingServlet extends HttpServlet {
 			if(request.getSession().getAttribute("staff") !=null){
 					AdvertisingDAO ad = new AdvertisingDAO();
 					AdvertisingListBean alb = new AdvertisingListBean();
+					//get all Advertisings
 					ad.getAdvertisings(alb);
 					request.setAttribute("bean", alb);
 
@@ -47,6 +48,7 @@ public class MyAdvertisingServlet extends HttpServlet {
 				int sponsorId = Integer.parseInt(request.getSession().getAttribute("supplier").toString());
 				AdvertisingDAO ad = new AdvertisingDAO();
 				AdvertisingListBean alb = new AdvertisingListBean();
+				//get all Advertisings by SponsorID
 				ad.getAdvertisingsBySponsorId(alb, sponsorId);
 				request.setAttribute("bean", alb);
 	

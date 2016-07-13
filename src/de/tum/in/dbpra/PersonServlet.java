@@ -35,6 +35,7 @@ public class PersonServlet extends HttpServlet {
 		try {
 			PersonDAO pd = new PersonDAO();
 			PersonListBean plb = new PersonListBean();
+			//get ALL persons
 			pd.getPersons(plb);
 			
     	} catch (Throwable e) {

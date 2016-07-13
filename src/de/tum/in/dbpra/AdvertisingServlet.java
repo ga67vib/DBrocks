@@ -36,6 +36,7 @@ public class AdvertisingServlet extends HttpServlet {
 		try {
 			AdvertisingDAO ad = new AdvertisingDAO();
 			AdvertisingListBean alb = new AdvertisingListBean();
+			//get ALL advertisings
 			ad.getAdvertisings(alb);
 			request.setAttribute("bean", alb);
 

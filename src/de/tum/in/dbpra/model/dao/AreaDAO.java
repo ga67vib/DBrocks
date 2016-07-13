@@ -9,6 +9,8 @@ import de.tum.in.dbpra.model.bean.AreaBean;
 import de.tum.in.dbpra.model.bean.AreaListBean;
 
 public class AreaDAO extends DAO {
+	
+	//get All Areas 
 	public void getAreas(AreaListBean listObject) throws SQLException, ClassNotFoundException {
 
 		String query = "SELECT * FROM Area;";
@@ -23,6 +25,7 @@ public class AreaDAO extends DAO {
 		ResultSet rs = pstmt.executeQuery();
 
 		while (rs.next()) {
+			//set All areabean Attributes
 			AreaBean areabean = new AreaBean();
 			areabean.setAreaID(rs.getInt("area_id"));
 			areabean.setSize(rs.getInt("size"));
@@ -37,7 +40,8 @@ public class AreaDAO extends DAO {
 		con.close();
 
 	}
-
+	
+	//get Area by AreaID (as Parameter)
 	public void getAreabyID(AreaBean areabean, int AreaID)
 			throws SQLException, ClassNotFoundException {
 
@@ -53,6 +57,7 @@ public class AreaDAO extends DAO {
 		ResultSet rs = pstmt.executeQuery();
 
 		while (rs.next()) {
+			//set all areabean Attributes
 			areabean.setAreaID(rs.getInt("area_id"));
 			areabean.setSize(rs.getInt("size"));
 			areabean.setName(rs.getString("name"));
