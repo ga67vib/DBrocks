@@ -8,7 +8,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
 <link type="text/css" rel="stylesheet" href="css/dbrocks_main.css" />
-<title>AllBooth</title>
+<%
+	if (session.getAttribute("supplier") != null) {
+%>
+<title>My Booths</title>
+<%
+	} else {
+%>
+<title>All Booths</title>
+<%
+	}
+%>
 </head>
 
 <body>
@@ -20,16 +30,24 @@
 		<%
 			if (request.getAttribute("error") != null) {
 		%>
-			<div class="box">
-		
-				<h1>An error occured!</h1>
-				<%=request.getAttribute("error")%>
-			</div>
+		<div class="box">
+
+			<h1>An error occured!</h1>
+			<%=request.getAttribute("error")%>
+		</div>
 		<%
 			} else {
-		%>
 
-		<h1>Our cool booths:</h1>
+				if (session.getAttribute("supplier") != null) {
+		%>
+		<h1>My Booths</h1>
+		<%
+				} else {
+		%>
+		<h1>All Booths</h1>
+		<%
+				}
+		%>
 
 		<div class="box">
 			<table style="width: 100%">
@@ -64,7 +82,7 @@
 		}
 	%>
 	<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
 </body>
 </html>

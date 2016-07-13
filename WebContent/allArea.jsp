@@ -39,7 +39,7 @@
 			<table style="width: 100%">
 				<tr>
 					<th>AreaID</th>
-					<th>Size</th>
+					<th>Size in sqm</th>
 					<th>Name</th>
 					<th>Description</th>
 				</tr>
