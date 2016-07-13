@@ -39,6 +39,11 @@
 	%>
 	<div class="content container">
 
+	<%
+		SimpleDateFormat formatter = new SimpleDateFormat("hh:mm");
+		if (request.getAttribute("visitor") != null) { //only display "My Timetable" if user is a visitor
+	%>
+
 		<h1>My Timetable:</h1>
 		<div class="col-box row">
 			<div class="col-md-6">
@@ -53,10 +58,8 @@
 						<th>End</th>
 					</tr>
 					<%
-						SimpleDateFormat formatter = new SimpleDateFormat("hh:mm");
-					System.out.println(bean19own.getList().size());
-
-							for (int i = 0; i < bean19own.getList().size(); i++) {
+						//System.out.println(bean19own.getList().size());
+						for (int i = 0; i < bean19own.getList().size(); i++) {
 					%>
 
 					<tr>
@@ -97,11 +100,17 @@
 				</table>
 			</div>
 		</div>
-
+	
+	<%
+		}
+	%>
 
 
 		<h1>All Performances:</h1>
 		<div class="col-box row">
+		<%if (request.getAttribute("visitor") != null) { //only provide form for visitors%>
+		<form method="POST">
+		<%}%>
 			<div class="col-md-6">
 				<table style="width: 100%">
 					<tr>
@@ -112,6 +121,9 @@
 						<th>Band(s)</th>
 						<th>Begin</th>
 						<th>End</th>
+						<%if (request.getAttribute("visitor") != null) { //only display Select column for visitors%>
+						<th>Select</th>
+						<%}%>
 					</tr>
 					<%
 						for (int i = 0; i < bean19.getList().size(); i++) {
@@ -122,6 +134,9 @@
 						<td><%=bean19.getChild(i).getAllPerformers()%></td>
 						<td><%=formatter.format(bean19.getChild(i).getStartTime())%></td>
 						<td><%=formatter.format(bean19.getChild(i).getEndTime())%></td>
+						<%if (request.getAttribute("visitor") != null) { //only display Select column for visitors%>
+						<td><input type="checkbox" name="selected19<%=i %>" value="<%=bean19.getChild(i).getPerformanceID()%>" /></td>
+						<%}%>
 					</tr>
 					<%
 						}
@@ -147,12 +162,19 @@
 						<td><%=bean20.getChild(i).getAllPerformers()%></td>
 						<td><%=formatter.format(bean20.getChild(i).getStartTime())%></td>
 						<td><%=formatter.format(bean20.getChild(i).getEndTime())%></td>
+						<%if (request.getAttribute("visitor") != null) { //only display Select column for visitors%>
+						<td><input type="checkbox" name="selected20<%=i %>" value="<%=bean20.getChild(i).getPerformanceID()%>" /></td>
+						<%}%>
 					</tr>
 					<%
 						}
 					%>
 				</table>
 			</div>
+		<%if (request.getAttribute("visitor") != null) { //only provide form for visitors%>
+		<input type="submit" value="Add selected performances to timetable">
+		</form>
+		<%}%>
 		</div>
 	</div>
 	<%

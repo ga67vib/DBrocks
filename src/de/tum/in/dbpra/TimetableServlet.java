@@ -54,10 +54,12 @@ public class TimetableServlet extends HttpServlet {
 			request.setAttribute("bean19own", tlb19own);
 			request.setAttribute("bean20own", tlb20own);
 
-			RequestDispatcher dispatcher = request.getRequestDispatcher("timetable.jsp"); // fill
-			// in
-			// jsp
-			dispatcher.forward(request, response);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("timetable.jsp"); 
+			
+			//only dispatch request if user is a logged in visitor or staff member; else blank page
+			if (request.getSession().getAttribute("visitor") != null || request.getSession().getAttribute("staff") != null){
+				dispatcher.forward(request, response);
+			}
 
 		} catch (Throwable e) {
 			e.printStackTrace();
