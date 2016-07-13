@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
 import de.tum.in.dbpra.model.bean.PersonBean;
 import de.tum.in.dbpra.model.bean.StaffBean;
 import de.tum.in.dbpra.model.bean.StaffListBean;
