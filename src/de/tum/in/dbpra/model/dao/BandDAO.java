@@ -13,6 +13,7 @@ import de.tum.in.dbpra.model.bean.StageBean;
 
 public class BandDAO extends DAO {
 
+	//get ALl bands
 	public void getBands(BandListBean listobjekt) throws ClassNotFoundException, SQLException {
 
 		String query = "SELECT * FROM Band;";
@@ -34,20 +35,17 @@ public class BandDAO extends DAO {
 			object.setInstruction(rs.getString("instruction"));
 			object.setSonglist(rs.getString("songlist"));
 			object.setSalary(rs.getDouble("salary"));
-			// PerformanceListBean rocks = new PerformanceListBean();
-			// getPerformancesbyBandID(rocks, rs.getInt("band_id"));
-			// object.setRocks(rocks);
 			listobjekt.setChild(object);
 		}
-
+		//commit after everything is done
 		con.commit();
-
+		//close all resources
 		rs.close();
 		pstmt.close();
 		con.close();
 
 	}
-
+/*
 	public void getPerformancesbyBandID(PerformanceListBean performancelist, int BandID)
 			throws ClassNotFoundException, SQLException {
 		String query = "Select * From Performance JOIN rocks ON Performance.performance_id=rocks.performance_id Where Band_ID=?";
@@ -87,6 +85,6 @@ public class BandDAO extends DAO {
 		pstmt.close();
 		con.close();
 
-	}
+	}*/
 
 }
