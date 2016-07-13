@@ -56,6 +56,7 @@ public class TimetableServlet extends HttpServlet {
 				tlb19.removePerformancesFromOtherSet(tlb19own);
 				tlb20.removePerformancesFromOtherSet(tlb20own);
 			}
+
 			request.setAttribute("bean19", tlb19);
 			request.setAttribute("bean20", tlb20);
 			request.setAttribute("bean19own", tlb19own);

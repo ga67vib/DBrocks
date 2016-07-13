@@ -36,6 +36,7 @@ public class BandServlet extends HttpServlet {
 		try {
 			BandDAO bd = new BandDAO();
 			BandListBean blb = new BandListBean();
+			//get ALL bands
 			bd.getBands(blb);
 			request.setAttribute("bean", blb);
 			

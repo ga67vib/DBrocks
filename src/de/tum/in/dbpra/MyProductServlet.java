@@ -37,6 +37,7 @@ public class MyProductServlet extends HttpServlet {
 			if(request.getSession().getAttribute("staff") !=null){
 				ProductDAO pd = new ProductDAO();
 				ProductListBean plb = new ProductListBean();
+				//get All Products
 				pd.getProducts(plb);
 				request.setAttribute("bean", plb);
 				RequestDispatcher dispatcher = request.getRequestDispatcher("allProduct.jsp");
@@ -45,6 +46,7 @@ public class MyProductServlet extends HttpServlet {
 				int sponsorId = Integer.parseInt(request.getSession().getAttribute("supplier").toString());
 				ProductDAO pd = new ProductDAO();
 				ProductListBean plb = new ProductListBean();
+				//get all Products by SponsorID
 				pd.getProductbySponsorID(plb, sponsorId);
 				request.setAttribute("bean", plb);
 				RequestDispatcher dispatcher = request.getRequestDispatcher("allProduct.jsp");

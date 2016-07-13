@@ -10,48 +10,63 @@
 <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
 <link type="text/css" rel="stylesheet" href="css/dbrocks_main.css" />
 
-
-<title>Advertisments:</title>
+<%
+	if (session.getAttribute("supplier") != null  && !request.getAttribute("javax.servlet.forward.request_uri").equals("/DBrocks/advertising")) {
+	
+%>
+<title>My Advertisements</title>
+<%
+	} else {
+%>
+<title>All Advertisements</title>
+<%
+	}
+%>
 </head>
 
 <body>
 	<%@include file="navi.jsp"%>
-	
+
 	<div class="content container">
 
 		<%
 			if (request.getAttribute("error") != null) {
 		%>
-			<div class="box">
-		
-				<h1>An error occured!</h1>
-				<%=request.getAttribute("error")%>
-			</div>
+		<div class="box">
+
+			<h1>An error occured!</h1>
+			<%=request.getAttribute("error")%>
+		</div>
 		<%
 			} else {
 		%>
 
-	
-		<h1>Our cool advertisements:</h1>
 
+		<%
+			if (session.getAttribute("supplier") != null && !request.getAttribute("javax.servlet.forward.request_uri").equals("/DBrocks/advertising")) {
+		%>
+		<h1>My Advertisements</h1>
+		<%
+			} else {
+		%>
+		<h1>All Advertisements</h1>
+		<%
+			}
+		%>
 		<div class="box">
 			<table style="width: 100%">
 				<tr>
 					<th>Sponsor Name</th>
-					<th>Sponsor ID</th>
 					<th>Area Name</th>
-					<th>Area ID</th>
-					<th>Area Size</th>
+					<th>Area Size in m²</th>
 					<th>Advertising Type</th>
 				</tr>
 				<%
 					for (int i = 0; i < bean.getList().size(); i++) {
 				%>
 				<tr>
-					<td><%=bean.getChild(i).getSponsor().getName() %></td>
-					<td><%=bean.getChild(i).getSponsor().getSponsorID() %></td>
+					<td><%=bean.getChild(i).getSponsor().getName()%></td>
 					<td><%=bean.getChild(i).getArea().getName()%></td>
-					<td><%=bean.getChild(i).getArea().getAreaID()%></td>
 					<td><%=bean.getChild(i).getArea().getSize()%></td>
 					<td><%=bean.getChild(i).getType()%></td>
 				</tr>

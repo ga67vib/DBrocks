@@ -1,7 +1,6 @@
 package de.tum.in.dbpra;
 
 import java.io.IOException;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -35,6 +34,7 @@ public class BoothServlet extends HttpServlet {
 		try {
 			BoothDAO bd = new BoothDAO();
 			BoothListBean blb = new BoothListBean();
+			//get All Booths
 			bd.getBooths(blb);
 
 			request.setAttribute("bean", blb);

@@ -35,6 +35,7 @@ public class RFID_TicketServlet extends HttpServlet {
 		try {
 			RFID_TicketDAO rtd = new RFID_TicketDAO();
 			RFID_TicketListBean rtlb = new RFID_TicketListBean();
+			//get ALL tickets
 			rtd.getTickets(rtlb);
 			request.setAttribute("bean", rtlb);
 			

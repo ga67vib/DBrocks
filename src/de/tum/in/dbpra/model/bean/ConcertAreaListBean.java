@@ -7,8 +7,8 @@ public class ConcertAreaListBean {
 
     private ArrayList<ConcertAreaBean> list = new ArrayList<ConcertAreaBean>();
 
-    public void setChild(ConcertAreaBean object, int i) {
-        list.add(i, object);
+    public void setChild(ConcertAreaBean object) {
+        list.add(object);
     }
     
     public ConcertAreaBean getChild(int i) {

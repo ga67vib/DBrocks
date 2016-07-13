@@ -34,9 +34,11 @@ public class StaffServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		try {
+			
 			int shiftId = Helpermethods.isParsable(request.getParameter("shiftId"))? Integer.parseInt(request.getParameter("shiftId")) : 0;
 			StaffDAO sd = new StaffDAO();
 			StaffListBean slb = new StaffListBean();
+			//get ALL staff
 			sd.getStaff(slb, shiftId);
 			if(shiftId>0){
 				request.setAttribute("shiftId", shiftId);

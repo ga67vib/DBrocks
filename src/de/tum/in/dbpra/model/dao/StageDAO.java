@@ -4,13 +4,13 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
 import de.tum.in.dbpra.model.bean.StageBean;
 import de.tum.in.dbpra.model.bean.StageListBean;
 import de.tum.in.dbpra.model.bean.AreaBean;
 
 public class StageDAO extends DAO {
 
+	//get all Stages
 	public void getStages(StageListBean stageListBean) throws ClassNotFoundException, SQLException {
 
 		String query = "SELECT * FROM Stage;";
@@ -47,6 +47,7 @@ public class StageDAO extends DAO {
 
 	}
 
+	//get Stage by StageID
 	public void getStagebyID(StageBean stage, int stageID) throws ClassNotFoundException, SQLException {
 		String query = "Select * From Stage Where stage_id=" + stageID;
 
@@ -73,7 +74,7 @@ public class StageDAO extends DAO {
 		}
 
 		con.commit();
-
+		//close all Resources
 		rs.close();
 		pstmt.close();
 		con.close();

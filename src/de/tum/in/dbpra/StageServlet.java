@@ -36,6 +36,7 @@ public class StageServlet extends HttpServlet {
 		try {
 			StageDAO sd = new StageDAO();
 			StageListBean slb = new StageListBean();
+			//get ALL stages
 			sd.getStages(slb);
 			request.setAttribute("bean", slb);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/allStage.jsp"); 

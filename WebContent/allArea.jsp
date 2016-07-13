@@ -39,8 +39,8 @@
 			<table style="width: 100%">
 				<tr>
 					<th>AreaID</th>
-					<th>Size</th>
 					<th>Name</th>
+					<th>Size in sqm</th>
 					<th>Description</th>
 				</tr>
 				<%
@@ -49,8 +49,8 @@
 				%>
 				<tr>
 					<td><%=bean.getChild(i).getAreaID()%></td>
-					<td><%=bean.getChild(i).getSize()%></td>
 					<td><%=bean.getChild(i).getName()%></td>
+					<td><%=bean.getChild(i).getSize()%></td>
 					<td><%=bean.getChild(i).getDescription()%></td>
 				</tr>
 				<%
