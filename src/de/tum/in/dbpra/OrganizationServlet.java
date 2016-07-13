@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import de.tum.in.dbpra.model.bean.NoteListBean;
 import de.tum.in.dbpra.model.dao.NoteDAO;
 
-@WebServlet("/")
+@WebServlet("/Organization")
 public class OrganizationServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
