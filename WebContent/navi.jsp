@@ -58,7 +58,7 @@
 					aria-expanded="false">Visitors Place <span class="caret"></span></a>
 					<ul class="dropdown-menu">
 						<li><a href="timetable">My Timetable</a></li>
-						<li><a href="RFID_Ticket">My Ticket</a></li>
+						<li><a href="myTicket">My Ticket</a></li>
 					</ul></li>
 				<%
 					}
@@ -70,12 +70,11 @@
 					data-toggle="dropdown" role="button" aria-haspopup="true"
 					aria-expanded="false">Suppliers Place <span class="caret"></span></a>
 					<ul class="dropdown-menu">
-						<li><a href="#">(Maxi schreib sauber!)</a></li>
 						<li><a href="myBooth">My Booths</a></li>
 						<li><a href="myAdvertising">My Advertisement</a></li>
 						<li><a href="myTransaction">My Transactions</a></li>
 						<li><a href="myProduct">My Products</a></li>
-						<li><a href="advertising">All Advertisements (per Area)</a></li>
+						<li><a href="advertising">All Advertisements</a></li>
 					</ul></li>
 				<%
 					}
@@ -87,6 +86,7 @@
 					data-toggle="dropdown" role="button" aria-haspopup="true"
 					aria-expanded="false">Organisation <span class="caret"></span></a>
 					<ul class="dropdown-menu">
+						<li><a href="RFID_Ticket">Tickets</a></li>
 						<li><a href="sponsor">Sponsors</a></li>
 						<li><a href="booth">Booths</a></li>
 						<li><a href="transaction">Transactions</a></li>

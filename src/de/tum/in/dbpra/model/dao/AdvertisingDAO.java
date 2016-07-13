@@ -14,7 +14,7 @@ public class AdvertisingDAO extends DAO {
 
 	public void getAdvertisings(AdvertisingListBean listObject) throws SQLException, ClassNotFoundException {
 
-		String query = "SELECT ar.*,ad.type,s.*,s.name AS sname FROM Area ar JOIN advertising ad ON ar.area_id=ad.area_id JOIN sponsor s ON ad.sponsor_id=s.sponsor_id;";
+		String query = "SELECT ar.*,ad.type,s.*,s.name AS sname FROM Area ar JOIN advertising ad ON ar.area_id=ad.area_id JOIN sponsor s ON ad.sponsor_id=s.sponsor_id ORDER BY ar.area_id, sname;";
 		Connection con = getConnection();
 		con.setAutoCommit(false);
 		PreparedStatement pstmt = con.prepareStatement(query, ResultSet.TYPE_SCROLL_INSENSITIVE,
