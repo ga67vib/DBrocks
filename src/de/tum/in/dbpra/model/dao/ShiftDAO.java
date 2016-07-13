@@ -11,7 +11,9 @@ import de.tum.in.dbpra.model.bean.StaffBean;
 import de.tum.in.dbpra.model.bean.StaffListBean;
 
 public class ShiftDAO extends DAO {
-	public void getShifts(ShiftListBean shiftlist, int staffId) throws ClassNotFoundException, SQLException {
+	
+	//get all Shifts by StaffID
+	public void getShiftsbyStaffID(ShiftListBean shiftlist, int staffId) throws ClassNotFoundException, SQLException {
 
 		String query = "SELECT * FROM Shift";
 		if (staffId > 0) {

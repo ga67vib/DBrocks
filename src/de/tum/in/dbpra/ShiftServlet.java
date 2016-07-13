@@ -44,7 +44,7 @@ public class ShiftServlet extends HttpServlet {
 			request.setAttribute("staffname", personBean.getFirstName()+" "+personBean.getLastName());
 			ShiftDAO sd = new ShiftDAO();
 			ShiftListBean slb = new ShiftListBean();
-			sd.getShifts(slb, staffId);
+			sd.getShiftsbyStaffID(slb, staffId);
 			request.setAttribute("bean", slb);
 			// fill in jsp
 			RequestDispatcher dispatcher = request.getRequestDispatcher("shiftsPerStaff.jsp");
