@@ -4,11 +4,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
 import de.tum.in.dbpra.model.bean.ConcertAreaBean;
 import de.tum.in.dbpra.model.bean.ConcertAreaListBean;
 
 public class ConcertAreaDAO extends DAO {
+	
+	//get all ConcertAreas
 	public void getConcertAreas(ConcertAreaListBean listObject) throws SQLException, ClassNotFoundException {
 
 		String query = "SELECT * FROM ConcertArea;";
@@ -22,19 +23,17 @@ public class ConcertAreaDAO extends DAO {
 
 		ResultSet rs = pstmt.executeQuery();
 
-		for (int i = 0; rs.next(); i++) {
+		while(rs.next()) {
 			ConcertAreaBean object = new ConcertAreaBean();
 			object.setAreaID(rs.getInt("area_id"));
 			object.setStyle(rs.getString("style"));
-			listObject.setChild(object, i);
-			i++;
+			listObject.setChild(object);
 		}
 		con.commit();
-
+		//close all Resources
 		rs.close();
 		pstmt.close();
 		con.close();
-
 	}
 
 }
