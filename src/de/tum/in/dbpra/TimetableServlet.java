@@ -45,14 +45,18 @@ public class TimetableServlet extends HttpServlet {
 					&& Helpermethods.isParsable(request.getSession().getAttribute("staff").toString())) {
 				person_id = Integer.parseInt(request.getSession().getAttribute("staff").toString());
 			}
-			//get ALL performances
-			//tlb19 contains all Performances at the 19.
+			//get all performances by day
 			td.getPerformancesByDay(tlb19, 19, 0);
 			td.getPerformancesByDay(tlb20, 20, 0);
-			//performances, person_id wishes to visit/already visited
+			//get all performances for the user by day (or all performances, if not user is not visitor)
 			td.getPerformancesByDay(tlb20own, 20, person_id);
 			td.getPerformancesByDay(tlb19own, 19, person_id);
-			
+			if (request.getSession().getAttribute("visitor") != null){
+				//remove those performances from the complete set, which are in the timetable of the visitor
+				tlb19.removePerformancesFromOtherSet(tlb19own);
+				tlb20.removePerformancesFromOtherSet(tlb20own);
+			}
+
 			request.setAttribute("bean19", tlb19);
 			request.setAttribute("bean20", tlb20);
 			request.setAttribute("bean19own", tlb19own);
