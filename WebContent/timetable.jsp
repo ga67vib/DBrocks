@@ -54,7 +54,6 @@
 					</tr>
 					<%
 						SimpleDateFormat formatter = new SimpleDateFormat("hh:mm");
-					System.out.println(bean19own.getList().size());
 
 							for (int i = 0; i < bean19own.getList().size(); i++) {
 					%>
