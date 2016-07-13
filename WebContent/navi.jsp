@@ -86,6 +86,7 @@
 					data-toggle="dropdown" role="button" aria-haspopup="true"
 					aria-expanded="false">Organisation <span class="caret"></span></a>
 					<ul class="dropdown-menu">
+						<li><a href="myOrganization">Organization</a></li>
 						<li><a href="RFID_Ticket">Tickets</a></li>
 						<li><a href="sponsor">Sponsors</a></li>
 						<li><a href="booth">Booths</a></li>
