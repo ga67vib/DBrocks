@@ -2,6 +2,8 @@
 	pageEncoding="UTF-8"%>
 <jsp:useBean id="bean" scope="request"
 	class="de.tum.in.dbpra.model.bean.RFID_TicketListBean"></jsp:useBean>
+<jsp:useBean id="transbean" scope="request"
+	class="de.tum.in.dbpra.model.bean.TransactionListBean"></jsp:useBean>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -106,6 +108,34 @@
 			
 			</table>
 		</div>
+		
+		<div class="box">
+		<table style="width: 100%">
+			<caption>My Transactions</caption>
+			<tr>
+				<th></th>
+				<th>Product</th>
+				<th>Quantity</th>
+				<th>Price</th>
+				<th>Booth</th>
+				<th>Time</th>
+			</tr>
+			<%
+				for (int i = 0; i < bean.getList().size(); i++) {
+			%>
+			<tr>
+				<td><%=i+1%></td>
+				<td><%=transbean.getChild(i).getProduct().getName()%></td>
+				<td><%=transbean.getChild(i).getQuantity()%></td>
+				<td><%=transbean.getChild(i).getProduct().getPrice()%></td>
+				<td><%=transbean.getChild(i).getBooth().getName()%></td>
+				<td><%=transbean.getChild(i).getTransactionTime()%></td>
+			</tr>
+			<%
+				}
+			%>
+		</table>
+	</div>
 		
 
 	<%

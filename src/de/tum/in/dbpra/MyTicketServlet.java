@@ -37,18 +37,30 @@ public class MyTicketServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		try {
-
-			if(request.getSession().getAttribute("visitor") != null){
-				int userId = Integer.parseInt(request.getSession().getAttribute("visitor").toString());
-				RFID_TicketDAO td = new RFID_TicketDAO();
-				RFID_TicketListBean tlb = new RFID_TicketListBean();
-				td.getTicketbyUserID(tlb, userId);
-				
-				request.setAttribute("bean", tlb);
-				
-				RequestDispatcher dispatcher = request.getRequestDispatcher("MyTicket.jsp"); 
-				dispatcher.forward(request, response);
+			int userId = 0;
+			if (request.getSession().getAttribute("visitor") != null
+					&& Helpermethods.isParsable(request.getSession().getAttribute("visitor").toString())) {
+				userId = Integer.parseInt(request.getSession().getAttribute("visitor").toString());
+			}else if (request.getSession().getAttribute("staff") != null
+					&& Helpermethods.isParsable(request.getSession().getAttribute("staff").toString())) {
+				userId = Integer.parseInt(request.getSession().getAttribute("staff").toString());
 			}
+
+			
+				//int userId = Integer.parseInt(request.getSession().getAttribute("visitor").toString());
+			RFID_TicketDAO td = new RFID_TicketDAO();
+			RFID_TicketListBean tlb = new RFID_TicketListBean();
+			td.getTicketbyUserID(tlb, userId);
+			request.setAttribute("bean", tlb);
+			
+			TransactionDAO transb = new TransactionDAO();
+			TransactionListBean translb = new TransactionListBean();
+			transb.getTransactionsbyPersonID(translb, userId);
+			request.setAttribute("transbean", translb);
+				
+			RequestDispatcher dispatcher = request.getRequestDispatcher("MyTicket.jsp"); 
+			dispatcher.forward(request, response);
+			
 
 		} catch (Throwable e) {
 			request.setAttribute("error", "Exception occured. Text:<br>" + e.getMessage());

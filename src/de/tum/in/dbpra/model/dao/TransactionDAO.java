@@ -126,12 +126,18 @@ public class TransactionDAO extends DAO {
 		con.close();
 	}
 
-	public void getTransactionsbyPersonID(TransactionListBean tlist, int transaction_id) throws ClassNotFoundException, SQLException
+	public void getTransactionsbyPersonID(TransactionListBean tlist, int person_id) throws ClassNotFoundException, SQLException
 	{
-		String query = "Select t.transaction_id,t.product_id,p.person_id,p.first_name" +
-				"From Transaction t, rfid_ticket r, Person p" +
-				"Where t.ticket_id = r.ticket_id" +
-					"And r.owned_by = p.person_id;";
+
+		
+		String query = "select t.transaction_id, p.name, p.price, t.quantity, b.name as booth_name, (p.price*t.quantity) as totalprice, t.transaction_time"
+				+" from Transaction t, product p, rfid_ticket r, booth b"
+				+" where t.product_id = p.product_id"
+				+" and t.ticket_Id = r.ticket_id"
+				+" and t.booth_id = b.booth_id"
+				+" and r.owned_by = ?";
+		
+		//query = "select * from transaction";
 		
 		Connection con = getConnection();
 
@@ -139,15 +145,43 @@ public class TransactionDAO extends DAO {
 
 		PreparedStatement pstmt = con.prepareStatement(query, ResultSet.TYPE_SCROLL_INSENSITIVE,
 				ResultSet.CONCUR_READ_ONLY);
+		pstmt.setInt(1, person_id);
 
 		ResultSet rs = pstmt.executeQuery();
+		
 		while(rs.next())
 		{
+			/**
 			TransactionBean tbean = new TransactionBean();
-			//tbean.setTransactionID(rs.getInt("transaction_id"));
+			tbean.setTransactionID(rs.getInt("transaction_id"));
 			getTransactionbyID(tbean, rs.getInt("transaction_id"));
 			tlist.setChild(tbean);
+			**/
+			
+			TransactionBean transactionbean = new TransactionBean();
+			transactionbean.setTransactionTime(rs.getTimestamp("transaction_time"));
+			transactionbean.setQuantity(rs.getInt("quantity"));
+			
+			ProductBean productbean = new ProductBean();
+			productbean.setName(rs.getString("name"));
+			productbean.setPrice(rs.getBigDecimal("price"));
+
+			BoothBean boothbean = new BoothBean();
+			boothbean.setName(rs.getString("booth_name"));
+			
+			//RFID_TicketBean ticketbean = new RFID_TicketBean();
+			//ticketbean.setTicketID(rs.getInt("ticket_id"));
+
+			transactionbean.setProduct(productbean);
+			//transactionbean.setTicket(ticketbean);
+			transactionbean.setBooth(boothbean);
+			tlist.setChild(transactionbean);
 		}
+		con.commit();
+		//close all Resources
+		rs.close();
+		pstmt.close();
+		con.close();
 		
 		
 		
