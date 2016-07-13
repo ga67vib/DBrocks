@@ -116,10 +116,11 @@
 		%>
 		<h1>All Performances:</h1>
 		<%}%>
-		<div class="col-box row">
 		<%if (request.getSession().getAttribute("visitor") != null) { //only provide form for visitors%>
 		<form method="POST">
 		<%}%>
+		<div class="col-box row">
+		
 			<div class="col-md-6">
 				<table style="width: 100%">
 					<tr>
@@ -183,11 +184,13 @@
 					%>
 				</table>
 			</div>
+		</div>
 		<%if (request.getSession().getAttribute("visitor") != null) { //only provide form for visitors%>
+		<div >
 		<input type="submit" value="Add selected performances to timetable">
+		</div>
 		</form>
 		<%}%>
-		</div>
 	</div>
 	<%
 		}

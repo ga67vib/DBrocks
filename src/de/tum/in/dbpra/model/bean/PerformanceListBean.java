@@ -24,20 +24,5 @@ public class PerformanceListBean {
         return list;
     }
     
-    /**
-     * Removes those PerformanceBeans from the set which are in the otherSet.
-     * (Used in the TimetableServlet)
-     */
-    public void removePerformancesFromOtherSet(PerformanceListBean otherSet){
-    	//get all performanceIDs in the otherSet
-    	HashSet<Integer> otherIDs = new HashSet<Integer>();
-    	for (int i=0; i<otherSet.getList().size(); i++){
-    		otherIDs.add(otherSet.getChild(i).getPerformanceID());
-    	}
-    	for (int i=list.size(); i>=0; i--){
-    		if(otherIDs.contains(list.get(i).getPerformanceID())){
-    			list.remove(i);    		
-    		}
-    	}
-    }
+    
 }

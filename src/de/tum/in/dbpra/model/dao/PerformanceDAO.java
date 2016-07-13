@@ -4,11 +4,13 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+
 import de.tum.in.dbpra.model.bean.BandBean;
 import de.tum.in.dbpra.model.bean.BandListBean;
 import de.tum.in.dbpra.model.bean.PerformanceBean;
-import de.tum.in.dbpra.model.bean.StageBean;
 import de.tum.in.dbpra.model.bean.PerformanceListBean;
+import de.tum.in.dbpra.model.bean.StageBean;
 
 public class PerformanceDAO extends DAO {
 
@@ -117,6 +119,7 @@ public class PerformanceDAO extends DAO {
 	private void fillPerformance(PerformanceListBean listObject, ResultSet rs) throws SQLException {
 		while (rs.next()) {
 			PerformanceBean performanceBean = new PerformanceBean();
+			performanceBean.setPerformanceID(rs.getInt("performance_id"));
 			performanceBean.setEndTime(rs.getTimestamp("end_time"));
 			performanceBean.setStartTime(rs.getTimestamp("start_time"));
 			StageBean stageBean = new StageBean();
@@ -125,6 +128,27 @@ public class PerformanceDAO extends DAO {
 			performanceBean.setAllPerformers(rs.getString("performers"));
 			listObject.setChild(performanceBean);
 		}
+	}
+	
+	/**
+	 * Inserts the performances from performanceList into the timetable of visitor with person_id.
+	 */
+	public void insertPerformancesIntoTimetable(ArrayList<Integer> performanceList, int person_id) throws SQLException, ClassNotFoundException{
+		Connection con = getConnection();
+		con.setAutoCommit(false);
+				
+		//insert into the timetable the combination person_id and performance_id for all performances
+		PreparedStatement insertPerformanceIntoTimetable = con.prepareStatement("INSERT INTO TIMETABLE(person_id,performance_id) VALUES (?,?)");
+
+		insertPerformanceIntoTimetable.setInt(1, person_id);
+		for (int i=0;i<performanceList.size();i++){ 
+			insertPerformanceIntoTimetable.setInt(2, performanceList.get(i));
+			insertPerformanceIntoTimetable.executeUpdate(); //insert for each performance_id
+		}
+		//close Resources
+		insertPerformanceIntoTimetable.close();
+		con.commit();
+		con.close();
 	}
 
 }
