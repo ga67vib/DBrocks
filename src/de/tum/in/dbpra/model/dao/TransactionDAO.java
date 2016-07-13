@@ -38,6 +38,7 @@ public class TransactionDAO extends DAO {
 		con.close();
 	}
 
+	//get all Transactions
 	public void getTransactions(TransactionListBean transactionlist) throws ClassNotFoundException, SQLException {
 		String query = "Select t.transaction_ID,b.booth_id,t.transaction_time, p.name, t.Ticket_id, quantity, b.name AS booth_name From Transaction t,Booth b, Product p WHERE p.product_id = t.product_id AND b.booth_id = t.booth_id ORDER BY t.transaction_ID ASC";
 
@@ -75,8 +76,11 @@ public class TransactionDAO extends DAO {
 		pstmt.close();
 		con.close();
 	}
+	//get all Transactions from Booths owned by Sponsor(SponsorID)
 	public void getTransactionsBySponsorID(TransactionListBean transactionlist, int id) throws ClassNotFoundException, SQLException {
-		String query = "Select t.transaction_ID,b.booth_id,t.transaction_time, p.name, t.Ticket_id, quantity, b.name AS booth_name From Transaction t,Booth b, Product p WHERE p.product_id = t.product_id AND b.owned_by = " + id + "AND b.booth_id = t.booth_id ORDER BY t.transaction_ID ASC";
+		String query = "Select t.transaction_ID,b.booth_id,t.transaction_time, p.name, t.Ticket_id, quantity, b.name AS booth_name "
+				+ "From Transaction t,Booth b, Product p "
+				+ "WHERE p.product_id = t.product_id AND b.owned_by = ? AND b.booth_id = t.booth_id ORDER BY t.transaction_ID ASC";
 
 		Connection con = getConnection();
 
@@ -84,7 +88,7 @@ public class TransactionDAO extends DAO {
 
 		PreparedStatement pstmt = con.prepareStatement(query, ResultSet.TYPE_SCROLL_INSENSITIVE,
 				ResultSet.CONCUR_READ_ONLY);
-
+		pstmt.setInt(1, id);
 		ResultSet rs = pstmt.executeQuery();
 
 		while (rs.next()) {
@@ -107,7 +111,7 @@ public class TransactionDAO extends DAO {
 		}
 
 		con.commit();
-
+		//close all Resources
 		rs.close();
 		pstmt.close();
 		con.close();
