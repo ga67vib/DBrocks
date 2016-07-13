@@ -35,6 +35,7 @@ public class AreaServlet extends HttpServlet {
 		try {
 			AreaDAO ad = new AreaDAO();
 			AreaListBean alb = new AreaListBean();
+			//get ALL Areas
 			ad.getAreas(alb);
 			request.setAttribute("bean", alb);
 			

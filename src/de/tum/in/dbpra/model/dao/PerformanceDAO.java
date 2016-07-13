@@ -12,87 +12,71 @@ import de.tum.in.dbpra.model.bean.PerformanceListBean;
 
 public class PerformanceDAO extends DAO {
 
-	public void getPerformances(PerformanceListBean listObject) {
+	/**
+	 * Gets all performances and fills the given PerformanceListBean.
+	 */
+	public void getPerformances(PerformanceListBean listObject) throws SQLException, ClassNotFoundException {
+		String query = "SELECT array_to_string(array_agg(band_name), ', ') AS performers, "
+				+ "p.performance_id, stage_name, start_time, end_time " + "FROM Performance p, Stage, rocks r, band b "
+				+ "WHERE is_at = stage_id AND p.Performance_ID= r.performance_ID " + "AND r.Band_id = b.Band_id "
+				+ "GROUP BY p.performance_id, stage_name, start_time, end_time " + "ORDER BY start_time ASC";
 
-		try {
+		Connection con = getConnection();
 
-			String query = "SELECT array_to_string(array_agg(band_name), ', ') AS performers, "
-					+ "p.performance_id, stage_name, start_time, end_time "
-					+ "FROM Performance p, Stage, rocks r, band b "
-					+ "WHERE is_at = stage_id AND p.Performance_ID= r.performance_ID "
-					+ "AND r.Band_id = b.Band_id "
-					+ "GROUP BY p.performance_id, stage_name, start_time, end_time "
-					+ "ORDER BY start_time ASC";
+		con.setAutoCommit(false);
 
-			Connection con = getConnection();
+		PreparedStatement pstmt = con.prepareStatement(query, ResultSet.TYPE_SCROLL_INSENSITIVE,
+				ResultSet.CONCUR_READ_ONLY);
 
-			con.setAutoCommit(false);
+		ResultSet rs = pstmt.executeQuery();
 
-			PreparedStatement pstmt = con.prepareStatement(query, ResultSet.TYPE_SCROLL_INSENSITIVE,
-					ResultSet.CONCUR_READ_ONLY);
+		fillPerformance(listObject, rs);
+		con.commit();
 
-			ResultSet rs = pstmt.executeQuery();
-
-			fillPerformance(listObject, rs);
-			con.commit();
-
-			rs.close();
-			pstmt.close();
-			con.close();
-
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		rs.close();
+		pstmt.close();
+		con.close();
 	}
 
-	public void getBandsbyPerformanceID(BandListBean bandlist, int PerformanceID) {
+	
+	public void getBandsbyPerformanceID(BandListBean bandlist, int PerformanceID)
+			throws SQLException, ClassNotFoundException {
 		String query = "Select b.* From Band b, Performance p, rocks r WHERE p.Performance_ID=? AND p.Performance_ID= r.performance_ID AND r.Band_id = b.Band_id";
 
 		Connection con;
-		try {
-			con = getConnection();
+		con = getConnection();
 
-			con.setAutoCommit(false);
+		con.setAutoCommit(false);
 
-			PreparedStatement pstmt = con.prepareStatement(query, ResultSet.TYPE_SCROLL_INSENSITIVE,
-					ResultSet.CONCUR_READ_ONLY);
-			pstmt.setInt(1, PerformanceID);
+		PreparedStatement pstmt = con.prepareStatement(query, ResultSet.TYPE_SCROLL_INSENSITIVE,
+				ResultSet.CONCUR_READ_ONLY);
+		pstmt.setInt(1, PerformanceID);
 
-			ResultSet rs = pstmt.executeQuery();
+		ResultSet rs = pstmt.executeQuery();
 
-			while (rs.next()) {
-				BandBean band = new BandBean();
-				band.setBandID(rs.getInt("band_id"));
-				band.setBandName(rs.getString("band_name"));
-				band.setInstruction(rs.getString("instruction"));
-				band.setSonglist(rs.getString("songlist"));
-				band.setSalary(rs.getDouble("salary"));
-				bandlist.setChild(band);
-			}
-
-			con.commit();
-
-			rs.close();
-			pstmt.close();
-			con.close();
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		while (rs.next()) {
+			BandBean band = new BandBean();
+			band.setBandID(rs.getInt("band_id"));
+			band.setBandName(rs.getString("band_name"));
+			band.setInstruction(rs.getString("instruction"));
+			band.setSonglist(rs.getString("songlist"));
+			band.setSalary(rs.getDouble("salary"));
+			bandlist.setChild(band);
 		}
+
+		con.commit();
+
+		rs.close();
+		pstmt.close();
+		con.close();
 
 	}
 
-	public void getPerformancesByDay(PerformanceListBean listObject, int beginDay, int visitor_id) {
-
-		try {
-
+	/**
+	 * Gets all performances for a given day, possibly using the visitor_id.
+	 * If visitor_id is 0, gets all, if visitor_id is something else, gets the performances for a certain visitor on a certain day.
+	 */
+	public void getPerformancesByDay(PerformanceListBean listObject, int beginDay, int visitor_id)throws SQLException, ClassNotFoundException  {
 			String query = "SELECT array_to_string(array_agg(band_name), ', ') AS performers, "
 					+ "p.performance_id, stage_name, start_time, end_time "
 					+ "FROM Performance p, Stage, rocks r, band b ";
@@ -128,13 +112,6 @@ public class PerformanceDAO extends DAO {
 			pstmt.close();
 			con.close();
 
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 
 	private void fillPerformance(PerformanceListBean listObject, ResultSet rs) throws SQLException {

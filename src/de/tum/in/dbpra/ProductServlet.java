@@ -36,6 +36,7 @@ public class ProductServlet extends HttpServlet {
 		try {
 			ProductDAO pd = new ProductDAO();
 			ProductListBean plb = new ProductListBean();
+			//get ALL Products
 			pd.getProducts(plb);
 			request.setAttribute("bean", plb);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("allProduct.jsp");

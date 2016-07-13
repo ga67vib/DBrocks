@@ -37,6 +37,7 @@ public class VisitorServlet extends HttpServlet {
 		try {
 			VisitorDAO vd = new VisitorDAO();
 			VisitorListBean vlb = new VisitorListBean();
+			//get all Visitors
 			vd.getVisitors(vlb);
 			
     	} catch (Throwable e) {

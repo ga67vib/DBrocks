@@ -7,9 +7,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import de.tum.in.dbpra.model.bean.BoothBean;
 import de.tum.in.dbpra.model.bean.PersonBean;
+import de.tum.in.dbpra.model.bean.ProductBean;
 import de.tum.in.dbpra.model.bean.RFID_TicketBean;
 import de.tum.in.dbpra.model.bean.RFID_TicketListBean;
+import de.tum.in.dbpra.model.bean.TransactionBean;
 
 public class RFID_TicketDAO extends DAO {
 
@@ -74,6 +77,54 @@ public class RFID_TicketDAO extends DAO {
 			PersonDAO tempa = new PersonDAO();
 			tempa.getPersonbyID(ownedBy, rs.getInt("owned_by"));
 			RFIDbean.setOwnedBy(ownedBy);
+		}
+		con.commit();
+
+		rs.close();
+		pstmt.close();
+		con.close();
+
+	}
+	
+	public void getTicketbyUserID(RFID_TicketListBean listObject, Integer id) throws ClassNotFoundException, SQLException {
+		String query = "SELECT * FROM RFID_Ticket rt join person p on rt.owned_by = p.person_id join transaction t on rt.ticket_id = t.ticket_id where owned_by= ?;";
+
+		Connection con;
+		con = getConnection();
+
+		con.setAutoCommit(false);
+
+		PreparedStatement pstmt = con.prepareStatement(query, ResultSet.TYPE_SCROLL_INSENSITIVE,
+				ResultSet.CONCUR_READ_ONLY);
+		pstmt.setInt(1, id);
+		ResultSet rs = pstmt.executeQuery();
+		while (rs.next()) {
+			RFID_TicketBean RFIDbean = new RFID_TicketBean();
+			PersonBean personBean = new PersonBean();
+			
+			RFIDbean.setTicketID(rs.getInt("ticket_id"));
+			RFIDbean.setAcctBal(rs.getBigDecimal("acct_bal"));
+			RFIDbean.setCamper(rs.getBoolean("is_Camper"));
+			RFIDbean.setVIP(rs.getBoolean("is_VIP"));
+			RFIDbean.setPurchaseDate(rs.getDate("purchase_Date"));
+			RFIDbean.setValidFrom(rs.getDate("valid_From"));
+			RFIDbean.setValidUntil(rs.getDate("valid_Until"));
+			RFIDbean.setPrice(rs.getInt("price"));
+			
+			personBean.setAddress(rs.getString("Address"));
+			personBean.setBirthdate(rs.getDate("Birthdate"));
+			personBean.setDoNotify(rs.getBoolean("Do_Notify"));
+			personBean.setFirstName(rs.getString("First_Name"));
+			personBean.setGender(rs.getString("Gender"));
+			personBean.setLastName(rs.getString("Last_Name"));
+			personBean.setMail(rs.getString("Mail"));
+			personBean.setPersonID(rs.getInt("Person_ID"));
+			personBean.setPhonenumber(rs.getString("Phone_number"));
+			RFIDbean.setOwnedBy(personBean);
+			// personBean.setNotes(new NoteListBean());
+			//personsBean.setChild(personBean);
+			
+			listObject.setChild(RFIDbean);
 		}
 		con.commit();
 

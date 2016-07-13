@@ -36,6 +36,7 @@ public class PerformanceServlet extends HttpServlet {
 		try {
 			PerformanceDAO pd = new PerformanceDAO();
 			PerformanceListBean plb = new PerformanceListBean();
+			//get ALL performances
 			pd.getPerformances(plb);
 
 			request.setAttribute("bean", plb);

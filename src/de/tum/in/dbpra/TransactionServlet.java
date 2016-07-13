@@ -36,6 +36,7 @@ public class TransactionServlet extends HttpServlet {
 		try {
 			TransactionDAO td = new TransactionDAO();
 			TransactionListBean tlb = new TransactionListBean();
+			//get ALL transactions
 			td.getTransactions(tlb);
 			request.setAttribute("bean", tlb);
 
