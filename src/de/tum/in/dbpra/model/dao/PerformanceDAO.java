@@ -16,7 +16,13 @@ public class PerformanceDAO extends DAO {
 
 		try {
 
-			String query = "SELECT * FROM Performance;";
+			String query = "SELECT array_to_string(array_agg(band_name), ', ') AS performers, "
+					+ "p.performance_id, stage_name, start_time, end_time "
+					+ "FROM Performance p, Stage, rocks r, band b "
+					+ "WHERE is_at = stage_id AND p.Performance_ID= r.performance_ID "
+					+ "AND r.Band_id = b.Band_id "
+					+ "GROUP BY p.performance_id, stage_name, start_time, end_time "
+					+ "ORDER BY start_time ASC";
 
 			Connection con = getConnection();
 
@@ -27,25 +33,7 @@ public class PerformanceDAO extends DAO {
 
 			ResultSet rs = pstmt.executeQuery();
 
-			while (rs.next()) {
-				PerformanceBean performance = new PerformanceBean();
-				performance.setPerformanceID(rs.getInt("performance_id"));
-				performance.setEndRemoval(rs.getTimestamp("end_removal"));
-				performance.setEndTime(rs.getTimestamp("end_time"));
-				performance.setStartTime(rs.getTimestamp("start_time"));
-				performance.setStartBuildUp(rs.getTimestamp("start_build_up"));
-				BandListBean bandstemp = new BandListBean();
-				performance.setGerockt(bandstemp);
-				StageBean temp = new StageBean();
-				StageDAO tempa = new StageDAO();
-				tempa.getStagebyID(temp, rs.getInt("is_at"));
-
-				performance.setIsAt(temp);
-
-				// areabean.setSponsorBean(new
-				// SponsorBean(),rs.getInt(columnLabel))
-				listObject.setChild(performance);
-			}
+			fillPerformance(listObject, rs);
 			con.commit();
 
 			rs.close();
@@ -133,16 +121,7 @@ public class PerformanceDAO extends DAO {
 			}
 			ResultSet rs = pstmt.executeQuery();
 
-			while (rs.next()) {
-				PerformanceBean performanceBean = new PerformanceBean();
-				performanceBean.setEndTime(rs.getTimestamp("end_time"));
-				performanceBean.setStartTime(rs.getTimestamp("start_time"));
-				StageBean stageBean = new StageBean();
-				stageBean.setStageName(rs.getString("stage_name"));
-				performanceBean.setIsAt(stageBean);
-				performanceBean.setAllPerformers(rs.getString("performers"));
-				listObject.setChild(performanceBean);
-			}
+			fillPerformance(listObject, rs);
 			con.commit();
 
 			rs.close();
@@ -155,6 +134,19 @@ public class PerformanceDAO extends DAO {
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}
+	}
+
+	private void fillPerformance(PerformanceListBean listObject, ResultSet rs) throws SQLException {
+		while (rs.next()) {
+			PerformanceBean performanceBean = new PerformanceBean();
+			performanceBean.setEndTime(rs.getTimestamp("end_time"));
+			performanceBean.setStartTime(rs.getTimestamp("start_time"));
+			StageBean stageBean = new StageBean();
+			stageBean.setStageName(rs.getString("stage_name"));
+			performanceBean.setIsAt(stageBean);
+			performanceBean.setAllPerformers(rs.getString("performers"));
+			listObject.setChild(performanceBean);
 		}
 	}
 

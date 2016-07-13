@@ -44,6 +44,7 @@
 					<th>Description</th>
 				</tr>
 				<%
+
 					for (int i = 0; i < bean.getList().size(); i++) {
 				%>
 				<tr>
