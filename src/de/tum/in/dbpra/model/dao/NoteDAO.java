@@ -83,4 +83,39 @@ public class NoteDAO extends DAO {
 		
 	}
 	
+	public void getNotesbyPersonID(NoteListBean notelist, int person_id) throws ClassNotFoundException, SQLException
+	{
+		String query = "Select * From Note n, assigned_to a "
+				+"Where a.person_id = ? AND n.note_id = a.note_id;";
+		Connection con = getConnection();
+
+		con.setAutoCommit(false);
+
+		PreparedStatement pstmt = con.prepareStatement(query, ResultSet.TYPE_SCROLL_INSENSITIVE,
+				ResultSet.CONCUR_READ_ONLY);
+		pstmt.setInt(1, person_id);
+		ResultSet rs = pstmt.executeQuery();
+
+		while (rs.next()) {
+			NoteBean notebean = new NoteBean();
+			notebean.setNoteID(rs.getInt("note_id"));
+			notebean.setContent(rs.getString("content"));
+			notebean.setCreationTime(rs.getDate("creation_time"));
+			notebean.setDone(rs.getBoolean("done"));
+			
+			//create persondao, to get whom the note is attached to
+			PersonDAO pd = new PersonDAO();
+			//set all attributes for the Person by his ID
+			notebean.setAttachedto(pd.getPersonsByNoteID(rs.getInt("note_id")));
+			
+			//add the notebean to the list
+			notelist.setChild(notebean);
+		}
+		con.commit();
+		//close all resources
+		rs.close();
+		pstmt.close();
+		con.close();
+	}
+	
 }
