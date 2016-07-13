@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 package de.tum.in.dbpra.model.dao;
 
 import java.sql.Connection;
