@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 package de.tum.in.dbpra.model.dao;
 
 import java.sql.Connection;
@@ -12,6 +13,8 @@ import de.tum.in.dbpra.model.bean.SponsorBean;
 
 public class AdvertisingDAO extends DAO {
 
+	//get ALL Advertising (with Attributes) with Sponsor Attributes (JOIN with Sponsor) 
+	//and Area Attributes
 	public void getAdvertisings(AdvertisingListBean listObject) throws SQLException, ClassNotFoundException {
 
 		String query = "SELECT ar.*,ad.type,s.*,s.name AS sname FROM Area ar JOIN advertising ad ON ar.area_id=ad.area_id JOIN sponsor s ON ad.sponsor_id=s.sponsor_id ORDER BY ar.area_id, sname;";
@@ -53,6 +56,9 @@ public class AdvertisingDAO extends DAO {
 		con.close();
 
 	}
+
+	//Same method as in getAdvertising just with a Selection on SponsorID
+	//SponsorID as Parameter
 	public void getAdvertisingsBySponsorId(AdvertisingListBean listObject, int id) throws SQLException, ClassNotFoundException {
 
 		String query = "SELECT ar.*,ad.type,s.*,s.name AS sname FROM Area ar JOIN advertising ad ON ar.area_id=ad.area_id JOIN sponsor s ON ad.sponsor_id=s.sponsor_id where ad.sponsor_id = " + id + ";";

@@ -50,7 +50,7 @@ public class MyBoothServlet extends HttpServlet {
 				
 				bd.getBoothsBySponsorID(blb, sponsorId);
 				request.setAttribute("bean", blb);
-				RequestDispatcher dispatcher = request.getRequestDispatcher("allBooth.jsp"); 
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/allBooth.jsp"); 
 				dispatcher.forward(request, response);
 			}
 		} catch (Throwable e) {
