@@ -45,7 +45,7 @@ public class SponsorDAO extends DAO {
 	public void getSponsors(SponsorListBean sponsorlistbean)
 			throws SQLException, ClassNotFoundException {
 
-		String query = "SELECT * FROM Sponsor";
+		String query = "SELECT * FROM Sponsor;";
 
 		Connection con = getConnection();
 
@@ -67,7 +67,7 @@ public class SponsorDAO extends DAO {
 			sponsorlistbean.setChild(sponsorbean);
 		}
 		con.commit();
-
+		//close all open Resources
 		rs.close();
 		pstmt.close();
 		con.close();
