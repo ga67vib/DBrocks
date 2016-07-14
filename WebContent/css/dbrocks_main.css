@@ -129,6 +129,7 @@ th input {
 	border-radius: 15px 5px 5px 15px;
 }
 
+
 input[type=submit], .link-button {
 	border: none;
 	background: none;
@@ -138,6 +139,7 @@ input[type=submit], .link-button {
 	color: #fff;
 	padding: 0 10px;
 	margin: 10px;
+	box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
 }
 
 .link-button {
@@ -229,7 +231,7 @@ caption {
 	border-radius: 15px;
 	box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
 	border-radius: 15px;
-	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .index-box h1 {
