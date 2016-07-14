@@ -7,13 +7,17 @@
 <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
 <link type="text/css" rel="stylesheet" href="css/dbrocks_main.css" />
 </HEAD>
-	<%@include file="navi.jsp"%>
-
-<div class="content container">
-	<div class="box">
-		<p>Hello together!</p>
+<%@include file="navi.jsp"%>
+<div class="box-wrapper">
+	<div class="index-box">
+		<h1>DBRocks</h1>
+		<h2>Group 4</h2>
+		<h3>Authors</h3>
+		<h4>Arnold Bitner, Bernhard Schneider, Eric Luyken,<br/> Maxi Weininger and Michael
+			Gröschel</h4>
 	</div>
 </div>
+
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>

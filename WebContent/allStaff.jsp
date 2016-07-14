@@ -15,62 +15,67 @@
 	<%@include file="navi.jsp"%>
 
 	<div class="content container">
-	
-	<%
-		if (request.getAttribute("error") != null) {
-	%>
-	<div class="box">
-		<h1>An error occured!</h1>
-		<%=request.getAttribute("error")%>
-	</div>
 
-	<%
-		} else {
-	%>
-
-		<h1>Our Staff <%=request.getAttribute("shiftId")!=null? "in shift "+request.getAttribute("shiftId"): ""%>:</h1>
-	<%
-		if (request.getAttribute("shiftId") != null) {
-	%>
+		<%
+			if (request.getAttribute("error") != null) {
+		%>
 		<div class="box">
-		<a href="staff">Go to all Staff</a>
+			<h1>An error occured!</h1>
+			<%=request.getAttribute("error")%>
 		</div>
-	<%
-		}
-	%>
-		<div class="box">
-		<form method="GET" action="noteCreate">
-			<table style="width: 100%">
-				<tr>
-					<th>PersonID</th>
-					<th>Firstname</th>
-					<th>Lastname</th>
-					<th>Gender</th>
-					<th>Profession</th>
-					<th>Phonenumber</th>
-					<th>Shifts</th>
-					<th>Select</th>
-				</tr>
-				
-				<%
-					for (int i = 0; i < bean.getList().size(); i++) {
-				%>
-				<tr>
-					<td><%=bean.getChild(i).getPersonID()%></td>
-					<td><%=bean.getChild(i).getPersonData().getFirstName()%></td>
-					<td><%=bean.getChild(i).getPersonData().getLastName()%></td>
-					<td><%=bean.getChild(i).getPersonData().getGender().equals("f")? "female": "male"%></td>
-					<td><%=bean.getChild(i).getProfession()%></td>
-					<td><%=bean.getChild(i).getPersonData().getPhonenumber()%></td>
-					<td><a href="shift?staffId=<%=bean.getChild(i).getPersonID()%>">Shifts</a>
-					<td><input type="checkbox" name="selected<%=i %>" value="<%=bean.getChild(i).getPersonID()%>" /></td>
 
-				</tr>
+		<%
+			} else {
+		%>
+
+		<h1>
+			Our Staff
+			<%=request.getAttribute("shiftId") != null ? "in shift " + request.getAttribute("shiftId") : ""%>:
+		</h1>
+
+		<div class="box">
+			<form method="GET" action="noteCreate">
+				<table style="width: 100%">
+					<tr>
+						<th>PersonID</th>
+						<th>Firstname</th>
+						<th>Lastname</th>
+						<th>Gender</th>
+						<th>Profession</th>
+						<th>Phonenumber</th>
+						<th>Shifts</th>
+						<th>Select</th>
+					</tr>
+
+					<%
+						for (int i = 0; i < bean.getList().size(); i++) {
+					%>
+					<tr>
+						<td><%=bean.getChild(i).getPersonID()%></td>
+						<td><%=bean.getChild(i).getPersonData().getFirstName()%></td>
+						<td><%=bean.getChild(i).getPersonData().getLastName()%></td>
+						<td><%=bean.getChild(i).getPersonData().getGender().equals("f") ? "female" : "male"%></td>
+						<td><%=bean.getChild(i).getProfession()%></td>
+						<td><%=bean.getChild(i).getPersonData().getPhonenumber()%></td>
+						<td><a
+							href="shift?staffId=<%=bean.getChild(i).getPersonID()%>">Shifts</a>
+						<td><input type="checkbox" name="selected<%=i%>"
+							value="<%=bean.getChild(i).getPersonID()%>" /></td>
+
+					</tr>
+					<%
+						}
+					%>
+				</table>
+				<input type="submit" value="Create Note for selected staff">
+				<%
+					if (request.getAttribute("shiftId") != null) {
+				%>
+					<br/>
+					<a class="link-button" href="staff">Go to all Staff</a>
 				<%
 					}
 				%>
-			</table>
-			<input type="submit" value="Create Note for selected staff">
 			</form>
 		</div>
 	</div>

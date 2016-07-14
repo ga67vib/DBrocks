@@ -60,9 +60,8 @@
 					}
 				%>
 			</table>
-		</div>		
-		<div class="box">
-			<a href="noteCreate">Create a new Note</a>
+	
+			<a class="link-button" href="noteCreate">Create a new Note</a>
 		</div>
 		
 	</div>
